@@ -18,7 +18,9 @@ Then a new customer account with email <cust_email>, password <password>, custom
   And customer <cust_name> is redirected to their account profile
 
 Examples:
-  | cust_name | cust_email | password | cust_address |
+  | cust_name   | cust_email          | password | cust_address                             |
+  |Joe James    |j.james@hotmail.com  |jj@6789   |223 Avenue Sherbrooke E, Montreal H2X 1E1 |
+  |Adam Boucher |aboucher@gmail.com   |ab213ab   |845 Avenue Sherbrooke W, Montreal H3A 0G4 |
 
 Scenario: Create a new customer account with same email as existing account (Error Flow 1)
 
