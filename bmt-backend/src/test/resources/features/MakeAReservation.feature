@@ -5,51 +5,49 @@ I would like to make a restaurant reservation
 So that I can be guaranteed a table when I arrive at the restaurant.
 
 Background: 
-    Given I am an unsuspended user 
-    And I am logged into BookMyTable
+    Given a customer <customer_id> is logged into BookMyTable as a customer
+    And the customer <customer_id> is an unsuspended user
 
-Scenario: Make a reservation successfully
+Scenario: Make a reservation successfully (Normal flow)
 
-    When I select the restaurant of my choice
-    And I enter an acceptable group size
-    And I select an available time 
-    And I select an available table of my choice
-    Then I should see a confirmation message
+    When the customer <customer_id> select the restaurant <restaurant_id> of their choice
+    And the customer <customer_id>  enter an acceptable group size
+    And the customer <customer_id>  select an available time 
+    And the customer <customer_id>  select an available table of their choice
+    Then the customer <customer_id>  should see a confirmation message
+    And a new reservation <reservation_id> is generated
 
-Scenario: Make a reservation fails due to available reservation time not selected
+    | reservation_id | reservation_datetime | customer_id | table_id | table_coordinates | restaurant_id |
+    | 0001           | 2021-05-25 20:00:00  | 69420       | 3246     | 0,2               | 0001          |
 
-    When I select the restaurant of my choice
-    And I enter an acceptable group size
-    But I fail to select an available reservation time 
-    Then I should see an error message
-    And I should be requested to select an available reservation time
+Scenario: Make a reservation fails due to available reservation time not selected (Error flow)
 
-Scenario: Make a reservation fails due to entered group size surpassing set limit 
+    When the customer <customer_id>  select the restaurant <restaurant_id> of their choice
+    And the customer <customer_id>  enter an acceptable group size
+    But the customer <customer_id>  fail to select an available reservation time 
+    Then a "Please select an available reservation time" error message is issued
 
-    When I select the restaurant of my choice
-    But I enter a group size surpassing the maximum limit
-    Then I should see an error message
-    And I should be requested to enter an acceptable group size
-  
+Scenario: Make a reservation fails due to entered group size surpassing set limit (Error flow)
 
-Scenario: Make a reservation fails due to group size not entered
+    When the customer <customer_id>  select the restaurant <restaurant_id> of their choice
+    But the customer <customer_id>  enter a group size surpassing the maximum limit
+    Then a "Please enter acceptable group size" error message is issued
 
-    When I select the restaurant of my choice
-    And I fail to enter a group size
-    Then I should see an error message
-    And I should be requested to enter an acceptable group size
+Scenario: Make a reservation fails due to group size not entered (Error flow)
 
+    When the customer <customer_id>  select the restaurant <restaurant_id> of their choice
+    But the customer <customer_id>  fail to enter a group size
+    Then a "Please enter acceptable group size" error message is issued
 
-Scenario: Make a reservation fails due to available table not selected
+Scenario: Make a reservation fails due to available table not selected (Error flow)
 
-    When I select the restaurant of my choice
-    And I enter an acceptable group size
-    And I select an available time 
-    And I fail to select an available table of my choice
-    Then I should see an error message
-    And I should be requested to select an available table of my choice
+    When the customer <customer_id>  select the restaurant <restaurant_id> of their choice
+    And the customer <customer_id>  enter an acceptable group size
+    And the customer <customer_id>  select an available time 
+    But the customer <customer_id>  fail to select an available table of my choice
+    Then a "Please select an available table" error message is issued
 
-Scenario: Make a reservation fails due to restaurant booking completely full for any group size
+Scenario: Make a reservation fails due to restaurant booking completely full for any group size (Error flow)
 
-    When I select a restaurant that is completely booked
-    Then I should be requested to choose another available restaurant of my choice
+    When the customer <customer_id>  select a restaurant that is completely booked
+    Then a "Please select another restaurant" error message is issued
