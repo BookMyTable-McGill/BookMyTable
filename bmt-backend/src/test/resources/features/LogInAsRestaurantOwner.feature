@@ -25,8 +25,14 @@ Scenario: Log In with existing RestaurantOwner account and Restaurant does not e
 	Then RestaurantOwner <owner> is redirected to the RestaurantOwner profile
 	And RestaurantOwner <owner> has the option to Create Restaurant	      
      
-Scenario: Log In with invalid credentials (Error Flow)
+Scenario: Log In with valid email and password is incorrect (Error Flow 1)
 
-	When RestaurantOwner <owner> inputs email <invalidEmailOwner> and password <invalidPasswordOwner> 
+	When RestaurantOwner <owner> inputs email <validEmailOwner> and password <invalidPasswordOwner> 
 	And RestaurantOwner <owner> clicks to Log In
-	Then a "Email and password do not match" error message is issued
+	Then a "Password is incorrect" error message is issued
+
+Scenario: Log In with invalid email  (Error Flow 2)
+
+	When RestaurantOwner <owner> inputs email <validEmailOwner> and password <password> 
+	And RestaurantOwner <owner> clicks to Log In
+	Then a "No account associated with this email was found" error message is issued
