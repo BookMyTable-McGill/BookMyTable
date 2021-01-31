@@ -1,0 +1,93 @@
+package model;
+
+import javax.persistence.Entity;
+import javax.persistence.CascadeType;
+import javax.persistence.OneToOne;
+import java.util.Set;
+import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+
+@Entity
+public class Restaurant{
+   private long id;
+
+public void setId(long value) {
+    this.id = value;
+}
+public long getId() {
+    return this.id;
+}
+private String name;
+
+public void setName(String value) {
+    this.name = value;
+}
+public String getName() {
+    return this.name;
+}
+private String address;
+
+public void setAddress(String value) {
+    this.address = value;
+}
+public String getAddress() {
+    return this.address;
+}
+private int openingHours;
+
+public void setOpeningHours(int value) {
+    this.openingHours = value;
+}
+public int getOpeningHours() {
+    return this.openingHours;
+}
+private boolean isBooked;
+
+public void setIsBooked(boolean value) {
+    this.isBooked = value;
+}
+public boolean isIsBooked() {
+    return this.isBooked;
+}
+private int estimatedDuration;
+
+public void setEstimatedDuration(int value) {
+    this.estimatedDuration = value;
+}
+public int getEstimatedDuration() {
+    return this.estimatedDuration;
+}
+   private Food food;
+   
+   @OneToOne(mappedBy="restaurant" , cascade={CascadeType.ALL}, optional=false)
+   public Food getFood() {
+      return this.food;
+   }
+   
+   public void setFood(Food food) {
+      this.food = food;
+   }
+   
+   private Set<Table> map;
+   
+   @OneToMany(mappedBy="restaurant" , cascade={CascadeType.ALL})
+   public Set<Table> getMap() {
+      return this.map;
+   }
+   
+   public void setMap(Set<Table> maps) {
+      this.map = maps;
+   }
+   
+   private RestaurantOwner restaurantOwner;
+   
+   @ManyToOne(optional=false)
+   public RestaurantOwner getRestaurantOwner() {
+      return this.restaurantOwner;
+   }
+   
+   public void setRestaurantOwner(RestaurantOwner restaurantOwner) {
+      this.restaurantOwner = restaurantOwner;
+   }
+   
+   }
