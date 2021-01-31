@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -13,6 +14,18 @@ public void setMenuLink(String value) {
 public String getMenuLink() {
     return this.menuLink;
 }
+
+private long id;
+
+public void setId(long value) {
+    this.id = value;
+}
+
+@Id
+public long getId() {
+    return this.id;
+}
+
 private int price;
 
 public void setPrice(int value) {

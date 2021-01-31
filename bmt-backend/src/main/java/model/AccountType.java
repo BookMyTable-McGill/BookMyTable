@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public abstract class AccountType{
@@ -20,11 +21,14 @@ public void setPassword(String value) {
 public String getPassword() {
     return this.password;
 }
+
 private long id;
 
 public void setId(long value) {
     this.id = value;
 }
+
+@Id
 public long getId() {
     return this.id;
 }

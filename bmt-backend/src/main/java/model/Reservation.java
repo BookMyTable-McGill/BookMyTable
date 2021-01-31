@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.sql.Time;
 import java.sql.Date;
 import javax.persistence.ManyToOne;
@@ -44,6 +45,8 @@ private long id;
 public void setId(long value) {
     this.id = value;
 }
+
+@Id
 public long getId() {
     return this.id;
 }
@@ -67,6 +70,17 @@ public long getId() {
    
    public void setTable(Table table) {
       this.table = table;
+   }
+   
+   private Restaurant restaurant;
+   
+   @ManyToOne(optional=false)
+   public Restaurant getRestaurant() {
+     return this.restaurant;
+   }
+   
+   public void setRestaurant(Restaurant restaurant) {
+     this.restaurant = restaurant;
    }
    
    }

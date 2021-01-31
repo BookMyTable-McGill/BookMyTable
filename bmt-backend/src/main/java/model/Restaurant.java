@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.CascadeType;
 import javax.persistence.OneToOne;
 import java.util.Set;
@@ -14,6 +15,8 @@ public class Restaurant{
 public void setId(long value) {
     this.id = value;
 }
+
+@Id
 public long getId() {
     return this.id;
 }
@@ -33,12 +36,18 @@ public void setAddress(String value) {
 public String getAddress() {
     return this.address;
 }
-private int openingHours;
 
-public void setOpeningHours(int value) {
+/**
+ * Opening hours to have the following format:
+ * S Open        M Open      T Open      W Open      T Open      F Open      S Open
+ * S Close       M Close     T Close     W Close     T Close     F Close     S Close
+ */
+private int[][] openingHours;
+
+public void setOpeningHours(int[][] value) {
     this.openingHours = value;
 }
-public int getOpeningHours() {
+public int[][] getOpeningHours() {
     return this.openingHours;
 }
 private boolean isBooked;
@@ -77,6 +86,17 @@ public int getEstimatedDuration() {
    
    public void setMap(Set<Table> maps) {
       this.map = maps;
+   }
+   
+   private Set<Reservation> reservations;
+   
+   @ManyToOne(optional=false)
+   public Set<Reservation> getReservations() {
+     return this.reservations;
+   }
+
+   public void setReservations(Set<Reservation> reservations) {
+     this.reservations = reservations;
    }
    
    private RestaurantOwner restaurantOwner;

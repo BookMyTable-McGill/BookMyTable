@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -8,6 +9,17 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Table{
+  private long id;
+
+  public void setId(long value) {
+      this.id = value;
+  }
+
+  @Id
+  public long getId() {
+      return this.id;
+  }
+  
    private int capacity;
 
 public void setCapacity(int value) {
