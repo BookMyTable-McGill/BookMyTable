@@ -11,6 +11,7 @@ public abstract class AccountTypeDTO {
   }
 
   public AccountTypeDTO(String name, String email, String password, long id) {
+    super();
     this.name = name;
     this.email = email;
     this.password = password;
