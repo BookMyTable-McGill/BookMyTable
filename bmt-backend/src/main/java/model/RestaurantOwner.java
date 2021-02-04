@@ -7,15 +7,15 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class RestaurantOwner extends AccountType{
-   private Set<Restaurant> restaurant;
+   private Set<Restaurant> restaurants;
    
    @OneToMany(mappedBy="restaurantOwner" , cascade={CascadeType.ALL})
-   public Set<Restaurant> getRestaurant() {
-      return this.restaurant;
+   public Set<Restaurant> getRestaurants() {
+      return this.restaurants;
    }
    
-   public void setRestaurant(Set<Restaurant> restaurants) {
-      this.restaurant = restaurants;
+   public void setRestaurants(Set<Restaurant> restaurants) {
+      this.restaurants = restaurants;
    }
    
    }

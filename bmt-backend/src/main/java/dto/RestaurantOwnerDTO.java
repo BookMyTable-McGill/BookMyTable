@@ -2,7 +2,7 @@ package dto;
 
 import java.util.Set;
 
-public class RestaurantOwnerDTO {
+public class RestaurantOwnerDTO extends AccountTypeDTO {
 
   private Set<RestaurantDTO> restaurants;
   
@@ -10,8 +10,8 @@ public class RestaurantOwnerDTO {
     
   }
 
-  public RestaurantOwnerDTO(Set<RestaurantDTO> restaurants) {
-    super();
+  public RestaurantOwnerDTO(String name, String email, String password, long id, Set<RestaurantDTO> restaurants) {
+    super(name, email, password, id);
     this.restaurants = restaurants;
   }
 
