@@ -1,10 +1,10 @@
-package dao;
+package bookmytable.dao;
 
 import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
-import model.*;
+import bookmytable.model.*;
 
 public interface ReservationRepository extends CrudRepository<Reservation, Long> {
 

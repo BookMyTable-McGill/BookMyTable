@@ -1,13 +1,13 @@
-package controller;
+package bookmytable.controller;
 
-import model.*;
+import bookmytable.model.*;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.HashSet;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
-import dao.*;
-import dto.*;
+import bookmytable.dao.*;
+import bookmytable.dto.*;
 
 public class Converters {
   

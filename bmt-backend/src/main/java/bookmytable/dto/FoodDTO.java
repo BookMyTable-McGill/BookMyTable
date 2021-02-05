@@ -1,4 +1,4 @@
-package dto;
+package bookmytable.dto;
 
 public class FoodDTO {
   
