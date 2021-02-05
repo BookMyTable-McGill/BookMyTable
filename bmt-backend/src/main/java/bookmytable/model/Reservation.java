@@ -74,7 +74,7 @@ public long getId() {
    
    private Restaurant restaurant;
    
-   @ManyToOne(optional=false)
+   @ManyToOne(optional=true)
    public Restaurant getRestaurant() {
      return this.restaurant;
    }

@@ -10,6 +10,6 @@ public interface RestaurantRepository extends CrudRepository<Restaurant, Long> {
   List<Restaurant> findRestaurantsByName(String name);  //Assumed that multiple restaurants can have the same name
   List<Restaurant> findRestaurantsByNameContains(String nameFragment);
   Restaurant findRestaurantByAddress(String address);
-  List<Restaurant> findRestaurantsByAdressContains(String addressFragment);
+  List<Restaurant> findRestaurantsByAddressContains(String addressFragment);
 
 }

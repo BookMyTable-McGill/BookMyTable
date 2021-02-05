@@ -8,7 +8,6 @@ public interface RestaurantOwnerRepository extends CrudRepository<RestaurantOwne
   
   RestaurantOwner findRestaurantOwnerById(long id);
   RestaurantOwner findRestaurantOwnerByEmail(String email);
-  RestaurantOwner findRestaurantOwnerByRestaurant(Restaurant restaurant);
   List<RestaurantOwner> findRestaurantOwnersByName(String name);
 
 }

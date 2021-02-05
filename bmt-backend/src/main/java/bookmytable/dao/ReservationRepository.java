@@ -21,7 +21,6 @@ public interface ReservationRepository extends CrudRepository<Reservation, Long>
   List<Reservation> findReservationsByRestaurantAndStartTime(Restaurant restaurant, Time startTime);
   List<Reservation> findReservationsByRestaurantAndStartTimeBetween(Restaurant restaurant, Time minStartTime, Time maxStartTime);
   List<Reservation> findReservationsByRestaurantAndDate(Restaurant restaurant, Date date);
-  List<Reservation> findReservationsByRestaurantAndDateBewteen(Restaurant restaurant, Date minDate, Date maxDate);
   List<Reservation> findReservationsByRestaurantAndStartTimeAndDate(Restaurant restaurant, Time startTime, Date date);
   List<Reservation> findReservationsByRestaurantAndStartTimeBetweenAndDate(Restaurant restaurant, Time minStartTime, Time maxStartTime, Date date);
   
