@@ -90,7 +90,7 @@ public int getEstimatedDuration() {
    
    private Set<Reservation> reservations;
    
-   @ManyToOne(optional=false)
+   @OneToMany(mappedBy="restaurant")
    public Set<Reservation> getReservations() {
      return this.reservations;
    }
@@ -101,7 +101,7 @@ public int getEstimatedDuration() {
    
    private RestaurantOwner restaurantOwner;
    
-   @ManyToOne(optional=false)
+   @ManyToOne(optional=true)
    public RestaurantOwner getRestaurantOwner() {
       return this.restaurantOwner;
    }
