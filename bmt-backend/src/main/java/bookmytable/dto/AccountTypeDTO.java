@@ -1,4 +1,4 @@
-package dto;
+package bookmytable.dto;
 
 public abstract class AccountTypeDTO {
   private String name;

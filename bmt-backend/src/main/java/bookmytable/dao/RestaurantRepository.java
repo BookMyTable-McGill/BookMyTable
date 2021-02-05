@@ -1,8 +1,8 @@
-package dao;
+package bookmytable.dao;
 
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
-import model.*;
+import bookmytable.model.*;
 
 public interface RestaurantRepository extends CrudRepository<Restaurant, Long> {
   
@@ -10,6 +10,6 @@ public interface RestaurantRepository extends CrudRepository<Restaurant, Long> {
   List<Restaurant> findRestaurantsByName(String name);  //Assumed that multiple restaurants can have the same name
   List<Restaurant> findRestaurantsByNameContains(String nameFragment);
   Restaurant findRestaurantByAddress(String address);
-  List<Restaurant> findRestaurantsByAdressContains(String addressFragment);
+  List<Restaurant> findRestaurantsByAddressContains(String addressFragment);
 
 }

@@ -1,8 +1,8 @@
-package dao;
+package bookmytable.dao;
 
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
-import model.*;
+import bookmytable.model.*;
 
 public interface CustomerRepository extends CrudRepository<Customer, Long> {
   

@@ -1,10 +1,13 @@
-package dao;
+package bookmytable.dao;
+
+import bookmytable.model.Reservation;
+import bookmytable.model.Restaurant;
+import bookmytable.model.Table;
+import org.springframework.data.repository.CrudRepository;
 
 import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
-import org.springframework.data.repository.CrudRepository;
-import model.*;
 
 public interface ReservationRepository extends CrudRepository<Reservation, Long> {
 
@@ -21,7 +24,6 @@ public interface ReservationRepository extends CrudRepository<Reservation, Long>
   List<Reservation> findReservationsByRestaurantAndStartTime(Restaurant restaurant, Time startTime);
   List<Reservation> findReservationsByRestaurantAndStartTimeBetween(Restaurant restaurant, Time minStartTime, Time maxStartTime);
   List<Reservation> findReservationsByRestaurantAndDate(Restaurant restaurant, Date date);
-  List<Reservation> findReservationsByRestaurantAndDateBewteen(Restaurant restaurant, Date minDate, Date maxDate);
   List<Reservation> findReservationsByRestaurantAndStartTimeAndDate(Restaurant restaurant, Time startTime, Date date);
   List<Reservation> findReservationsByRestaurantAndStartTimeBetweenAndDate(Restaurant restaurant, Time minStartTime, Time maxStartTime, Date date);
   

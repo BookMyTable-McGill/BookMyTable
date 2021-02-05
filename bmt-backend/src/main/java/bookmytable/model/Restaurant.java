@@ -1,4 +1,4 @@
-package model;
+package bookmytable.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -89,8 +89,8 @@ public int getEstimatedDuration() {
    }
    
    private Set<Reservation> reservations;
-   
-   @ManyToOne(optional=false)
+
+   @OneToMany(mappedBy="restaurant")
    public Set<Reservation> getReservations() {
      return this.reservations;
    }
@@ -101,7 +101,7 @@ public int getEstimatedDuration() {
    
    private RestaurantOwner restaurantOwner;
    
-   @ManyToOne(optional=false)
+   @ManyToOne
    public RestaurantOwner getRestaurantOwner() {
       return this.restaurantOwner;
    }

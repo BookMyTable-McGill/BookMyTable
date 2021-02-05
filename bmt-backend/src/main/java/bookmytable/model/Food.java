@@ -1,4 +1,4 @@
-package model;
+package bookmytable.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
