@@ -26,14 +26,15 @@ public class ViewRestaurantInfoController {
     @Autowired
     private ViewRestaurantInfoService viewRestaurantInfoService;
 
-    @Autowired
-    private RestaurantRepository restaurantRepository;
-
-    //????
-    @PostMapping(value = {"/", "//"})
-    public RestaurantDTO viewRestaurantInfo(@RequestParam("a") String a) {
-    	///??///
-    	Restaurant restaurant = viewRestaurantInfoService.getRestaurantByAddress(a);
+    @PostMapping(value = {"/getRestaurant/address", "/getRestaurant/address/"})
+    public RestaurantDTO getRestaurantByAddress(@RequestParam("address") String address) {
+    	Restaurant restaurant = viewRestaurantInfoService.getRestaurantByAddress(address);
+        return Converters.convertToDto(restaurant);
+    }
+    
+    @PostMapping(value = {"/getRestaurant/ID", "/getRestaurant/ID/"})
+    public RestaurantDTO getRestaurantByID(@RequestParam("ID") long ID) {
+    	Restaurant restaurant = viewRestaurantInfoService.getRestaurantById(ID);
         return Converters.convertToDto(restaurant);
     }
     
