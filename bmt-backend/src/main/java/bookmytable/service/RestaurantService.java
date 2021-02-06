@@ -9,7 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import bookmytable.dao.FoodRepository;
 import bookmytable.dao.RestaurantRepository;
+import bookmytable.dao.TableRepository;
 import bookmytable.model.Food;
+import bookmytable.model.Table;
 import bookmytable.model.Reservation;
 import bookmytable.model.Restaurant;
 import bookmytable.model.RestaurantOwner;
@@ -20,6 +22,7 @@ public class RestaurantService {
 	@Autowired
 	RestaurantRepository restaurantRepository;
 	FoodRepository foodRepository;
+	TableRepository tableRepository;
 	
 	@Transactional
 	public Restaurant createRestaurant( String name, String address, int[][] hours, RestaurantOwner owner, int estDuration, String menuLink, int price, String cuisine, String options) {
@@ -56,6 +59,7 @@ public class RestaurantService {
 		
 		
 		Restaurant restaurant = new Restaurant();
+		Set<Table> map = new HashSet<Table>(); //Empty map
 		
 		restaurant.setAddress(address);
 		restaurant.setName(name);
@@ -63,6 +67,7 @@ public class RestaurantService {
 		restaurant.setEstimatedDuration(estDuration);
 		restaurant.setFood(createFood(menuLink, price,cuisine,options));
 		restaurant.setRestaurantOwner(owner);
+		restaurant.setMap(map); //setting empty map
 		
 		Set<Restaurant> ownerRestaurants = owner.getRestaurants();
 		ownerRestaurants.add(restaurant);
@@ -91,6 +96,19 @@ public class RestaurantService {
 		foodRepository.save(food);
 		
 		return food;
+	}
+	
+	@Transactional
+	public void addTabletoMap(int capacity, int tableNumber, int xCoordinate, int yCoordinate, Restaurant restaurant){
+	  
+	  Table table = new Table();
+	  table.setCapacity(capacity);
+	  table.setTableNumber(tableNumber);
+	  table.setX(xCoordinate);
+	  table.setY(yCoordinate);
+	  table.setRestaurant(restaurant);
+	  tableRepository.save(table);
+	  restaurant.getMap().add(table);
 	}
 	
 }
