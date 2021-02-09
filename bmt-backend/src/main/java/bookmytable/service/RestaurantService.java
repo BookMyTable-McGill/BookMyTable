@@ -1,6 +1,8 @@
 package bookmytable.service;
 
 import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -110,5 +112,32 @@ public class RestaurantService {
 	  tableRepository.save(table);
 	  restaurant.getMap().add(table);
 	}
+	
+	@Transactional
+	public Restaurant getRestaurantById(long id) {
+		return restaurantRepository.findRestaurantById(id);
+	}
+	
+	@Transactional
+	public List<Restaurant> getRestaurantsByName(String name) {
+		return restaurantRepository.findRestaurantsByName(name);
+	}
+	
+	@Transactional
+	public List<Restaurant> getRestaurantByNameContains(String nameFragment) {
+		return restaurantRepository.findRestaurantsByNameContains(nameFragment);
+	}
+	
+	@Transactional
+	public Restaurant getRestaurantByAddress(String address) {
+		return restaurantRepository.findRestaurantByAddress(address);
+	}
+	
+	@Transactional
+	public List<Restaurant> getRestaurantByAddressContains(String addressFragment) {
+		return restaurantRepository.findRestaurantsByAdressContains(addressFragment);
+	}
+	
+	
 	
 }
