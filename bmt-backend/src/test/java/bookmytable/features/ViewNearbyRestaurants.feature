@@ -31,6 +31,3 @@ Scenario: No restaurants found nearby (Error Flow)
        | 98765       |   H8G4B3    |    10    |          null           |
 
     And the customer will be prompted with an error message
-
-      
-
