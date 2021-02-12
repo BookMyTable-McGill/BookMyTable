@@ -23,26 +23,26 @@ Scenario: Make a reservation successfully (Normal flow)
 
 Scenario: Make a reservation fails due to available reservation time not selected (Error flow)
 
-    When the customer <customer_id>  selects the restaurant <restaurant_id> of their choice
+    When the customer <customer_id> selects the restaurant <restaurant_id> of their choice
     And the customer <customer_id>  enters an acceptable group size <group_size>
     But the customer <customer_id>  fails to select an available reservation date and time <reservation_datetime> 
     Then a "Please select an available reservation time" error message is issued
 
 Scenario: Make a reservation fails due to entered group size surpassing set limit (Error flow)
 
-    When the customer <customer_id>  select the restaurant <restaurant_id> of their choice
+    When the customer <customer_id> selects the restaurant <restaurant_id> of their choice
     But the customer <customer_id>  enter a group size <group_size> surpassing the maximum limit
     Then a "Please enter acceptable group size" error message is issued
 
 Scenario: Make a reservation fails due to group size not entered (Error flow)
 
-    When the customer <customer_id>  selects the restaurant <restaurant_id> of their choice
+    When the customer <customer_id> selects the restaurant <restaurant_id> of their choice
     But the customer <customer_id>  fails to enter a group size <group_size>
     Then a "Please enter acceptable group size" error message is issued
 
 Scenario: Make a reservation fails due to available table not selected (Error flow)
 
-    When the customer <customer_id>  selects the restaurant <restaurant_id> of their choice
+    When the customer <customer_id> selects the restaurant <restaurant_id> of their choice
     And the customer <customer_id>  enters an acceptable group size <group_size>
     And the customer <customer_id>  selects an available date and time <reservation_datetime> 
     But the customer <customer_id>  fails to select an available table <table_id> of my choice
