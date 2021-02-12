@@ -1,10 +1,13 @@
 package bookmytable.dao;
 
+import bookmytable.model.Reservation;
+import bookmytable.model.Restaurant;
+import bookmytable.model.Table;
+import org.springframework.data.repository.CrudRepository;
+
 import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
-import org.springframework.data.repository.CrudRepository;
-import bookmytable.model.*;
 
 public interface ReservationRepository extends CrudRepository<Reservation, Long> {
 
