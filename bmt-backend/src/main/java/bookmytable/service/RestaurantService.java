@@ -135,7 +135,7 @@ public class RestaurantService {
 	
 	@Transactional
 	public List<Restaurant> getRestaurantByAddressContains(String addressFragment) {
-		return restaurantRepository.findRestaurantsByAdressContains(addressFragment);
+		return restaurantRepository.findRestaurantsByAddressContains(addressFragment);
 	}
 	
 	
