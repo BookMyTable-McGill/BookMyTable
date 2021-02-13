@@ -7,7 +7,7 @@ import bookmytable.dto.ReservationDTO;
 import bookmytable.model.Customer;
 import bookmytable.model.Reservation;
 import bookmytable.model.Restaurant;
-import bookmytable.model.Table;
+import bookmytable.model.RestaurantTable;
 import bookmytable.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -38,10 +38,10 @@ public class ReservationController {
     public ReservationDTO makeReservation(@RequestParam("startTime") String startTime, @RequestParam("endTime") String endTime, @RequestParam("date") String date,
                                           @RequestParam("groupSize") int groupSize, @RequestParam("tableID") long tID, @RequestParam("customerID") long cID, @RequestParam("restaurantID") long rID) {
         long someid = 1001011;
-        Table table = tableRepository.findTableById(tID);
+        RestaurantTable restaurantTable = tableRepository.findTableById(tID);
         Restaurant restaurant = restaurantRepository.findRestaurantById(rID);
         Customer customer = customerRepository.findCustomerById(cID);
-        Reservation reservation = reservationService.makeReservation(Time.valueOf(startTime), Time.valueOf(endTime), Date.valueOf(date), groupSize, someid, table, customer,restaurant);
+        Reservation reservation = reservationService.makeReservation(Time.valueOf(startTime), Time.valueOf(endTime), Date.valueOf(date), groupSize, someid, restaurantTable, customer,restaurant);
 
         return Converters.convertToDto(reservation);
     }

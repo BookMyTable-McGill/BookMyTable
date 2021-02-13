@@ -4,12 +4,12 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import bookmytable.model.*;
 
-public interface TableRepository extends CrudRepository<Table, Long> {
+public interface TableRepository extends CrudRepository<RestaurantTable, Long> {
   
-  Table findTableById(long id);
+  RestaurantTable findTableById(long id);
   
-  List<Table> findTablesByRestaurant(Restaurant restaurant);
-  Table findTableByRestaurantAndXAndY(Restaurant restaurant, int x, int y);
-  List<Table> findTablesByRestaurantAndCapacity(Restaurant restaurant, int capacity);
+  List<RestaurantTable> findTablesByRestaurant(Restaurant restaurant);
+  RestaurantTable findTableByRestaurantAndXAndY(Restaurant restaurant, int x, int y);
+  List<RestaurantTable> findTablesByRestaurantAndCapacity(Restaurant restaurant, int capacity);
 
 }

@@ -7,7 +7,7 @@ import bookmytable.dto.RestaurantDTO;
 import bookmytable.model.Customer;
 import bookmytable.model.Reservation;
 import bookmytable.model.Restaurant;
-import bookmytable.model.Table;
+import bookmytable.model.RestaurantTable;
 import bookmytable.service.ViewRestaurantInfoService;
 
 import org.springframework.beans.factory.annotation.Autowired;

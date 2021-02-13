@@ -14,16 +14,17 @@ import bookmytable.model.Customer;
 public class CustomerLoginService {
 
 	@Autowired
-	private CustomerRepository customerRepository;
+	private static CustomerRepository customerRepository;
 
 	@Transactional
-	public void loginCustomer(Customer customer, String email, String password) {
+	public static boolean loginCustomer(Customer customer, String email, String password) {
 		String error = "";
+		
 		if (customer == null) {
 			error = "Customer does not exist.";
 			throw new IllegalArgumentException(error);
-
-		} else if (customerRepository.findCustomerById(customer.getId()) == null) {
+			
+		} else if (customer.getId() == null) {
 			error = "Customer does not exist.";
 			throw new IllegalArgumentException(error);
 
@@ -37,24 +38,8 @@ public class CustomerLoginService {
 			
 		} else {
 			// set login status of customer to true
-			return;
+			return true;
 		}
-	}
-
-	@Transactional
-	public void logoutCustomer(Customer customer) {
-
-		String error = "";
-		if (customer == null) {
-			error = "Customer Profile does not exist.";
-			throw new IllegalArgumentException(error);
-
-		} else if (customerRepository.findCustomerById(customer.getId()) == null) {
-			error = "Customer Profile does not exist.";
-			throw new IllegalArgumentException(error);
-
-		} // else toggle login status to false here...
-
 	}
 
 	@Transactional
