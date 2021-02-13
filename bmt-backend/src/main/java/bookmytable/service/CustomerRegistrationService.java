@@ -22,7 +22,7 @@ public class CustomerRegistrationService {
   private ReservationRepository reservationRepository;
   
   @Transactional
-  private Customer createCustomer(String name, String email, String password, String phoneNumber) {
+  public Customer createCustomer(String name, String email, String password, String phoneNumber) {
     name = name.trim();
     email = email.trim();
     password = password.trim();
@@ -39,6 +39,11 @@ public class CustomerRegistrationService {
       throw new IllegalArgumentException("Invalid Email");
     }
     
+    Customer emailCheck = customerRepository.findCustomerByEmail(email);
+    if (emailCheck != null) {
+      throw new IllegalArgumentException("An account with this email already exists");
+    }
+    
     if (password.length() < 6) {
       throw new IllegalArgumentException("Invalid Password");
     }
@@ -48,7 +53,6 @@ public class CustomerRegistrationService {
     customer.setEmail(email);
     customer.setPassword(password);
     customer.setPhoneNumber(phoneNumber);
-    customer.setId(name.hashCode() * email.hashCode() * phoneNumber.hashCode());
     customer.setFavoriteRestaurants(null);
     customer.setReservations(null);
     customerRepository.save(customer);
