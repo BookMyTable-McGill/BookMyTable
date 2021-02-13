@@ -1,5 +1,7 @@
 package bookmytable.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,7 +32,21 @@ public class RestaurantOwnerRegistrationService {
 		owner.setId(id);
 		owner.setName(name);
 		owner.setPassword(password);
-		
+		restaurantOwnerRepository.save(owner);
 		return owner;
 	}
+	
+	@Transactional
+	public List<RestaurantOwner> getRestaurantOwners() {
+	  return toList(restaurantOwnerRepository.findAll());
+	}
+	
+	//Helper method to retrieve lists of objects
+	  private <T> List<T> toList(Iterable<T> iterable) {
+	      List<T> resultList = new ArrayList<T>();
+	      for (T t : iterable) {
+	          resultList.add(t);
+	      }
+	      return resultList;
+	  }
 }
