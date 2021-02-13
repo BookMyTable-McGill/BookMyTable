@@ -6,7 +6,7 @@ import bookmytable.dao.RestaurantRepository;
 import bookmytable.model.Customer;
 import bookmytable.model.Reservation;
 import bookmytable.model.Restaurant;
-import bookmytable.model.Table;
+import bookmytable.model.RestaurantTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

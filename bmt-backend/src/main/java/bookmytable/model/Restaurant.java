@@ -77,14 +77,14 @@ public int getEstimatedDuration() {
       this.food = food;
    }
    
-   private Set<Table> map;
+   private Set<RestaurantTable> map;
    
    @OneToMany(mappedBy="restaurant" , cascade={CascadeType.ALL})
-   public Set<Table> getMap() {
+   public Set<RestaurantTable> getMap() {
       return this.map;
    }
    
-   public void setMap(Set<Table> maps) {
+   public void setMap(Set<RestaurantTable> maps) {
       this.map = maps;
    }
    

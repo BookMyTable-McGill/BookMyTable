@@ -8,7 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Table{
+public class RestaurantTable{
   private long id;
 
   public void setId(long value) {
