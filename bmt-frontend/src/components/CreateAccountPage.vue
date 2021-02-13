@@ -24,6 +24,16 @@
       name="psw-repeat"
       id="psw-repeat"
     />
+
+    <br /><label id="phone-number-label" for="phone-number-label"><b>Phone Number</b></label
+    ><br />
+    <input
+      type="text"
+      placeholder="Phone Number"
+      name="phone-number"
+      id="phone-number"
+    />
+
     <br /><label id="accountType" for="accountType"><b>Select Account Type</b></label
     ><br />
     <select name="accountType" id="accountType">
@@ -126,6 +136,11 @@ label[id="psw"] {
 }
 
 label[id="psw-repeat"] {
+  right: 200px;
+  position: relative;
+}
+
+label[id="phone-number"] {
   right: 200px;
   position: relative;
 }
