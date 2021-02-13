@@ -14,10 +14,10 @@ import bookmytable.model.Customer;
 public class CustomerLoginService {
 
 	@Autowired
-	private CustomerRepository customerRepository;
+	private static CustomerRepository customerRepository;
 
 	@Transactional
-	public void loginCustomer(Customer customer, String email, String password) {
+	public static boolean loginCustomer(Customer customer, String email, String password) {
 		String error = "";
 		if (customer == null) {
 			error = "Customer does not exist.";
@@ -37,7 +37,7 @@ public class CustomerLoginService {
 			
 		} else {
 			// set login status of customer to true
-			return;
+			return true;
 		}
 	}
 
