@@ -2,8 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import CreateAccountPage from '@/components/CreateAccountPage'
 import LoginPage from '@/components/LoginPage'
-import RestaurantInfoPage from '@/components/RestaurantInfoPage'
-//import CreateRestaurant from '@/components/CreateRestaurant'
+import RestaurantInfo from '@/components/RestaurantInfo'
+import CreateRestaurant from '@/components/CreateRestaurant'
 
 Vue.use(Router)
 
@@ -21,14 +21,13 @@ export default new Router({
   {
     path: '/restaurantInfo',
     name : 'RestaurantInfo',
-    component: RestaurantInfoPage
+    component: RestaurantInfo
+  },
+  {
+    path: '/CreateRestaurant',
+    name: 'CreateRestaurant',
+    component: CreateRestaurant
   }
-  // ,
-  // {
-  //   path: '/CreateRestaurant',
-  //   name: 'CreateRestaurant',
-  //   component: CreateRestaurant
-  // }
 ]
 
 

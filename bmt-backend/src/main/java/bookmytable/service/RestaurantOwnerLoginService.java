@@ -9,50 +9,54 @@ import bookmytable.dao.*;
 @Service 
 public class RestaurantOwnerLoginService {
 
-@Autowired 
-private RestaurantOwnerRepository restaurantOwnerRepository;
-
-
-@Transactional 
-public boolean loginRestaurantOwner(RestaurantOwner owner, String password){
+	@Autowired 
+	private RestaurantOwnerRepository restaurantOwnerRepository;
 	
-	String error = "";
-  
-    if(owner == null) {
-    	
-    	 error += "Restaurant Owner does not exist";
-		return false;
-    }
-
-    else if(restaurantOwnerRepository.findRestaurantOwnerById(owner.getId()) == null){
-    	error += "Restaurant Owner does not exist";
-        return false;
-    }
-    
-    else if(!restaurantOwnerRepository.findRestaurantOwnerById(owner.getId()).getPassword().equals(password)) {
-    	error += "Username and Password do not match";
-    	return false;
-    }
+	
+	@Transactional 
+	public boolean loginRestaurantOwner(RestaurantOwner owner, String password){
 		
-    if(restaurantOwnerRepository.findRestaurantOwnerById(owner.getId()).getPassword().equals(password)) {
-          //we may need a login toggle field for accounttype
-          return true;
-		
+		String error = "";
+	  
+	    if(owner == null) {
+	    	
+	    	 error += "Restaurant Owner does not exist";
+			return false;
+	    }
+	
+	    else if(restaurantOwnerRepository.findRestaurantOwnerById(owner.getId()) == null){
+	    	error += "Restaurant Owner does not exist";
+	        return false;
+	    }
+	    
+	    else if(!restaurantOwnerRepository.findRestaurantOwnerById(owner.getId()).getPassword().equals(password)) {
+	    	error += "Username and Password do not match";
+	    	return false;
+	    }
+			
+	    if(restaurantOwnerRepository.findRestaurantOwnerById(owner.getId()).getPassword().equals(password)) {
+	          //we may need a login toggle field for accounttype
+	          return true;
+			
+		}
+	    
+	    if (error.length() > 0) {
+			throw new IllegalArgumentException(error);
+		}
+	
+	        return false;
 	}
-    
-    if (error.length() > 0) {
-		throw new IllegalArgumentException(error);
+	
+	
+	@Transactional 
+	public RestaurantOwner getRestaurantOwnerByEmail(String email) {
+		return restaurantOwnerRepository.findRestaurantOwnerByEmail(email);
+	}
+	
+	@Transactional 
+	public RestaurantOwner getRestaurantOwnerByID(long ID) {
+		return restaurantOwnerRepository.findRestaurantOwnerById(ID);
 	}
 
-        return false;
-}
-
-
-@Transactional 
-public RestaurantOwner getRestaurantOwnerByEmail(String email) {
-	return restaurantOwnerRepository.findRestaurantOwnerByEmail(email);
-}
-
-   
 }
 

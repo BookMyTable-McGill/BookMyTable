@@ -4,10 +4,10 @@
     <h1>Restaurant Info</h1>
     <hr />
     <br /><br /><br />
-    Name : <br><br>
-    Address : <br><br>
-    Style : <br><br>
-    Hours:  <br><br>
+    Name : {{restaurant.name}}<br>
+    Address : {{restaurant.address}}<br>
+    Style : {{restaurant.artStyle}} <br>
+    Hours: {{openingHours}} <br>
     <br /><button type="submit" v-on:click ="goToReservation()" class="reservebtn">Reserve</button>
     <br />
   </div>
