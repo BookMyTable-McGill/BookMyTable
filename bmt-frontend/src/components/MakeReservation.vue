@@ -5,30 +5,26 @@
   <form>
   <form>
     <label class="field" for="quantity">Group Size </label>
-    <input type="number" id="quantity" name="quantity" min="1" max="10">
-    <input type="submit">
+    <input type="number" id="quantity" name="quantity" min="1" max="10" v-model="quantity">
     </form>
     <form>
   <label class="field" for="date">Pick a date:</label>
-  <input type="date" id="date" name="date">
-  <input type="submit">
+  <input type="date" id="date" name="date" v-model="date">
   </form>
   <form>
   <label class="field" for="appt">Pick a time</label>
-  <input type="time" id="appt" name="appt" min="09:00" max="18:00" >
-  <input type="submit">
+  <input type="time" id="appt" name="appt" min="09:00" max="18:00" v-model="appt" >
   </form>
   <form>
   <label class="field" for="table">Pick a table</label>
-  <select id="table" name="table">
+  <select id="table" name="table" v-model='table'>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
     <option value="4">4</option>
   </select>
-  <input type="submit">
 </form>
-    <button type="submit" class="button">Make Reservation</button>
+    <button type="submit" class="button" @click="createReservation(quantity,date,appt,table)">Make Reservation</button>
     </form>
 
 </div>
@@ -64,22 +60,5 @@
 }
 </style>
 
-<script>
-
-export default {
-  data: function () {
-    return {
-      maxSize: '10'
-    }
-  },
-  methods: {
-    setMax: function () {
-      var input = document.getElementById('quantity')
-      input.setAttribute('max', 10) // not working
-    }
-  },
-  created () {
-    this.setMax()
-  }
-}
+<script src="./javascript/makeReservation.js">
 </script>

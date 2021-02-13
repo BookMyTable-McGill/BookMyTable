@@ -4,6 +4,7 @@ import CreateAccountPage from '@/components/CreateAccountPage'
 import LoginPage from '@/components/LoginPage'
 import RestaurantInfoPage from '@/components/RestaurantInfoPage'
 //import CreateRestaurant from '@/components/CreateRestaurant'
+import Reserve from '@/components/MakeReservation'
 
 Vue.use(Router)
 
@@ -19,9 +20,14 @@ export default new Router({
     component: CreateAccountPage
   },
   {
-    path: '/restaurantInfo',
+    path: '/restaurantInfo/:customerID/:restaurantID',
     name : 'RestaurantInfo',
     component: RestaurantInfoPage
+  },
+  {
+    path: '/reserve',
+    name: 'Reserve',
+    component: Reserve
   }
   // ,
   // {
