@@ -42,22 +42,6 @@ public class CustomerLoginService {
 	}
 
 	@Transactional
-	public void logoutCustomer(Customer customer) {
-
-		String error = "";
-		if (customer == null) {
-			error = "Customer Profile does not exist.";
-			throw new IllegalArgumentException(error);
-
-		} else if (customerRepository.findCustomerById(customer.getId()) == null) {
-			error = "Customer Profile does not exist.";
-			throw new IllegalArgumentException(error);
-
-		} // else toggle login status to false here...
-
-	}
-
-	@Transactional
 	public Customer getCustomerByEmail(String email) {
 		return customerRepository.findCustomerByEmail(email);
 	}
