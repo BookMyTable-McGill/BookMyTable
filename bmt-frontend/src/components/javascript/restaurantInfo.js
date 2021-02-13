@@ -21,14 +21,14 @@ var AXIOS = axios.create({
 		this.reservations = reservations;
 		this.favoriteRestaurants = favoriteRestaurants;
 	}
-	
+
 	function AccountTypeDTO(name, email, password, id) {
 		this.name = name;
 		this.email = email;
 		this.password = password;
 		this.id = id;
 	}
-	
+
 	function FoodDTO(id, menuLink, price, cuisine, options, restaurant) {
 		this.id = id;
 		this.menuLink = menuLink;
@@ -37,7 +37,7 @@ var AXIOS = axios.create({
 		this.options = options;
 		this.restaurant = restaurant;
 	}
-	
+
 	function ReservationDTO(startTime, endTime, date, groupSize, id, table,
 		customer, restaurant) {
 		this.startTime = startTime;
@@ -49,7 +49,7 @@ var AXIOS = axios.create({
 		this.customer = customer;
 		this.restaurant = restaurant;
 	}
-	
+
 	function RestaurantOwnerDTO(name, email, password, id, restaurants) {
 		this.name = name;
 		this.email = email;
@@ -57,7 +57,7 @@ var AXIOS = axios.create({
 		this.id = id;
 		this.restaurants = restaurants;
 	}
-	
+
 	function TableDTO(id, capacity, x, y, tableNumber, restaurant, reservations) {
 		this.id = id;
 		this.capacity = capacity;
@@ -67,7 +67,7 @@ var AXIOS = axios.create({
 		this.restaurant = restaurant;
 		this.reservations = reservations;
 	}
-	
+
 	function RestaurantDTO(id, name, address, openingHours, isBooked,
 		estimatedDuration, food, map, reservations, restaurantOwner) {
 		this.id = id;
@@ -111,7 +111,7 @@ var AXIOS = axios.create({
 		},
 		methods: {
 			goToReservation: function() {
-				window.location.href = "/#/reservation/".concat(this.restaurant)
+				window.location.href = "/#/reserve/".concat(this.$route.params.restaurantID)
 			}
 		}
 	}
