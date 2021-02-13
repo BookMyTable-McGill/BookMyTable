@@ -1,5 +1,6 @@
 package bookmytable.service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -101,7 +102,7 @@ public class RestaurantService {
 	}
 	
 	@Transactional
-	public void addTabletoMap(int capacity, int tableNumber, int xCoordinate, int yCoordinate, Restaurant restaurant){
+	public void addTableToMap(int capacity, int tableNumber, int xCoordinate, int yCoordinate, Restaurant restaurant){
 	  
 	  RestaurantTable restaurantTable = new RestaurantTable();
 	  restaurantTable.setCapacity(capacity);
@@ -116,6 +117,11 @@ public class RestaurantService {
 	@Transactional
 	public Restaurant getRestaurantById(long id) {
 		return restaurantRepository.findRestaurantById(id);
+	}
+	
+	@Transactional 
+	public List<Restaurant> getAllRestaurants() {
+		return toList(restaurantRepository.findAll());
 	}
 	
 	@Transactional
@@ -138,6 +144,13 @@ public class RestaurantService {
 		return restaurantRepository.findRestaurantsByAddressContains(addressFragment);
 	}
 	
+	private <T> List<T> toList(Iterable<T> iterable) {
+        List<T> resultList = new ArrayList<T>();
+        for (T t : iterable) {
+            resultList.add(t);
+        }
+        return resultList;
+    }
 	
 	
 }

@@ -48,6 +48,11 @@ public boolean loginRestaurantOwner(RestaurantOwner owner, String password){
 }
 
 
+@Transactional 
+public RestaurantOwner getRestaurantOwnerByEmail(String email) {
+	return restaurantOwnerRepository.findRestaurantOwnerByEmail(email);
+}
+
    
 }
 
