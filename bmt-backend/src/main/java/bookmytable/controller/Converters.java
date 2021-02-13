@@ -213,10 +213,10 @@ public class Converters {
     RestaurantOwnerDTO restaurantOwner = convertWithoutRestaurant(r.getRestaurantOwner());
     FoodDTO food = convertWithoutRestaurant(r.getFood());
 
-    Set<Table> tables = r.getMap();
+    Set<RestaurantTable> restaurantTables = r.getMap();
     Set<TableDTO> tableDTOs = new HashSet<TableDTO>();
-    if (tables != null) {
-      for (Table t : tables) {
+    if (restaurantTables != null) {
+      for (RestaurantTable t : restaurantTables) {
         tableDTOs.add(convertWithoutRestaurant(t));
       }
     }
@@ -248,10 +248,10 @@ public class Converters {
     
     RestaurantOwnerDTO restaurantOwner = convertWithoutRestaurant(r.getRestaurantOwner());
 
-    Set<Table> tables = r.getMap();
+    Set<RestaurantTable> restaurantTables = r.getMap();
     Set<TableDTO> tableDTOs = new HashSet<TableDTO>();
-    if (tables != null) {
-      for (Table t : tables) {
+    if (restaurantTables != null) {
+      for (RestaurantTable t : restaurantTables) {
         tableDTOs.add(convertWithoutRestaurant(t));
       }
     }
@@ -284,10 +284,10 @@ public class Converters {
     RestaurantOwnerDTO restaurantOwner = convertWithoutRestaurant(r.getRestaurantOwner());
     FoodDTO food = convertWithoutRestaurant(r.getFood());
 
-    Set<Table> tables = r.getMap();
+    Set<RestaurantTable> restaurantTables = r.getMap();
     Set<TableDTO> tableDTOs = new HashSet<TableDTO>();
-    if (tables != null) {
-      for (Table t : tables) {
+    if (restaurantTables != null) {
+      for (RestaurantTable t : restaurantTables) {
         tableDTOs.add(convertWithoutRestaurant(t));
       }
     }
@@ -311,10 +311,10 @@ public class Converters {
     
     FoodDTO food = convertWithoutRestaurant(r.getFood());
 
-    Set<Table> tables = r.getMap();
+    Set<RestaurantTable> restaurantTables = r.getMap();
     Set<TableDTO> tableDTOs = new HashSet<TableDTO>();
-    if (tables != null) {
-      for (Table t : tables) {
+    if (restaurantTables != null) {
+      for (RestaurantTable t : restaurantTables) {
         tableDTOs.add(convertWithoutRestaurant(t));
       }
     }
@@ -402,9 +402,9 @@ public class Converters {
    * ========================== TABLE CONVERTERS ==========================
    */
   
-  public static TableDTO convertToDto(Table t) {
+  public static TableDTO convertToDto(RestaurantTable t) {
     if (t == null) {
-      throw new IllegalArgumentException("There is no such Table");
+      throw new IllegalArgumentException("There is no such RestaurantTable");
     }
     
     int x = t.getX();
@@ -427,9 +427,9 @@ public class Converters {
     return tableDTO;
   }
   
-  private static TableDTO convertWithoutReservation(Table t) {
+  private static TableDTO convertWithoutReservation(RestaurantTable t) {
     if (t == null) {
-      throw new IllegalArgumentException("There is no such Table");
+      throw new IllegalArgumentException("There is no such RestaurantTable");
     }
     
     int x = t.getX();
@@ -444,9 +444,9 @@ public class Converters {
     return tableDTO;
   }
   
-  private static TableDTO convertWithoutRestaurant(Table t) {
+  private static TableDTO convertWithoutRestaurant(RestaurantTable t) {
     if (t == null) {
-      throw new IllegalArgumentException("There is no such Table");
+      throw new IllegalArgumentException("There is no such RestaurantTable");
     }
     
     int x = t.getX();

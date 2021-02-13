@@ -61,15 +61,15 @@ public long getId() {
       this.customer = customer;
    }
    
-   private Table table;
+   private RestaurantTable restaurantTable;
    
    @ManyToOne(optional=false)
-   public Table getTable() {
-      return this.table;
+   public RestaurantTable getTable() {
+      return this.restaurantTable;
    }
    
-   public void setTable(Table table) {
-      this.table = table;
+   public void setTable(RestaurantTable restaurantTable) {
+      this.restaurantTable = restaurantTable;
    }
    
    private Restaurant restaurant;

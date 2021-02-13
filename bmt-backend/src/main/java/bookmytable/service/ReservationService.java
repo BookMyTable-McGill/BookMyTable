@@ -5,7 +5,7 @@ import bookmytable.dao.ReservationRepository;
 import bookmytable.model.Customer;
 import bookmytable.model.Reservation;
 import bookmytable.model.Restaurant;
-import bookmytable.model.Table;
+import bookmytable.model.RestaurantTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +23,7 @@ public class ReservationService {
     ReservationRepository reservationRepository;
 
     @Transactional
-    public Reservation makeReservation(Time startTime, Time endTime, Date date, int groupSize, long id, Table table,
+    public Reservation makeReservation(Time startTime, Time endTime, Date date, int groupSize, long id, RestaurantTable restaurantTable,
                                        Customer customer, Restaurant restaurant) {
         String error = "";
 
@@ -35,15 +35,15 @@ public class ReservationService {
             error += "Start time must be before end time";
         }
 
-        if (table == null) {
+        if (restaurantTable == null) {
             error += "Please select an available table";
         }
 
-        if (!checkAvailability(startTime, endTime, date, table)) {
-            error += "Table is not available at that time";
+        if (!checkAvailability(startTime, endTime, date, restaurantTable)) {
+            error += "RestaurantTable is not available at that time";
         }
 
-        if (groupSize < 0 || (table != null && groupSize > table.getCapacity())) {
+        if (groupSize < 0 || (restaurantTable != null && groupSize > restaurantTable.getCapacity())) {
             error += "Please enter acceptable group size";
         }
 
@@ -60,7 +60,7 @@ public class ReservationService {
         reservation.setRestaurant(restaurant);
         reservation.setStartTime(startTime);
         reservation.setEndTime(endTime);
-        reservation.setTable(table);
+        reservation.setTable(restaurantTable);
         reservationRepository.save(reservation);
 
         return reservation;
@@ -74,33 +74,33 @@ public class ReservationService {
     }
 
     @Transactional
-    public List<Reservation> getReservationByTable(Table table) {
-        return toList(reservationRepository.findReservationsByTable(table));
+    public List<Reservation> getReservationByTable(RestaurantTable restaurantTable) {
+        return toList(reservationRepository.findReservationsByTable(restaurantTable));
     }
 
     @Transactional
-    public List<Reservation> getReservationsByTableAndStartTime(Table table, Time startTime) {
-        return toList(reservationRepository.findReservationsByTableAndStartTime(table, startTime));
+    public List<Reservation> getReservationsByTableAndStartTime(RestaurantTable restaurantTable, Time startTime) {
+        return toList(reservationRepository.findReservationsByTableAndStartTime(restaurantTable, startTime));
     }
 
     @Transactional
-    public List<Reservation> getReservationsByTableAndStartTimeBetween(Table table, Time minStartTime, Time maxStartTime) {
-        return toList(reservationRepository.findReservationsByTableAndStartTimeBetween(table, minStartTime, maxStartTime));
+    public List<Reservation> getReservationsByTableAndStartTimeBetween(RestaurantTable restaurantTable, Time minStartTime, Time maxStartTime) {
+        return toList(reservationRepository.findReservationsByTableAndStartTimeBetween(restaurantTable, minStartTime, maxStartTime));
     }
 
     @Transactional
-    public List<Reservation> getReservationsByTableAndDate(Table table, Date date) {
-        return toList(reservationRepository.findReservationsByTableAndDate(table, date));
+    public List<Reservation> getReservationsByTableAndDate(RestaurantTable restaurantTable, Date date) {
+        return toList(reservationRepository.findReservationsByTableAndDate(restaurantTable, date));
     }
 
     @Transactional
-    public Reservation getReservationsByTableAndStartTimeAndDate(Table table, Time startTime, Date date) {
-        return reservationRepository.findReservationsByTableAndStartTimeAndDate(table, startTime, date);
+    public Reservation getReservationsByTableAndStartTimeAndDate(RestaurantTable restaurantTable, Time startTime, Date date) {
+        return reservationRepository.findReservationsByTableAndStartTimeAndDate(restaurantTable, startTime, date);
     }
 
     @Transactional
-    public List<Reservation> getReservationsByTableAndStartTimeBetweenAndDate(Table table, Time minStartTime, Time maxStartTime, Date date) {
-        return toList(reservationRepository.findReservationsByTableAndStartTimeBetweenAndDate(table, minStartTime, maxStartTime, date));
+    public List<Reservation> getReservationsByTableAndStartTimeBetweenAndDate(RestaurantTable restaurantTable, Time minStartTime, Time maxStartTime, Date date) {
+        return toList(reservationRepository.findReservationsByTableAndStartTimeBetweenAndDate(restaurantTable, minStartTime, maxStartTime, date));
     }
 
     @Transactional
@@ -134,13 +134,13 @@ public class ReservationService {
     }
 
     @Transactional
-    public List<Reservation> getReservationsByTableAndGroupSize(Table table, int groupSize) {
-        return toList(reservationRepository.findReservationsByTableAndGroupSize(table, groupSize));
+    public List<Reservation> getReservationsByTableAndGroupSize(RestaurantTable restaurantTable, int groupSize) {
+        return toList(reservationRepository.findReservationsByTableAndGroupSize(restaurantTable, groupSize));
     }
 
     @Transactional
-    public List<Reservation> getReservationsByTableAndGroupSizeAndDate(Table table, int groupSize, Date date) {
-        return toList(reservationRepository.findReservationsByTableAndGroupSizeAndDate(table, groupSize, date));
+    public List<Reservation> getReservationsByTableAndGroupSizeAndDate(RestaurantTable restaurantTable, int groupSize, Date date) {
+        return toList(reservationRepository.findReservationsByTableAndGroupSizeAndDate(restaurantTable, groupSize, date));
     }
 
     @Transactional
@@ -153,8 +153,8 @@ public class ReservationService {
         return toList(reservationRepository.findReservationsByRestaurantAndGroupSizeAndDate(restaurant,groupSize,date));
     }
 
-    private boolean checkAvailability(Time startTime, Time endTime, Date date, Table table) {
-        for (Reservation r : table.getReservations()) {
+    private boolean checkAvailability(Time startTime, Time endTime, Date date, RestaurantTable restaurantTable) {
+        for (Reservation r : restaurantTable.getReservations()) {
             if (r.getDate().compareTo(date) == 0 && (startTime.compareTo(r.getEndTime()) < 0 || endTime.compareTo(r.getStartTime()) > 0)) {
                 return false;
             }

@@ -13,7 +13,7 @@ import bookmytable.dao.FoodRepository;
 import bookmytable.dao.RestaurantRepository;
 import bookmytable.dao.TableRepository;
 import bookmytable.model.Food;
-import bookmytable.model.Table;
+import bookmytable.model.RestaurantTable;
 import bookmytable.model.Reservation;
 import bookmytable.model.Restaurant;
 import bookmytable.model.RestaurantOwner;
@@ -61,7 +61,7 @@ public class RestaurantService {
 		
 		
 		Restaurant restaurant = new Restaurant();
-		Set<Table> map = new HashSet<Table>(); //Empty map
+		Set<RestaurantTable> map = new HashSet<RestaurantTable>(); //Empty map
 		
 		restaurant.setAddress(address);
 		restaurant.setName(name);
@@ -103,14 +103,14 @@ public class RestaurantService {
 	@Transactional
 	public void addTabletoMap(int capacity, int tableNumber, int xCoordinate, int yCoordinate, Restaurant restaurant){
 	  
-	  Table table = new Table();
-	  table.setCapacity(capacity);
-	  table.setTableNumber(tableNumber);
-	  table.setX(xCoordinate);
-	  table.setY(yCoordinate);
-	  table.setRestaurant(restaurant);
-	  tableRepository.save(table);
-	  restaurant.getMap().add(table);
+	  RestaurantTable restaurantTable = new RestaurantTable();
+	  restaurantTable.setCapacity(capacity);
+	  restaurantTable.setTableNumber(tableNumber);
+	  restaurantTable.setX(xCoordinate);
+	  restaurantTable.setY(yCoordinate);
+	  restaurantTable.setRestaurant(restaurant);
+	  tableRepository.save(restaurantTable);
+	  restaurant.getMap().add(restaurantTable);
 	}
 	
 	@Transactional
