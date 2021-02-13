@@ -19,11 +19,12 @@ public class CustomerLoginService {
 	@Transactional
 	public static boolean loginCustomer(Customer customer, String email, String password) {
 		String error = "";
+		
 		if (customer == null) {
 			error = "Customer does not exist.";
 			throw new IllegalArgumentException(error);
-
-		} else if (customerRepository.findCustomerById(customer.getId()) == null) {
+			
+		} else if (customer.getId() == null) {
 			error = "Customer does not exist.";
 			throw new IllegalArgumentException(error);
 
