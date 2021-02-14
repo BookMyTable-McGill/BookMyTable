@@ -23,20 +23,28 @@ public class ReservationService {
     ReservationRepository reservationRepository;
 
     @Transactional
-    public Reservation makeReservation(Time startTime, Time endTime, Date date, int groupSize, long id, RestaurantTable restaurantTable,
+    public Reservation makeReservation(Time startTime, Date date, int groupSize, long id, RestaurantTable restaurantTable,
                                        Customer customer, Restaurant restaurant) {
         String error = "";
+        Time endTime = null;
+        if(startTime != null) {
+        endTime = new Time(startTime.getHours()+restaurant.getEstimatedDuration(), startTime.getMinutes(),0);
+        }
+        
+        if(restaurant.isIsBooked()) {
+        	error = "Restaurant is completely booked";
+        	 throw new IllegalArgumentException(error);
+        }
 
-        if (startTime == null || endTime == null || date == null) {
+        if (startTime == null || date == null) {
             error += "Please select an available reservation time";
         }
 
-        if (startTime.after(endTime)) {
-            error += "Start time must be before end time";
-        }
+    
 
         if (restaurantTable == null) {
             error += "Please select an available table";
+            throw new IllegalArgumentException(error);
         }
 
         if (!checkAvailability(startTime, endTime, date, restaurantTable)) {
@@ -154,6 +162,12 @@ public class ReservationService {
     }
 
     private boolean checkAvailability(Time startTime, Time endTime, Date date, RestaurantTable restaurantTable) {
+    	
+    	
+    	if(restaurantTable.getReservations() == null) {
+    		return true;
+    	}
+    	
         for (Reservation r : restaurantTable.getReservations()) {
             if (r.getDate().compareTo(date) == 0 && (startTime.compareTo(r.getEndTime()) < 0 || endTime.compareTo(r.getStartTime()) > 0)) {
                 return false;

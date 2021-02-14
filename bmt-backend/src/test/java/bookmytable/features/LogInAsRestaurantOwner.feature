@@ -14,14 +14,11 @@ Feature: Log In as RestaurantOwner
     When RestaurantOwner <owner> inputs email <validEmailOwner> and password <validPasswordOwner>
     And RestaurantOwner <owner> clicks to Log In
     Then RestaurantOwner <owner> is redirected to the RestaurantOwner profile
-    And the following Reservation list is returned
-      | reservation_id | reservation_datetime | customer_id | table_id | group_size | restaurant_id |
-      | 0001           | 2021-05-25 20:00:00  | 69420       | 3246     | 4          | 0001          |
 
   Scenario: Log In with existing RestaurantOwner account and Restaurant does not exist (Alternate Flow)
 
     When RestaurantOwner <owner> inputs email <validEmailOwner> and password <validPasswordOwner>
-    And RestaurantOwner <owner> clicks to Log In
+    And a different RestaurantOwner <owner> clicks to Log In
     Then RestaurantOwner <owner> is redirected to the RestaurantOwner profile
     And RestaurantOwner <owner> has the option to Create Restaurant
 
@@ -30,9 +27,11 @@ Feature: Log In as RestaurantOwner
     When RestaurantOwner <owner> inputs email <validEmailOwner> and password <invalidPasswordOwner>
     And RestaurantOwner <owner> clicks to Log In
     Then a "Password is incorrect" error message is issued
+    And RestaurantOwner <owner> will remain on the login page
 
   Scenario: Log In with invalid email  (Error Flow 2)
 
-    When RestaurantOwner <owner> inputs email <validEmailOwner> and password <password>
+    When RestaurantOwner <owner> inputs email <invalidEmailOwner> and password <validPasswordOwner>
     And RestaurantOwner <owner> clicks to Log In
     Then a "No account associated with this email was found" error message is issued
+    And RestaurantOwner <owner> will remain on the login page

@@ -44,9 +44,10 @@ public class RestaurantCreationController {
 	
 	@PostMapping(value = { "/restaurant/createFood", "/restaurant/createFood/"}) 
 	public FoodDTO createFood(@RequestParam(name = "menuLink") String menuLink, @RequestParam(name = "price") int price,
-								@RequestParam(name = "cuisine") String cuisine, @RequestParam(name = "options") String options) {
+								@RequestParam(name = "cuisine") String cuisine, @RequestParam(name = "options") String options, @RequestParam(name = "restaurantAddress") String restaurantAddress ) {
 		
-		Food food = restaurantService.createFood(menuLink, price, cuisine, options);
+		Restaurant restaurant = restaurantService.getRestaurantByAddress(restaurantAddress);
+		Food food = restaurantService.createFood(menuLink, price, cuisine, options, restaurant);
 		return Converters.convertToDto(food);
 		
 	}

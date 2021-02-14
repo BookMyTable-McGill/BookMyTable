@@ -41,7 +41,7 @@ public class ReservationController {
         RestaurantTable restaurantTable = tableRepository.findTableById(tID);
         Restaurant restaurant = restaurantRepository.findRestaurantById(rID);
         Customer customer = customerRepository.findCustomerById(cID);
-        Reservation reservation = reservationService.makeReservation(Time.valueOf(startTime), Time.valueOf(endTime), Date.valueOf(date), groupSize, someid, restaurantTable, customer,restaurant);
+        Reservation reservation = reservationService.makeReservation(Time.valueOf(startTime), Date.valueOf(date), groupSize, someid, restaurantTable, customer,restaurant);
 
         return Converters.convertToDto(reservation);
     }

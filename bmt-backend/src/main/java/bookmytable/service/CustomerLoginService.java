@@ -14,10 +14,10 @@ import bookmytable.model.Customer;
 public class CustomerLoginService {
 
 	@Autowired
-	private static CustomerRepository customerRepository;
+	private CustomerRepository customerRepository;
 
 	@Transactional
-	public static boolean loginCustomer(Customer customer, String email, String password) {
+	public boolean loginCustomer(Customer customer, String email, String password) {
 		String error = "";
 		
 		if (customer == null) {

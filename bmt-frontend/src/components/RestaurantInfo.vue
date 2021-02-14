@@ -1,32 +1,15 @@
+<script src="./javascript/restaurantInfo.js"> </script>
 <template>
   <div class="container">
-    <h1>Login</h1>
+    <h1>Restaurant Info</h1>
     <hr />
-    <h1>Welcome Back!</h1>
     <br /><br /><br />
-    <label id="emailLogin" for="emailLogin"><b>Email</b></label
-    ><br />
-    <input type="text" placeholder="Enter Email" name="emailLogin" id="emailLogin" />
-
-    <br /><label id="pswLogin" for="pswLogin"><b>Password</b></label
-    ><br />
-    <input type="password" placeholder="Enter Password" name="pswLogin" id="pswLogin" />
-
-    <br /><label id="chooseAccount" for="chooseAccount"><b>Account Type</b></label
-    ><br />
-
-    <select name="chooseAccount" id="chooseAccount">
-      <option value="Customer">Customer</option>
-      <option value="Restaurant Owner">Restaurant Owner</option>
-    </select>
-
-    <br /><button type="submit" class="loginbtn">Login</button>
-
-    <div class="container createAccount">
-      <p>
-        Don't have an account? <router-link to="/">Create account</router-link>.
-      </p>
-    </div>
+    Name : {{restaurant.name}}<br>
+    Address : {{restaurant.address}}<br>
+    Style : {{restaurant.artStyle}} <br>
+    Hours: {{openingHours}} <br>
+    <br /><button type="submit" v-on:click ="goToReservation()" class="reservebtn">Reserve</button>
+    <br />
   </div>
 </template>
 
@@ -56,15 +39,6 @@ input[name="pswLogin"] {
   background: #f1f1f1;
 }
 
-select[name="chooseAccount"] {
-  width: 25%;
-  padding: 16px 20px;
-  border: none;
-  border-radius: 5px;
-  margin: 5px 0 22px 0;
-  background-color: #f1f1f1;
-}
-
 /* Overwrite default styles of hr */
 hr {
   border: 1px solid #f1f1f1;
@@ -72,7 +46,7 @@ hr {
 }
 
 /* Set a style for the login button */
-.loginbtn {
+.reservebtn {
   background-color: #4d9aff;
   color: black;
   padding: 16px 20px;
@@ -94,7 +68,7 @@ a {
 }
 
 /* Set a grey background color and center the text of the "create account" section */
-.createAccount {
+.restaurantInfo {
   background-color: #f1f1f1;
   text-align: center;
   border: none;

@@ -1,3 +1,4 @@
+<script src="./javascript/createRestaurant.js"> </script>
 <template>
   <div class="container">
     <h1>Create Restaurant</h1>
@@ -92,7 +93,7 @@
     <input type="text" placeholder="Enter Layout Link" name="layout" id="layout"
     />
 
-    <button type="submit" class="createResto">Create Restauraunt</button>
+    <button type="submit" v-on:click ="createRestaurant(restoName, address, hours, bookTimeH, menu, price, cuisine, foodOptions)"  class="createResto">Create Restauraunt</button>
   </div>
 </template>
 

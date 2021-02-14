@@ -50,5 +50,6 @@ Scenario: Make a reservation fails due to available table not selected (Error fl
 
 Scenario: Make a reservation fails due to restaurant booking completely full for any group size (Error flow)
 
-    When the customer <customer_id>  selects a restaurant that is completely booked
+		When the customer <customer_id> selects the restaurant <restaurant_id> of their choice
+    But the customer <customer_id>  selects a restaurant that is completely booked
     Then a "Please select another restaurant" error message is issued
