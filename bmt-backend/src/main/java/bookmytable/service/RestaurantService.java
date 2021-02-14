@@ -24,8 +24,12 @@ public class RestaurantService {
 	
 	@Autowired
 	RestaurantRepository restaurantRepository;
+	@Autowired
 	FoodRepository foodRepository;
+	@Autowired
 	TableRepository tableRepository;
+	
+	private Food food;
 	
 	@Transactional
 	public Restaurant createRestaurant( String name, String address, int[][] hours, RestaurantOwner owner, int estDuration, String menuLink, int price, String cuisine, String options) {
@@ -64,17 +68,23 @@ public class RestaurantService {
 		Restaurant restaurant = new Restaurant();
 		Set<RestaurantTable> map = new HashSet<RestaurantTable>(); //Empty map
 		
+		restaurant.setId(4);
 		restaurant.setAddress(address);
 		restaurant.setName(name);
 		restaurant.setOpeningHours(hours);
 		restaurant.setEstimatedDuration(estDuration);
-		restaurant.setFood(createFood(menuLink, price,cuisine,options));
+		
 		restaurant.setRestaurantOwner(owner);
 		restaurant.setMap(map); //setting empty map
-		
+		if(owner.getRestaurants() !=null) {
 		Set<Restaurant> ownerRestaurants = owner.getRestaurants();
 		ownerRestaurants.add(restaurant);
-		owner.setRestaurants(ownerRestaurants);
+		}else {
+			Set<Restaurant> newRestaurants = new HashSet<Restaurant>();
+			newRestaurants.add(restaurant);
+			owner.setRestaurants(newRestaurants);
+		}
+		
 		
 		restaurant.setIsBooked(false);
 		
@@ -82,6 +92,8 @@ public class RestaurantService {
 		restaurant.setReservations(restaurantReservations);
 		
 		restaurantRepository.save(restaurant);
+		restaurant.setFood(createFood(menuLink, price,cuisine,options));
+		//food.setRestaurant(restaurant);
 		
 		return restaurant;
 		
@@ -95,8 +107,11 @@ public class RestaurantService {
 		food.setMenuLink(menuLink);
 		food.setOptions(options);
 		food.setPrice(price);
+		//food.setRestaurant(restaurant);
+		
 		
 		foodRepository.save(food);
+		this.food = food;
 		
 		return food;
 	}

@@ -68,7 +68,7 @@ public int getEstimatedDuration() {
 }
    private Food food;
    
-   @OneToOne(mappedBy="restaurant" , cascade={CascadeType.ALL}, optional=false)
+   @OneToOne(mappedBy="restaurant" , cascade={CascadeType.ALL}, optional=true)
    public Food getFood() {
       return this.food;
    }

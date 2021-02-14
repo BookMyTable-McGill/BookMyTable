@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import bookmytable.dao.CustomerRepository;
 import bookmytable.dao.ReservationRepository;
+import bookmytable.dao.RestaurantOwnerRepository;
 import bookmytable.dao.TableRepository;
 import bookmytable.model.Customer;
 import bookmytable.model.Reservation;
@@ -23,33 +24,35 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class MakeAReservation {
-	
-	private Customer customer;
+	@Autowired
+	private RestaurantOwnerRepository oRepo;
 	@Autowired
 	private CustomerRepository cRepo;
 	@Autowired
 	private ReservationRepository rRepo;
 	@Autowired
 	private TableRepository tRepo;
+	@Autowired
 	private RestaurantService serviceR;
+	@Autowired
 	private ReservationService serviceRsv;
+	
+	private Customer customer;
 	private Restaurant theRestaurant;
 	private RestaurantTable theTable;
 	private String error;
 	
-	
 	@Given("a customer <customer_id> is logged into BookMyTable as a customer")
 	public void a_customer_customer_id_is_logged_into_book_my_table_as_a_customer() {
-		// Write code here that turns the phrase above into concrete actions
 		this.customer = new Customer();
 		customer.setName("test");
 		customer.setEmail("test@gmail.com");
 		customer.setPassword("testPassword");
 		customer.setPhoneNumber("5143184677");
 		cRepo.save(customer);
-		
 	}
 
+	
 	@Given("the customer <customer_id> is an unsuspended user")
 	public void the_customer_customer_id_is_an_unsuspended_user() {
 		// Write code here that turns the phrase above into concrete actions
@@ -62,12 +65,13 @@ public class MakeAReservation {
 		//Create owner
 		RestaurantOwner owner = new RestaurantOwner();
 		
+		oRepo.save(owner);
 		
 		//Create a restaurant
 		int[][] hours = new int[4][2];
 		int estDuration = 180;
 		String menuLink = "aLink";
-		int price = 20;
+		int price = 2;
 		String cuisine = "asian";
 		String options = "vegan";
 		String testName = "name";
