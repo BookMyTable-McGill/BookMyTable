@@ -10,7 +10,8 @@ var AXIOS = axios.create({
 export default {
 	data () {
 		return {
-			creationError: ''
+			creationError: '',
+			newProfile: ''
 		}
 	},
 	created: function() {
@@ -67,20 +68,25 @@ export default {
 			}
 			AXIOS.post("/customer/register", {}, {params: {name:name, email:email, password:password, phoneNumber:phoneNumber}})
 			.then(response => {
-				alert(response)
+				alert("Congratulations on creating your account!")
+				newProfile = response
+				window.location.href = "/#/"
 			})
 			.catch(e => {
-				alert("There was an error")
-				alert(e)
+				alert("An account with this email already exists.")
+				creationError = e
 			})
 		},
 		createRestaurantOwnerProfile: function(name, email, password) {
 			AXIOS.post("/restaurantOwner/register", {}, {params: {name:name, email:email, password:password}})
 			.then(response => {
-				alert(response.data.email)
+				alert("Congratulations on creating your account!")
+				newProfile = response
+				window.location.href = "/#/"
 			})
 			.catch(e => {
-				alert(e.getmessage())
+				alert("An account with this email already exists.")
+				creationError = e
 			})
 		},
 		sendErrorMessage: function(error) {
