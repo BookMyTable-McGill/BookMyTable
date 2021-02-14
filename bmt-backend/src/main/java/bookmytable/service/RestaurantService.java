@@ -64,6 +64,12 @@ public class RestaurantService {
 		if (options == null)
 			throw new IllegalArgumentException("You need to enter specify the food options of the restaurant");
 		
+		List<Restaurant> restaurants = getAllRestaurants();
+		for (Restaurant r : restaurants) {
+			if(r.getName().equals(name) && r.getAddress().equals(address)) {
+				throw new IllegalArgumentException("A restaurant with name " + name + " and address " + address + " already exists.");
+			}
+		}
 		
 		Restaurant restaurant = new Restaurant();
 		Set<RestaurantTable> map = new HashSet<RestaurantTable>(); //Empty map
