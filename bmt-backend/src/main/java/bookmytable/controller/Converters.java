@@ -133,7 +133,7 @@ public class Converters {
     Date date = r.getDate();
     CustomerDTO customer = convertWithoutReservation(r.getCustomer());
     RestaurantDTO restaurant = convertWithoutReservation(r.getRestaurant());
-    TableDTO table = convertWithoutReservation(r.getTable());
+    TableDTO table = convertWithoutReservationOrRestaurant(r.getTable());
     
     ReservationDTO reservationDTO = new ReservationDTO(startTime, endTime, date, 
         groupSize, id, table, customer, restaurant);
@@ -441,6 +441,21 @@ public class Converters {
     RestaurantDTO restaurant = convertWithoutTable(t.getRestaurant()); 
     
     TableDTO tableDTO = new TableDTO(id, capacity, x, y, tableNumber, restaurant, null);
+    return tableDTO;
+  }
+  
+  private static TableDTO convertWithoutReservationOrRestaurant(RestaurantTable t) {
+    if (t == null) {
+      throw new IllegalArgumentException("There is no such RestaurantTable");
+    }
+    
+    int x = t.getX();
+    int y = t.getY();
+    int capacity = t.getCapacity();
+    int tableNumber = t.getTableNumber();
+    long id = t.getId(); 
+    
+    TableDTO tableDTO = new TableDTO(id, capacity, x, y, tableNumber, null, null);
     return tableDTO;
   }
   
