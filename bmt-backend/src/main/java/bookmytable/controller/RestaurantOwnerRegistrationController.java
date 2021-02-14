@@ -32,8 +32,7 @@ public class RestaurantOwnerRegistrationController {
 		RestaurantOwner restaurantOwner = restaurantOwnerRepository.findRestaurantOwnerByEmail(email);
 		long id = 1234;
 		if (restaurantOwner == null) {
-			RestaurantOwner owner = restaurantOwnerRegistrationService.registerRestaurantOwner(name, password, email,
-					id);
+			RestaurantOwner owner = restaurantOwnerRegistrationService.registerRestaurantOwner(name, password, email);
 			return Converters.convertToDto(owner);
 		} else {
 			return null;
