@@ -64,11 +64,18 @@ public class RestaurantService {
 		if (options == null)
 			throw new IllegalArgumentException("You need to enter specify the food options of the restaurant");
 		
+		List<Restaurant> restaurants = getAllRestaurants();
+		for (Restaurant r : restaurants) {
+			if(r.getName().equals(name) && r.getAddress().equals(address)) {
+				throw new IllegalArgumentException("A restaurant with name " + name + " and address " + address + " already exists.");
+			}
+		}
 		
 		Restaurant restaurant = new Restaurant();
 		Set<RestaurantTable> map = new HashSet<RestaurantTable>(); //Empty map
 		
-		restaurant.setId(446223); //need to randomize
+		//restaurant.setId(446223); //need to randomize
+		//postgres declare this colum as unique id.
 		restaurant.setAddress(address);
 		restaurant.setName(name);
 		restaurant.setOpeningHours(hours);
@@ -108,7 +115,7 @@ public class RestaurantService {
 		food.setOptions(options);
 		food.setPrice(price);
 		food.setRestaurant(aRestaurant);
-		food.setId(2); //need to randomize
+		//food.setId(2); //need to randomize
 		//food.setRestaurant(restaurant);
 		
 		
