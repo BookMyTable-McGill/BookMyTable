@@ -41,11 +41,9 @@ export default {
       .catch(e => {
         this.errorCustomer = e;
         console.log(e);
-      });
+      })
 
-      }
-
-      else if(accontType = 'Restaurant Owner'){
+      } else if(accontType == 'Restaurant Owner'){
 
          let params = {
         email: email,

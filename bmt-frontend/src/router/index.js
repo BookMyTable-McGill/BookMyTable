@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import CreateAccountPage from '@/components/CreateAccountPage'
-// import LoginPage from '@/components/LoginPage'
+import LoginPage from '@/components/LoginPage'
 import RestaurantInfo from '@/components/RestaurantInfo'
 import CreateRestaurant from '@/components/CreateRestaurant'
 import Reserve from '@/components/MakeReservation'
