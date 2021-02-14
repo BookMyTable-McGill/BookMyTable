@@ -1,6 +1,8 @@
 package bookmytable.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Time;
 import java.sql.Date;
@@ -40,6 +42,7 @@ public void setGroupSize(int value) {
 public int getGroupSize() {
     return this.groupSize;
 }
+
 private long id;
 
 public void setId(long value) {
@@ -47,6 +50,7 @@ public void setId(long value) {
 }
 
 @Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
 public long getId() {
     return this.id;
 }

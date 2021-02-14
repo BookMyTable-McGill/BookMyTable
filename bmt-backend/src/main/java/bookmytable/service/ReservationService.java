@@ -64,7 +64,7 @@ public class ReservationService {
         reservation.setCustomer(customer);
         reservation.setDate(date);
         reservation.setGroupSize(groupSize);
-        reservation.setId(id);
+        //reservation.setId(id);
         reservation.setRestaurant(restaurant);
         reservation.setStartTime(startTime);
         reservation.setEndTime(endTime);

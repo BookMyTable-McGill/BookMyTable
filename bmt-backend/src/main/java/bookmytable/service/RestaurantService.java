@@ -68,7 +68,8 @@ public class RestaurantService {
 		Restaurant restaurant = new Restaurant();
 		Set<RestaurantTable> map = new HashSet<RestaurantTable>(); //Empty map
 		
-		restaurant.setId(446223); //need to randomize
+		//restaurant.setId(446223); //need to randomize
+		//postgres declare this colum as unique id.
 		restaurant.setAddress(address);
 		restaurant.setName(name);
 		restaurant.setOpeningHours(hours);
@@ -108,7 +109,7 @@ public class RestaurantService {
 		food.setOptions(options);
 		food.setPrice(price);
 		food.setRestaurant(aRestaurant);
-		food.setId(2); //need to randomize
+		//food.setId(2); //need to randomize
 		//food.setRestaurant(restaurant);
 		
 		
