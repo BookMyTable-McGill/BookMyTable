@@ -66,13 +66,13 @@ public class CustomerRegistrationController {
   }
   
   @GetMapping(value = { "/customer/id", "/customer/id/"})
-  public CustomerDTO getCustomerById(@RequestParam(name = "phoneNumber") long id) {
+  public CustomerDTO getCustomerById(@RequestParam(name = "id") long id) {
     Customer customer = customerRegistrationService.getCustomerById(id);
     return Converters.convertToDto(customer);
   }
   
   @DeleteMapping(value = {"/customer/delete", "/customer/delete/"})
-  public CustomerDTO deleteCustomer(@RequestParam(name = "phoneNumber") long id) {
+  public CustomerDTO deleteCustomer(@RequestParam(name = "id") long id) {
     Customer customer = customerRegistrationService.deleteCustomer(id);
     return Converters.convertToDto(customer);
   }

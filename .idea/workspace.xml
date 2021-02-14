@@ -23,22 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5504df1d-8baa-493a-b8c4-e5e2bc5aea88" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/BookMyTable.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-backend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/service/CustomerRegistrationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/service/CustomerRegistrationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-backend/src/test/java/bookmytable/features/CreateAdministratorAccount.feature" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-backend/src/test/java/bookmytable/features/CreateCustomerAccount.feature" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/src/test/java/bookmytable/features/CreateCustomerAccount.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-backend/src/test/java/bookmytable/stepdefinitions/CreateCustomerAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/src/test/java/bookmytable/stepdefinitions/CreateCustomerAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-backend/src/test/java/bookmytable/stepdefinitions/CreateNewAdiministratorAccount.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/controller/CustomerRegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/controller/CustomerRegistrationController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +88,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CucumberTestsRunner">
+  <component name="RunManager" selected="Application.BookMyTableApplication">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -241,25 +227,25 @@
     </state>
     <state x="1221" y="320" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1613332122845" />
     <state x="1302" y="342" key="FileChooserDialogImpl/0.0.2048.1112/2560.0.1080.1880@0.0.2048.1112" timestamp="1613003607086" />
-    <state width="1877" height="371" key="GridCell.Tab.0.bottom" timestamp="1613336835509">
+    <state width="1268" height="269" key="GridCell.Tab.0.bottom" timestamp="1613338341797">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="371" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1613336835509" />
+    <state width="1268" height="269" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1613338341797" />
     <state width="2005" height="305" key="GridCell.Tab.0.bottom/0.0.2048.1112/2560.0.1080.1880@0.0.2048.1112" timestamp="1612564472528" />
-    <state width="1877" height="371" key="GridCell.Tab.0.center" timestamp="1613336835509">
+    <state width="1268" height="269" key="GridCell.Tab.0.center" timestamp="1613338341797">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="371" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1613336835509" />
+    <state width="1268" height="269" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1613338341797" />
     <state width="2005" height="305" key="GridCell.Tab.0.center/0.0.2048.1112/2560.0.1080.1880@0.0.2048.1112" timestamp="1612564472528" />
-    <state width="1877" height="371" key="GridCell.Tab.0.left" timestamp="1613336835509">
+    <state width="1268" height="269" key="GridCell.Tab.0.left" timestamp="1613338341797">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="371" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1613336835509" />
+    <state width="1268" height="269" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1613338341797" />
     <state width="2005" height="305" key="GridCell.Tab.0.left/0.0.2048.1112/2560.0.1080.1880@0.0.2048.1112" timestamp="1612564472528" />
-    <state width="1877" height="371" key="GridCell.Tab.0.right" timestamp="1613336835509">
+    <state width="1268" height="269" key="GridCell.Tab.0.right" timestamp="1613338341797">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="371" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1613336835509" />
+    <state width="1268" height="269" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1613338341797" />
     <state width="2005" height="305" key="GridCell.Tab.0.right/0.0.2048.1112/2560.0.1080.1880@0.0.2048.1112" timestamp="1612564472528" />
     <state width="1877" height="371" key="GridCell.Tab.1.bottom" timestamp="1613336835509">
       <screen x="0" y="0" width="1920" height="1040" />
