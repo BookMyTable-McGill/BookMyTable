@@ -88,6 +88,7 @@ public class MakeAReservation {
 		table.setX(2);
 		table.setY(4);
 		table.setRestaurant(theRestaurant);
+		table.setId(56232);
 		this.theTable = table;
 		tRepo.save(table);
 	}
@@ -124,7 +125,7 @@ public class MakeAReservation {
 
 	@Then("a new reservation <reservation_id> is generated")
 	public void a_new_reservation_reservation_id_is_generated(io.cucumber.datatable.DataTable dataTable) {
-		Reservation newReservation = rRepo.findReservationsByRestaurantAndGroupSize(theRestaurant, 4).get(1);
+		Reservation newReservation = rRepo.findReservationsByRestaurantAndGroupSize(theRestaurant, 4).get(0);
 		Date date = new Date(10,05,2021);
 				
 		assertEquals(newReservation.getGroupSize(),4);
@@ -219,10 +220,12 @@ public class MakeAReservation {
 		int groupSize = 4;
 		long id = 123;
 		
+		try {
 		Reservation aReservation = serviceRsv.makeReservation(startTime, date, groupSize, id, null,
                 customer, theRestaurant);
-	}
-	
-
+	}catch (IllegalArgumentException e) {
+	      error = e.getMessage();
+	    }
+}
 
 }

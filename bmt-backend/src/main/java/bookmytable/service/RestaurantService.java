@@ -68,7 +68,7 @@ public class RestaurantService {
 		Restaurant restaurant = new Restaurant();
 		Set<RestaurantTable> map = new HashSet<RestaurantTable>(); //Empty map
 		
-		restaurant.setId(4);
+		restaurant.setId(446223); //need to randomize
 		restaurant.setAddress(address);
 		restaurant.setName(name);
 		restaurant.setOpeningHours(hours);
@@ -92,7 +92,7 @@ public class RestaurantService {
 		restaurant.setReservations(restaurantReservations);
 		
 		restaurantRepository.save(restaurant);
-		restaurant.setFood(createFood(menuLink, price,cuisine,options));
+		restaurant.setFood(createFood(menuLink, price,cuisine,options,restaurant));
 		//food.setRestaurant(restaurant);
 		
 		return restaurant;
@@ -100,13 +100,15 @@ public class RestaurantService {
 	}
 	
 	@Transactional
-	public Food createFood(String menuLink, int price, String cuisine, String options) {
+	public Food createFood(String menuLink, int price, String cuisine, String options, Restaurant aRestaurant) {
 		
 		Food food = new Food();
 		food.setCuisine(cuisine);
 		food.setMenuLink(menuLink);
 		food.setOptions(options);
 		food.setPrice(price);
+		food.setRestaurant(aRestaurant);
+		food.setId(2); //need to randomize
 		//food.setRestaurant(restaurant);
 		
 		

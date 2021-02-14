@@ -52,7 +52,7 @@ public String getOptions() {
 }
    private Restaurant restaurant;
    
-   @OneToOne(optional=true)
+   @OneToOne(optional=false)
    public Restaurant getRestaurant() {
       return this.restaurant;
    }

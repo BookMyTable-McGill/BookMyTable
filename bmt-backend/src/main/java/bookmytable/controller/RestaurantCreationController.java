@@ -47,7 +47,7 @@ public class RestaurantCreationController {
 								@RequestParam(name = "cuisine") String cuisine, @RequestParam(name = "options") String options, @RequestParam(name = "restaurantAddress") String restaurantAddress ) {
 		
 		Restaurant restaurant = restaurantService.getRestaurantByAddress(restaurantAddress);
-		Food food = restaurantService.createFood(menuLink, price, cuisine, options);
+		Food food = restaurantService.createFood(menuLink, price, cuisine, options, restaurant);
 		return Converters.convertToDto(food);
 		
 	}
