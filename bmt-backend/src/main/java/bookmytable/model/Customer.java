@@ -36,5 +36,4 @@ public String getPhoneNumber() {
    public void setFavoriteRestaurants(Set<Restaurant> favoriteRestaurantss) {
       this.favoriteRestaurants = favoriteRestaurantss;
    }
-   
-   }
+}

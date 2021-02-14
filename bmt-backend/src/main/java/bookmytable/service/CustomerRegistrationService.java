@@ -47,6 +47,10 @@ public class CustomerRegistrationService {
     if (password.length() < 6) {
       throw new IllegalArgumentException("Invalid Password");
     }
+
+    if (!validatePhoneNumber(phoneNumber)) {
+      throw new IllegalArgumentException("Invalid Phone Number");
+    }
     
     Customer customer = new Customer();
     customer.setName(name);
@@ -155,6 +159,12 @@ public class CustomerRegistrationService {
             + "A-Z]{2,7}$";
     Pattern pattern = Pattern.compile(emailRegex);
     return pattern.matcher(email).matches();
+  }
+
+  private boolean validatePhoneNumber(String phoneNumber) {
+    String phoneNumberRegex = "(?:\\d{3}-){2}\\d{4}";
+    Pattern pattern = Pattern.compile(phoneNumberRegex);
+    return pattern.matcher(phoneNumber).matches();
   }
   
 //Helper method to retrieve lists of objects
