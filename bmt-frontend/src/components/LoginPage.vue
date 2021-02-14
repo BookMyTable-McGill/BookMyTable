@@ -12,6 +12,14 @@
     ><br />
     <input type="password" placeholder="Enter Password" name="pswLogin" id="pswLogin" />
 
+    <br /><label id="chooseAccount" for="chooseAccount"><b>Account Type</b></label
+    ><br />
+
+    <select name="chooseAccount" id="chooseAccount">
+      <option value="Customer">Customer</option>
+      <option value="Restaurant Owner">Restaurant Owner</option>
+    </select>
+
     <br /><button type="submit" class="loginbtn">Login</button>
 
     <div class="container createAccount">
@@ -46,6 +54,15 @@ input[name="pswLogin"] {
   border: none;
   border-radius: 5px;
   background: #f1f1f1;
+}
+
+select[name="chooseAccount"] {
+  width: 25%;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 5px;
+  margin: 5px 0 22px 0;
+  background-color: #f1f1f1;
 }
 
 /* Overwrite default styles of hr */
