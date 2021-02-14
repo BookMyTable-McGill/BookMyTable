@@ -176,6 +176,23 @@ public class Converters {
     return reservationDTO;
   }
   
+  private static ReservationDTO convertWithoutRestaurantOrTable(Reservation r) {
+    if (r == null) {
+      throw new IllegalArgumentException("There is no such Reservation");
+    }
+    
+    long id = r.getId();
+    int groupSize = r.getGroupSize();
+    Time startTime = r.getStartTime();
+    Time endTime = r.getEndTime();
+    Date date = r.getDate();
+    CustomerDTO customer = convertWithoutReservation(r.getCustomer());
+    
+    ReservationDTO reservationDTO = new ReservationDTO(startTime, endTime, date, 
+        groupSize, id, null, customer, null);
+    return reservationDTO;
+  }
+  
   private static ReservationDTO convertWithoutTable(Reservation r) {
     if (r == null) {
       throw new IllegalArgumentException("There is no such Reservation");
@@ -191,6 +208,23 @@ public class Converters {
     
     ReservationDTO reservationDTO = new ReservationDTO(startTime, endTime, date, 
         groupSize, id, null, customer, restaurant);
+    return reservationDTO;
+  }
+  
+  private static ReservationDTO convertWithoutTableOrRestaurant(Reservation r) {
+    if (r == null) {
+      throw new IllegalArgumentException("There is no such Reservation");
+    }
+    
+    long id = r.getId();
+    int groupSize = r.getGroupSize();
+    Time startTime = r.getStartTime();
+    Time endTime = r.getEndTime();
+    Date date = r.getDate();
+    CustomerDTO customer = convertWithoutReservation(r.getCustomer());
+    
+    ReservationDTO reservationDTO = new ReservationDTO(startTime, endTime, date, 
+        groupSize, id, null, customer, null);
     return reservationDTO;
   }
   
@@ -217,7 +251,7 @@ public class Converters {
     Set<TableDTO> tableDTOs = new HashSet<TableDTO>();
     if (restaurantTables != null) {
       for (RestaurantTable t : restaurantTables) {
-        tableDTOs.add(convertWithoutRestaurant(t));
+        tableDTOs.add(convertWithoutRestaurantOrReservations(t));
       }
     }
     
@@ -225,7 +259,7 @@ public class Converters {
     Set<ReservationDTO> reservationDTOs = new HashSet<ReservationDTO>();
     if (reservations != null) {
       for (Reservation res : reservations) {
-        reservationDTOs.add(convertWithoutRestaurant(res));
+        reservationDTOs.add(convertWithoutRestaurantOrTable(res));
       }
     }
     
@@ -297,6 +331,26 @@ public class Converters {
     return restaurantDTO;
   }
   
+  private static RestaurantDTO convertWithoutReservationOrTables(Restaurant r) {
+    if (r == null) {
+      throw new IllegalArgumentException("There is no such Restaurant");
+    }
+    
+    String name = r.getName();
+    String address = r.getAddress();
+    boolean isBooked = r.isIsBooked();
+    long id = r.getId();
+    int[][] openingHours = r.getOpeningHours();
+    int estimatedDuration = r.getEstimatedDuration();
+    
+    RestaurantOwnerDTO restaurantOwner = convertWithoutRestaurant(r.getRestaurantOwner());
+    FoodDTO food = convertWithoutRestaurant(r.getFood());
+    
+    RestaurantDTO restaurantDTO = new RestaurantDTO(id, name, address, openingHours, isBooked, estimatedDuration,
+        food, null, null, restaurantOwner);
+    return restaurantDTO;
+  }
+  
   private static RestaurantDTO convertWithoutRestaurantOwner(Restaurant r) {
     if (r == null) {
       throw new IllegalArgumentException("There is no such Restaurant");
@@ -360,6 +414,26 @@ public class Converters {
     return restaurantDTO;
   }
   
+  private static RestaurantDTO convertWithoutTableOrReservations(Restaurant r) {
+    if (r == null) {
+      throw new IllegalArgumentException("There is no such Restaurant");
+    }
+    
+    String name = r.getName();
+    String address = r.getAddress();
+    boolean isBooked = r.isIsBooked();
+    long id = r.getId();
+    int[][] openingHours = r.getOpeningHours();
+    int estimatedDuration = r.getEstimatedDuration();
+    
+    RestaurantOwnerDTO restaurantOwner = convertWithoutRestaurant(r.getRestaurantOwner());
+    FoodDTO food = convertWithoutRestaurant(r.getFood());
+    
+    RestaurantDTO restaurantDTO = new RestaurantDTO(id, name, address, openingHours, isBooked, estimatedDuration,
+        food, null, null, restaurantOwner);
+    return restaurantDTO;
+  }
+  
   /*
    * ========================== RESTAURANTOWNER CONVERTERS ==========================
    */
@@ -413,13 +487,13 @@ public class Converters {
     int tableNumber = t.getTableNumber();
     long id = t.getId();
     
-    RestaurantDTO restaurant = convertWithoutTable(t.getRestaurant()); 
+    RestaurantDTO restaurant = convertWithoutTableOrReservations(t.getRestaurant()); 
     
     Set<Reservation> reservations = t.getReservations();
     Set<ReservationDTO> reservationDTOs = new HashSet<ReservationDTO>();
     if (reservations != null) {
       for (Reservation res : reservations) {
-        reservationDTOs.add(convertWithoutTable(res));
+        reservationDTOs.add(convertWithoutTableOrRestaurant(res));
       }
     }    
     
@@ -479,6 +553,21 @@ public class Converters {
     }    
     
     TableDTO tableDTO = new TableDTO(id, capacity, x, y, tableNumber, null, reservationDTOs);
+    return tableDTO;
+  }
+  
+  private static TableDTO convertWithoutRestaurantOrReservations(RestaurantTable t) {
+    if (t == null) {
+      throw new IllegalArgumentException("There is no such RestaurantTable");
+    }
+    
+    int x = t.getX();
+    int y = t.getY();
+    int capacity = t.getCapacity();
+    int tableNumber = t.getTableNumber();
+    long id = t.getId(); 
+    
+    TableDTO tableDTO = new TableDTO(id, capacity, x, y, tableNumber, null, null);
     return tableDTO;
   }
 
