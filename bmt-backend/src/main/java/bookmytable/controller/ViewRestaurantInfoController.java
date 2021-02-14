@@ -12,6 +12,7 @@ import bookmytable.service.ViewRestaurantInfoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,13 +27,13 @@ public class ViewRestaurantInfoController {
     @Autowired
     private ViewRestaurantInfoService viewRestaurantInfoService;
 
-    @PostMapping(value = {"/getRestaurant/address", "/getRestaurant/address/"})
+    @GetMapping(value = {"/getRestaurant/address", "/getRestaurant/address/"})
     public RestaurantDTO getRestaurantByAddress(@RequestParam("address") String address) {
     	Restaurant restaurant = viewRestaurantInfoService.getRestaurantByAddress(address);
         return Converters.convertToDto(restaurant);
     }
     
-    @PostMapping(value = {"/getRestaurant/ID", "/getRestaurant/ID/"})
+    @GetMapping(value = {"/getRestaurant/ID", "/getRestaurant/ID/"})
     public RestaurantDTO getRestaurantByID(@RequestParam("ID") long ID) {
     	Restaurant restaurant = viewRestaurantInfoService.getRestaurantById(ID);
         return Converters.convertToDto(restaurant);
