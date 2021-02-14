@@ -1,22 +1,30 @@
 package bookmytable.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import java.util.Set;
 import javax.persistence.OneToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
+@Table(name = "restaurants")
 public class Restaurant{
-   private long id;
+	  
+private long id;
 
 public void setId(long value) {
     this.id = value;
 }
 
 @Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
 public long getId() {
     return this.id;
 }

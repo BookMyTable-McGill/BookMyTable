@@ -25,8 +25,8 @@ module.exports = {
   dev: {
     host: '192.168.0.12',
     port: 8087,
-    backendHost: '127.0.0.1',
-    backendPort: 8000,
+    backendHost: '192.168.0.12',
+    backendPort: 8080,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
@@ -38,4 +38,3 @@ module.exports = {
     // just be aware of this issue when enabling this option.
     cssSourceMap: false
   }
-}

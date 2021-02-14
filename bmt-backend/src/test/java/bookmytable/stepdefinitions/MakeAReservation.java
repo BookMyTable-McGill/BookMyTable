@@ -88,7 +88,6 @@ public class MakeAReservation {
 		table.setX(2);
 		table.setY(4);
 		table.setRestaurant(theRestaurant);
-		table.setId(56232);
 		this.theTable = table;
 		tRepo.save(table);
 	}
