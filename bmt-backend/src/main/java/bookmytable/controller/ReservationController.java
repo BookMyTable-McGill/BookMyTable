@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Date;
+import java.sql.SQLData;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -35,13 +37,14 @@ public class ReservationController {
     private CustomerRepository customerRepository;
 
     @PostMapping(value = {"/reservation", "/reservation/"})
-    public ReservationDTO makeReservation(@RequestParam("startTime") String startTime, @RequestParam("endTime") String endTime, @RequestParam("date") String date,
-                                          @RequestParam("groupSize") int groupSize, @RequestParam("tableID") long tID, @RequestParam("customerID") long cID, @RequestParam("restaurantID") long rID) {
+    public ReservationDTO makeReservation(@RequestParam("startTime") String startTime, @RequestParam("date") String date,@RequestParam("groupSize") int groupSize, 
+    										@RequestParam("tableID") long tID, @RequestParam("customerID") long cID, @RequestParam("restaurantID") long rID) {
         long someid = 1001011;
         RestaurantTable restaurantTable = tableRepository.findTableById(tID);
         Restaurant restaurant = restaurantRepository.findRestaurantById(rID);
         Customer customer = customerRepository.findCustomerById(cID);
-        Reservation reservation = reservationService.makeReservation(Time.valueOf(startTime), Date.valueOf(date), groupSize, someid, restaurantTable, customer,restaurant);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+        Reservation reservation = reservationService.makeReservation(Time.valueOf(startTime), java.sql.Date.valueOf(date), groupSize, someid, restaurantTable, customer,restaurant);
 
         return Converters.convertToDto(reservation);
     }
