@@ -20,8 +20,9 @@ dependencies {
 	testImplementation 'io.cucumber:cucumber-java:6.8.1'
 	testImplementation 'io.cucumber:cucumber-junit:6.8.1'
 	testImplementation 'io.cucumber:cucumber-spring:6.8.1'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
 }
 
-test {
+tasks.test {
 	useJUnitPlatform()
 }

@@ -23,15 +23,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5504df1d-8baa-493a-b8c4-e5e2bc5aea88" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/BookMyTable.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bmt-backend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/service/CustomerRegistrationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/service/CustomerRegistrationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bmt-backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bmt-backend/src/test/java/bookmytable/features/CreateAdministratorAccount.feature" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bmt-backend/src/test/java/bookmytable/features/CreateCustomerAccount.feature" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/src/test/java/bookmytable/features/CreateCustomerAccount.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bmt-backend/src/test/java/bookmytable/stepdefinitions/CreateCustomerAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/src/test/java/bookmytable/stepdefinitions/CreateCustomerAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-frontend/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-frontend/config/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bmt-backend/src/test/java/bookmytable/stepdefinitions/CreateNewAdiministratorAccount.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +102,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.CucumberTestsRunner">
+  <component name="RunManager" selected="JUnit.CucumberTestsRunner">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -146,7 +153,7 @@
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;bookmytable.stepdefinitions.CucumberTestsRunner&quot;" />
+        <option name="scriptParameters" value="--tests &quot;bookmytable.stepdefinitions.CucumberTestsRunner&quot; --scan" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -160,6 +167,21 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="CucumberTestsRunner" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BookMyTable.bmt-backend.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="bookmytable.stepdefinitions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="bookmytable.stepdefinitions" />
+      <option name="MAIN_CLASS_NAME" value="bookmytable.stepdefinitions.CucumberTestsRunner" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BookMyTableApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="BookMyTable.bmt-backend.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="bookmytable.BookMyTableApplication" />
@@ -169,6 +191,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CucumberTestsRunner" />
         <item itemvalue="Gradle.CucumberTestsRunner" />
         <item itemvalue="Gradle.BookMyTableApplicationTests" />
         <item itemvalue="Application.BookMyTableApplication" />
@@ -213,38 +236,55 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="778" y="438" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.2048.1112/2560.0.1080.1880@0.0.2048.1112" timestamp="1612550939671" />
-    <state x="1302" y="342" key="FileChooserDialogImpl" timestamp="1613003607086">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state x="1221" y="320" key="FileChooserDialogImpl" timestamp="1613332122845">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="1221" y="320" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1613332122845" />
     <state x="1302" y="342" key="FileChooserDialogImpl/0.0.2048.1112/2560.0.1080.1880@0.0.2048.1112" timestamp="1613003607086" />
-    <state width="1788" height="270" key="GridCell.Tab.0.bottom" timestamp="1613328666413">
+    <state width="1877" height="371" key="GridCell.Tab.0.bottom" timestamp="1613336835509">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1788" height="270" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1613328666413" />
+    <state width="1877" height="371" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1613336835509" />
     <state width="2005" height="305" key="GridCell.Tab.0.bottom/0.0.2048.1112/2560.0.1080.1880@0.0.2048.1112" timestamp="1612564472528" />
-    <state width="1788" height="270" key="GridCell.Tab.0.center" timestamp="1613328666413">
+    <state width="1877" height="371" key="GridCell.Tab.0.center" timestamp="1613336835509">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1788" height="270" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1613328666413" />
+    <state width="1877" height="371" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1613336835509" />
     <state width="2005" height="305" key="GridCell.Tab.0.center/0.0.2048.1112/2560.0.1080.1880@0.0.2048.1112" timestamp="1612564472528" />
-    <state width="1788" height="270" key="GridCell.Tab.0.left" timestamp="1613328666413">
+    <state width="1877" height="371" key="GridCell.Tab.0.left" timestamp="1613336835509">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1788" height="270" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1613328666413" />
+    <state width="1877" height="371" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1613336835509" />
     <state width="2005" height="305" key="GridCell.Tab.0.left/0.0.2048.1112/2560.0.1080.1880@0.0.2048.1112" timestamp="1612564472528" />
-    <state width="1788" height="270" key="GridCell.Tab.0.right" timestamp="1613328666413">
+    <state width="1877" height="371" key="GridCell.Tab.0.right" timestamp="1613336835509">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1788" height="270" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1613328666413" />
+    <state width="1877" height="371" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1613336835509" />
     <state width="2005" height="305" key="GridCell.Tab.0.right/0.0.2048.1112/2560.0.1080.1880@0.0.2048.1112" timestamp="1612564472528" />
-    <state x="669" y="162" key="SettingsEditor" timestamp="1613237464875">
+    <state width="1877" height="371" key="GridCell.Tab.1.bottom" timestamp="1613336835509">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="669" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1613237464875" />
-    <state x="611" y="0" width="1316" height="1047" key="dock-window-1" timestamp="1613321421791">
+    <state width="1877" height="371" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1613336835509" />
+    <state width="1877" height="371" key="GridCell.Tab.1.center" timestamp="1613336835509">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="611" y="0" width="1316" height="1047" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1613321421791" />
+    <state width="1877" height="371" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1613336835509" />
+    <state width="1877" height="371" key="GridCell.Tab.1.left" timestamp="1613336835509">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="371" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1613336835509" />
+    <state width="1877" height="371" key="GridCell.Tab.1.right" timestamp="1613336835509">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="371" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1613336835509" />
+    <state x="32" y="194" width="998" height="715" key="SettingsEditor" timestamp="1613331770018">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="32" y="194" width="998" height="715" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1613331770018" />
+    <state x="806" y="15" width="1116" height="1016" key="dock-window-1" timestamp="1613335861419">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="806" y="15" width="1116" height="1016" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1613335861419" />
     <state x="2252" y="-25" width="1096" height="1099" maximized="true" key="dock-window-1/0.0.2048.1112/2560.0.1080.1880@0.0.2048.1112" timestamp="1612564342151" />
     <state x="583" y="261" width="1096" height="1120" key="dock-window-2" timestamp="1613004180351">
       <screen x="0" y="0" width="2048" height="1112" />
