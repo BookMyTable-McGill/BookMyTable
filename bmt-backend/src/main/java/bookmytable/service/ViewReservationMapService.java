@@ -1,6 +1,8 @@
 package bookmytable.service;
 
 import bookmytable.dao.ReservationRepository;
+import bookmytable.dao.RestaurantRepository;
+import bookmytable.dao.TableRepository;
 import bookmytable.model.Reservation;
 import bookmytable.model.Restaurant;
 import bookmytable.model.RestaurantTable;
@@ -19,16 +21,27 @@ public class ViewReservationMapService {
 	
 	@Autowired
 	ReservationRepository reservationRepository;
+	@Autowired
+	TableRepository tableRepository;
+	@Autowired
+	RestaurantRepository restaurantRepository;
 	
 	@Transactional
-	public List<RestaurantTable> getTablesReservedByStartTime(Restaurant restaurant, Time startTime, Date date) {
-		List<Reservation> reservations = reservationRepository.findReservationsByRestaurantAndStartTimeAndDate(restaurant, startTime, date);
+	public List<RestaurantTable> getTablesReservedByStartTime(long restaurantId, Time startTime, Date date) {
+		Restaurant resto = restaurantRepository.findRestaurantById(restaurantId);
+		List<Reservation> reservations = reservationRepository.findReservationsByRestaurantAndStartTimeAndDate(resto, startTime, date);
 		
 		List<RestaurantTable> tablesReserved = new ArrayList<>();
 		for (Reservation r : reservations) {
 			tablesReserved.add(r.getTable());
 		}
 		return tablesReserved;
+	}
+	
+	@Transactional
+	public List<RestaurantTable> getTablesByRestaurant(long restaurantId) {
+		Restaurant resto = restaurantRepository.findRestaurantById(restaurantId);
+		return tableRepository.findTablesByRestaurant(resto);
 	}
 	
 }
