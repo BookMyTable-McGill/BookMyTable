@@ -1,13 +1,18 @@
 package bookmytable.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import bookmytable.dao.RestaurantOwnerRepository;
+import bookmytable.dto.CustomerDTO;
 import bookmytable.dto.RestaurantOwnerDTO;
+import bookmytable.model.Customer;
 import bookmytable.model.RestaurantOwner;
 import bookmytable.service.RestaurantOwnerRegistrationService;
 
@@ -33,6 +38,16 @@ public class RestaurantOwnerRegistrationController {
 		} else {
 			return null;
 		}
+	}
+	
+	@GetMapping(value = {"/restaurantOwners", "/restaurantOwners/"})
+	public List<RestaurantOwnerDTO> getAllRestaurantOwners() {
+	    List<RestaurantOwner> restaurantOwners = restaurantOwnerRegistrationService.getRestaurantOwners();
+	    List<RestaurantOwnerDTO> restaurantOwnerDTOs = new ArrayList<RestaurantOwnerDTO>();
+	    for (RestaurantOwner r : restaurantOwners) {
+	      restaurantOwnerDTOs.add(Converters.convertToDto(r));
+	    }
+	    return restaurantOwnerDTOs;
 	}
 
 }

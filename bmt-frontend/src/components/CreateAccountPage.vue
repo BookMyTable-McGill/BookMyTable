@@ -4,19 +4,19 @@
     <p>Please fill in this form to create an account.</p>
     <hr />
 
-    <label id="name" for="name"><b>Name</b></label
+    <label id="name-label" for="name-label"><b>Name</b></label
     ><br />
     <input type="text" placeholder="Enter Name" name="name" id="name" />
 
-    <br /><label id="email" for="email"><b>Email</b></label
+    <br /><label id="email-label" for="email-label"><b>Email</b></label
     ><br />
     <input type="text" placeholder="Enter Email" name="email" id="email" />
 
-    <br /><label id="psw" for="psw"><b>Password</b></label
+    <br /><label id="psw-label" for="psw-label"><b>Password</b></label
     ><br />
     <input type="password" placeholder="Enter Password" name="psw" id="psw" />
 
-    <br /><label id="psw-repeat" for="psw-repeat"><b>Repeat Password</b></label
+    <br /><label id="psw-repeat-label" for="psw-repeat-label"><b>Repeat Password</b></label
     ><br />
     <input
       type="password"
@@ -24,14 +24,24 @@
       name="psw-repeat"
       id="psw-repeat"
     />
-    <br /><label id="accountType" for="accountType"><b>Select Account Type</b></label
+
+    <br /><label id="phone-number-label" for="phone-number-label"><b>Phone Number</b></label
+    ><br />
+    <input
+      type="text"
+      placeholder="Phone Number"
+      name="phone-number"
+      id="phone-number"
+    />
+
+    <br /><label id="accountType-label" for="accountType-label"><b>Select Account Type</b></label
     ><br />
     <select name="accountType" id="accountType">
       <option value="Customer">Customer</option>
       <option value="Restaurant Owner">Restaurant Owner</option>
     </select><br />
 
-    <button type="submit" class="registerbtn">Register</button>
+    <button type="submit" class="registerbtn" v-on:click="createProfile()">Register</button>
     <div class="container signinbtn">
       <p>Already have an account? <router-link to="/">Sign in</router-link>.</p>
     </div>
@@ -49,7 +59,7 @@
 }
 
 /* Half-width input fields */
-input[name="name"], [name="email"], [name="psw"], [name="psw-repeat"] {
+input[name="name"], [name="email"], [name="psw"], [name="psw-repeat"], [name="phone-number"] {
   width: 50%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -129,4 +139,11 @@ label[id="psw-repeat"] {
   right: 200px;
   position: relative;
 }
+
+label[id="phone-number"] {
+  right: 200px;
+  position: relative;
+}
 </style>
+
+<script src="./javascript/createAccountPage.js"></script>
