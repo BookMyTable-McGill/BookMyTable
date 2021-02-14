@@ -10,3 +10,61 @@ var AXIOS = axios.create({
 	baseURL: backendUrl,
 	headers: { 'Access-Control-Allow-Origin': frontendUrl }
 })
+
+export default {
+		name: 'createRestaurant',
+		data() {
+			return {
+
+        customer: '',
+				restaurantOwner: '',
+				errorRestaurantOwner: '',
+				errorCustomer: '',
+				response: []
+			}
+		},
+
+
+  methods: {
+    login: function(email, password, accountType ) {
+      
+      if(accountType == 'Customer'){
+
+        let params = {
+        password: password,
+        email: email
+      };
+        AXIOS.post('/customer/login', {}, {params: params})
+      .then(response =>{
+        this.customer = response.data
+      })
+      .catch(e => {
+        this.errorCustomer = e;
+        console.log(e);
+      });
+
+      }
+
+      else if(accontType = 'Restaurant Owner'){
+
+         let params = {
+        email: email,
+        password: password
+      
+      };
+        AXIOS.post('/restaurantOwner/login', {}, {params: params})
+      .then(response =>{
+        this.restaurantOwner = response.data
+      })
+      .catch(e => {
+        this.errorRestaurantOwner = e;
+        console.log(e);
+      });
+
+      }
+
+      },
+    
+   
+  }
+}
