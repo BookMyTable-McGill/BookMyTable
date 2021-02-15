@@ -23,28 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5504df1d-8baa-493a-b8c4-e5e2bc5aea88" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/controller/ViewRestaurantsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/service/ViewRestaurantsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bmt-backend/src/test/java/bookmytable/stepdefinitions/CreateNewRestaurantStepDefinitions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-backend/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/controller/CustomerRegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/controller/CustomerRegistrationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/model/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/model/Food.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/model/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/model/Reservation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/model/Restaurant.java" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/model/Restaurant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/model/RestaurantTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/model/RestaurantTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/service/ReservationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/service/ReservationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/service/RestaurantService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/service/RestaurantService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bmt-backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-backend/src/test/java/bookmytable/features/CreateNewRestaurant.feature" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/src/test/java/bookmytable/features/CreateNewRestaurant.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-backend/src/test/java/bookmytable/stepdefinitions/CreateNewRestaurant.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-backend/src/test/java/bookmytable/stepdefinitions/MakeAReservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/src/test/java/bookmytable/stepdefinitions/MakeAReservation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-frontend/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-frontend/config/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-frontend/src/components/ViewMapReservation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-frontend/src/components/ViewMapReservation.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-frontend/src/components/javascript/testData.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-frontend/src/components/javascript/viewMapReservation.js" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-frontend/src/components/javascript/viewMapReservation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-frontend/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bmt-backend/src/test/java/bookmytable/features/ViewMapOfReservations.feature" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/src/test/java/bookmytable/features/ViewMapOfReservations.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bmt-backend/src/test/java/bookmytable/stepdefinitions/ViewMapOfReservations.java" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/src/test/java/bookmytable/stepdefinitions/ViewMapOfReservations.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +90,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BookMyTableApplication">
+  <component name="RunManager" selected="JUnit.CucumberTestsRunner">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -247,42 +229,42 @@
     </state>
     <state x="1221" y="320" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1613332122845" />
     <state x="1302" y="342" key="FileChooserDialogImpl/0.0.2048.1112/2560.0.1080.1880@0.0.2048.1112" timestamp="1613003607086" />
-    <state width="1268" height="269" key="GridCell.Tab.0.bottom" timestamp="1613338341797">
+    <state width="1603" height="349" key="GridCell.Tab.0.bottom" timestamp="1613349314356">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1268" height="269" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1613338341797" />
+    <state width="1603" height="349" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1613349314356" />
     <state width="2005" height="305" key="GridCell.Tab.0.bottom/0.0.2048.1112/2560.0.1080.1880@0.0.2048.1112" timestamp="1612564472528" />
-    <state width="1268" height="269" key="GridCell.Tab.0.center" timestamp="1613338341797">
+    <state width="1603" height="349" key="GridCell.Tab.0.center" timestamp="1613349314355">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1268" height="269" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1613338341797" />
+    <state width="1603" height="349" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1613349314355" />
     <state width="2005" height="305" key="GridCell.Tab.0.center/0.0.2048.1112/2560.0.1080.1880@0.0.2048.1112" timestamp="1612564472528" />
-    <state width="1268" height="269" key="GridCell.Tab.0.left" timestamp="1613338341797">
+    <state width="1603" height="349" key="GridCell.Tab.0.left" timestamp="1613349314355">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1268" height="269" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1613338341797" />
+    <state width="1603" height="349" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1613349314355" />
     <state width="2005" height="305" key="GridCell.Tab.0.left/0.0.2048.1112/2560.0.1080.1880@0.0.2048.1112" timestamp="1612564472528" />
-    <state width="1268" height="269" key="GridCell.Tab.0.right" timestamp="1613338341797">
+    <state width="1603" height="349" key="GridCell.Tab.0.right" timestamp="1613349314355">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1268" height="269" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1613338341797" />
+    <state width="1603" height="349" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1613349314355" />
     <state width="2005" height="305" key="GridCell.Tab.0.right/0.0.2048.1112/2560.0.1080.1880@0.0.2048.1112" timestamp="1612564472528" />
-    <state width="1877" height="371" key="GridCell.Tab.1.bottom" timestamp="1613336835509">
+    <state width="1603" height="349" key="GridCell.Tab.1.bottom" timestamp="1613349314356">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="371" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1613336835509" />
-    <state width="1877" height="371" key="GridCell.Tab.1.center" timestamp="1613336835509">
+    <state width="1603" height="349" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1613349314356" />
+    <state width="1603" height="349" key="GridCell.Tab.1.center" timestamp="1613349314356">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="371" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1613336835509" />
-    <state width="1877" height="371" key="GridCell.Tab.1.left" timestamp="1613336835509">
+    <state width="1603" height="349" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1613349314356" />
+    <state width="1603" height="349" key="GridCell.Tab.1.left" timestamp="1613349314356">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="371" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1613336835509" />
-    <state width="1877" height="371" key="GridCell.Tab.1.right" timestamp="1613336835509">
+    <state width="1603" height="349" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1613349314356" />
+    <state width="1603" height="349" key="GridCell.Tab.1.right" timestamp="1613349314356">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="371" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1613336835509" />
+    <state width="1603" height="349" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1613349314356" />
     <state x="32" y="194" width="998" height="715" key="SettingsEditor" timestamp="1613331770018">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -292,9 +274,10 @@
     </state>
     <state x="806" y="15" width="1116" height="1016" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1613335861419" />
     <state x="2252" y="-25" width="1096" height="1099" maximized="true" key="dock-window-1/0.0.2048.1112/2560.0.1080.1880@0.0.2048.1112" timestamp="1612564342151" />
-    <state x="583" y="261" width="1096" height="1120" key="dock-window-2" timestamp="1613004180351">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state x="-63" y="58" width="1795" height="840" key="dock-window-2" timestamp="1613349298606">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="-63" y="58" width="1795" height="840" key="dock-window-2/0.0.1920.1040@0.0.1920.1040" timestamp="1613349298606" />
     <state x="583" y="261" width="1096" height="1120" key="dock-window-2/0.0.2048.1112/2560.0.1080.1880@0.0.2048.1112" timestamp="1613004180351" />
     <state x="734" y="289" width="579" height="534" key="find.popup" timestamp="1612563032468">
       <screen x="0" y="0" width="2048" height="1112" />
