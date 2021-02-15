@@ -28,10 +28,10 @@ public class CustomerRegistrationService {
     password = password.trim();
     phoneNumber = phoneNumber.trim();
     
-    if (name == null || name == ""
-        || email == null || email == ""
-        || password == null || password == ""
-        || phoneNumber == null || phoneNumber == "") {
+    if (name == null || name.compareTo("")==0
+        || email == null || email.compareTo("")==0
+        || password == null || password.compareTo("")==0
+        || phoneNumber == null || phoneNumber.compareTo("")==0) {
       throw new IllegalArgumentException("Missing Information");
     }
     
