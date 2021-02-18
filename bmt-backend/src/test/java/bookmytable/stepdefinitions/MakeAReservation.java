@@ -5,12 +5,14 @@ import static org.junit.Assert.assertNotEquals;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import bookmytable.dao.CustomerRepository;
 import bookmytable.dao.ReservationRepository;
 import bookmytable.dao.RestaurantOwnerRepository;
+import bookmytable.dao.RestaurantRepository;
 import bookmytable.dao.TableRepository;
 import bookmytable.model.Customer;
 import bookmytable.model.Reservation;
@@ -32,6 +34,8 @@ public class MakeAReservation {
 	private ReservationRepository rRepo;
 	@Autowired
 	private TableRepository tRepo;
+	@Autowired
+	private RestaurantRepository restRepo;
 	@Autowired
 	private RestaurantService serviceR;
 	@Autowired
@@ -67,6 +71,7 @@ public class MakeAReservation {
 		
 		oRepo.save(owner);
 		
+		
 		//Create a restaurant
 		int[][] hours = new int[4][2];
 		int estDuration = 180;
@@ -74,12 +79,13 @@ public class MakeAReservation {
 		int price = 2;
 		String cuisine = "asian";
 		String options = "vegan";
-		String testName = "name";
-		String testAddress = "address";
+		String testName = "name"+getSaltString();
+		String testAddress = "address"+getSaltString();
 		
 		//create restaurant through service method
 		this.theRestaurant = serviceR.createRestaurant( testName, testAddress, hours, owner, estDuration, menuLink, price, cuisine, options);
-	
+		
+		
 		
 		//Create table
 		RestaurantTable table = new RestaurantTable();
@@ -90,6 +96,8 @@ public class MakeAReservation {
 		table.setRestaurant(theRestaurant);
 		this.theTable = table;
 		tRepo.save(table);
+		
+		
 	}
 	
 	@When("the customer <customer_id>  enters an acceptable group size <group_size>")
@@ -130,6 +138,10 @@ public class MakeAReservation {
 		assertEquals(newReservation.getGroupSize(),4);
 		assertEquals(newReservation.getDate(), date);
 		
+		rRepo.delete(newReservation);
+		tRepo.delete(theTable);
+		restRepo.delete(theRestaurant);
+		
 	}
 
 	@When("the customer <customer_id>  fails to select an available reservation date and time <reservation_datetime>")
@@ -148,12 +160,20 @@ public class MakeAReservation {
 		    } catch (IllegalArgumentException e) {
 		      error = e.getMessage();
 		    }
+		
+		//tRepo.delete(theTable);
+		//restRepo.delete(theRestaurant);
+		
 	}
 	
 	@Then("an error message is issued")
 	public void an_error_message_is_issued() {
 	    // Write code here that turns the phrase above into concrete actions
 	    assertNotEquals(null, error);
+	   
+		tRepo.delete(theTable);
+		restRepo.delete(theRestaurant);
+		
 	}
 
 	@When("the customer <customer_id>  enter a group size <group_size> surpassing the maximum limit")
@@ -170,7 +190,8 @@ public class MakeAReservation {
 		    } catch (IllegalArgumentException e) {
 		      error = e.getMessage();
 		    }
-		
+		//tRepo.delete(theTable);
+		//restRepo.delete(theRestaurant);
 	}
 
 
@@ -188,7 +209,8 @@ public class MakeAReservation {
 		    } catch (IllegalArgumentException e) {
 		      error = e.getMessage();
 		    }
-		
+		//tRepo.delete(theTable);
+		//restRepo.delete(theRestaurant);
 	}
 	
 
@@ -208,6 +230,8 @@ public class MakeAReservation {
 		    } catch (IllegalArgumentException e) {
 		      error = e.getMessage();
 		    }
+		//tRepo.delete(theTable);
+		//restRepo.delete(theRestaurant);
 	}
 
 	@When("the customer <customer_id>  selects a restaurant that is completely booked")
@@ -225,6 +249,23 @@ public class MakeAReservation {
 	}catch (IllegalArgumentException e) {
 	      error = e.getMessage();
 	    }
+		
+		//tRepo.delete(theTable);
+		//restRepo.delete(theRestaurant);
 }
+	
+	
+	protected String getSaltString() {
+        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 18) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        String saltStr = salt.toString();
+        return saltStr;
+
+    }
 
 }

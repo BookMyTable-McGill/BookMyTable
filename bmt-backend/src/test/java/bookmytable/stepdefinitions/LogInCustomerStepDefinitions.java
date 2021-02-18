@@ -46,7 +46,7 @@ public class LogInCustomerStepDefinitions {
 
 	@When("Customer <customer> clicks to Log In")
 	public void customer_customer_clicks_to_log_in() {
-		Customer cust = registrationService.createCustomer("Teste test", "heoo1@hotmail.com", "test123", "1234567890");
+		Customer cust = registrationService.createCustomer("Teste test", "heoo1@hotmail.com", "test123", "123-456-7890");
 		String validEmail = cust.getEmail();
 		String validPassword = cust.getPassword();
 		loggedIn = loginService.loginCustomer(cust, validEmail, validPassword);
@@ -54,7 +54,7 @@ public class LogInCustomerStepDefinitions {
 	
 	@When("a different Customer <customer> clicks to Log In")
 	public void a_different_customer_customer_clicks_to_log_in() {
-		Customer cust = registrationService.createCustomer("Teste test", "hlo1@hotmail.com", "test123", "1234567890");
+		Customer cust = registrationService.createCustomer("Teste test", "hlo1@hotmail.com", "test123", "123-456-7890");
 		String validEmail = cust.getEmail();
 		String validPassword = cust.getPassword();
 		loggedIn = loginService.loginCustomer(cust, validEmail, validPassword);
@@ -72,7 +72,7 @@ public class LogInCustomerStepDefinitions {
 
 	@When("Customer <customer> inputs email <invalidEmail>")
 	public void customer_customer_inputs_email_invalid_email() {
-		Customer cust = registrationService.createCustomer("Teste test", "helo2@hotmail.com", "test123", "1234567890");
+		Customer cust = registrationService.createCustomer("Teste test", "helo2@hotmail.com", "test123", "123-456-7890");
 		try{
 			loggedIn = loginService.loginCustomer(cust, "hi", cust.getPassword());
 		} catch(IllegalArgumentException e){
@@ -97,7 +97,7 @@ public class LogInCustomerStepDefinitions {
 
 	@When("Customer <customer> inputs  password <invalidPassword>")
 	public void customer_customer_inputs_password_invalid_password() {
-		Customer cust = registrationService.createCustomer("Teste test", "helo3@hotmail.com", "test123", "1234567890");
+		Customer cust = registrationService.createCustomer("Teste test", "helo3@hotmail.com", "test123", "123-456-7890");
 		try{
 			loggedIn = loginService.loginCustomer(cust, cust.getEmail(), "hi");
 		}catch(IllegalArgumentException e){

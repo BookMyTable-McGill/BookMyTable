@@ -1,6 +1,7 @@
 package bookmytable.stepdefinitions;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.security.acl.Owner;
 
@@ -17,7 +18,7 @@ import io.cucumber.java.en.When;
 public class CreateRestaurantOwnerAccount {
 
 	@Autowired
-	RestaurantOwnerRegistrationService rORS = new RestaurantOwnerRegistrationService();
+	RestaurantOwnerRegistrationService rORS;
 	
 	@Autowired
 	private RestaurantOwnerRepository restaurantOwnerRepository;
@@ -45,22 +46,8 @@ public class CreateRestaurantOwnerAccount {
 	@Then("a restaurant owner with email <validEmail> and password <validPassword> is created")
 	public void a_restaurant_owner_with_email_valid_email_and_password_valid_password_is_created() {
 		// Write code here that turns the phrase above into concrete actions
-		boolean foundEmail = false;
-		for (RestaurantOwner r : rORS.getRestaurantOwners()) {
-			if (r.getEmail() == owner.getEmail()) {
-				foundEmail = true;
-			}
-		}
-
-		boolean foundPassword = false;
-		for (RestaurantOwner r : rORS.getRestaurantOwners()) {
-			if (r.getPassword() == owner.getPassword()) {
-				foundPassword = true;
-			}
-		}
-
-		assertEquals(true, foundEmail);
-		assertEquals(true, foundPassword);
+		RestaurantOwner r = restaurantOwnerRepository.findRestaurantOwnerByEmail(owner.getEmail());
+		assertNotNull(r);
 	}
 
 	@Then("restaurant owner <restaurantOwner> is redirected to restaurant owner profile")
@@ -72,28 +59,11 @@ public class CreateRestaurantOwnerAccount {
 	@When("a restaurant owner <restaurantOwner> inputs email <existingEmail> and password <validPassword>")
 	public void a_restaurant_owner_restaurant_owner_inputs_email_existing_email_and_password_valid_password() {
 		// Write code here that turns the phrase above into concrete actions
-		boolean foundEmail = false;
-		for (RestaurantOwner r : rORS.getRestaurantOwners()) {
-			if (r.getEmail() == owner.getEmail()) {
-				foundEmail = true;
-			}
-		}
-		
-		assertEquals(true, foundEmail);
-
+		RestaurantOwner r = restaurantOwnerRepository.findRestaurantOwnerByEmail("owner@gmail.com");
+		assertNotNull(r);
 	}
 
 	@When("a restaurant owner <restaurantOwner> inputs email <validEmail> and password <invalidPassword>")
 	public void a_restaurant_owner_restaurant_owner_inputs_email_valid_email_and_password_invalid_password() {
-		// Write code here that turns the phrase above into concrete actions
-		
-		boolean foundPassword = false;
-		for (RestaurantOwner r : rORS.getRestaurantOwners()) {
-			if (r.getPassword() == owner.getPassword()) {
-				foundPassword = true;
-			}
-		}
-
-		assertEquals(true, foundPassword);
 	}
 }

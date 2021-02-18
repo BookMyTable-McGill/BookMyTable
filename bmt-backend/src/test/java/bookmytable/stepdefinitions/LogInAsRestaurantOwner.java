@@ -100,4 +100,8 @@ public class LogInAsRestaurantOwner {
 		assertEquals(false, loggedIn2);
 	}
 
+	@Then("a {string} error message is issued")
+	public void a_error_message_is_issued(String string) {
+	}
+
 }
