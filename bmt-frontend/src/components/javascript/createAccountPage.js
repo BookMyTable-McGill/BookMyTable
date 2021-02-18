@@ -25,7 +25,6 @@ export default {
 			var repeatPassword = document.getElementById("psw-repeat").value
 			var phoneNumber = document.getElementById("phone-number").value
 			var accountType = document.getElementById("accountType").value
-			console.log(name.concat(email, password, repeatPassword, phoneNumber))
 			if (name == "") {
 				this.sendErrorMessage("Name cannot be empty")
 				return
@@ -69,24 +68,24 @@ export default {
 			AXIOS.post("/customer/register", {}, {params: {name:name, email:email, password:password, phoneNumber:phoneNumber}})
 			.then(response => {
 				alert("Congratulations on creating your account!")
-				newProfile = response
+				this.newProfile = response
 				window.location.href = "/#/"
 			})
 			.catch(e => {
 				alert("An account with this email already exists.")
-				creationError = e
+				this.creationError = e
 			})
 		},
 		createRestaurantOwnerProfile: function(name, email, password) {
 			AXIOS.post("/restaurantOwner/register", {}, {params: {name:name, email:email, password:password}})
 			.then(response => {
 				alert("Congratulations on creating your account!")
-				newProfile = response
+				this.newProfile = response
 				window.location.href = "/#/"
 			})
 			.catch(e => {
 				alert("An account with this email already exists.")
-				creationError = e
+				this.creationError = e
 			})
 		},
 		sendErrorMessage: function(error) {
