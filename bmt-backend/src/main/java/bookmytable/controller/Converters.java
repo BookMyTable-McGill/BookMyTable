@@ -241,7 +241,7 @@ public class Converters {
     String address = r.getAddress();
     boolean isBooked = r.isIsBooked();
     long id = r.getId();
-    int[][] openingHours = r.getOpeningHours();
+    Time[][] openingHours = r.getOpeningHours();
     int estimatedDuration = r.getEstimatedDuration();
     
     RestaurantOwnerDTO restaurantOwner = convertWithoutRestaurant(r.getRestaurantOwner());
@@ -277,7 +277,7 @@ public class Converters {
     String address = r.getAddress();
     boolean isBooked = r.isIsBooked();
     long id = r.getId();
-    int[][] openingHours = r.getOpeningHours();
+    Time[][] openingHours = r.getOpeningHours();
     int estimatedDuration = r.getEstimatedDuration();
     
     RestaurantOwnerDTO restaurantOwner = convertWithoutRestaurant(r.getRestaurantOwner());
@@ -312,7 +312,7 @@ public class Converters {
     String address = r.getAddress();
     boolean isBooked = r.isIsBooked();
     long id = r.getId();
-    int[][] openingHours = r.getOpeningHours();
+    Time[][] openingHours = r.getOpeningHours();
     int estimatedDuration = r.getEstimatedDuration();
     
     RestaurantOwnerDTO restaurantOwner = convertWithoutRestaurant(r.getRestaurantOwner());
@@ -340,7 +340,7 @@ public class Converters {
     String address = r.getAddress();
     boolean isBooked = r.isIsBooked();
     long id = r.getId();
-    int[][] openingHours = r.getOpeningHours();
+    Time[][] openingHours = r.getOpeningHours();
     int estimatedDuration = r.getEstimatedDuration();
     
     RestaurantOwnerDTO restaurantOwner = convertWithoutRestaurant(r.getRestaurantOwner());
@@ -360,7 +360,7 @@ public class Converters {
     String address = r.getAddress();
     boolean isBooked = r.isIsBooked();
     long id = r.getId();
-    int[][] openingHours = r.getOpeningHours();
+    Time[][] openingHours = r.getOpeningHours();
     int estimatedDuration = r.getEstimatedDuration();
     
     FoodDTO food = convertWithoutRestaurant(r.getFood());
@@ -395,7 +395,7 @@ public class Converters {
     String address = r.getAddress();
     boolean isBooked = r.isIsBooked();
     long id = r.getId();
-    int[][] openingHours = r.getOpeningHours();
+    Time[][] openingHours = r.getOpeningHours();
     int estimatedDuration = r.getEstimatedDuration();
     
     RestaurantOwnerDTO restaurantOwner = convertWithoutRestaurant(r.getRestaurantOwner());
@@ -423,7 +423,7 @@ public class Converters {
     String address = r.getAddress();
     boolean isBooked = r.isIsBooked();
     long id = r.getId();
-    int[][] openingHours = r.getOpeningHours();
+    Time[][] openingHours = r.getOpeningHours();
     int estimatedDuration = r.getEstimatedDuration();
     
     RestaurantOwnerDTO restaurantOwner = convertWithoutRestaurant(r.getRestaurantOwner());

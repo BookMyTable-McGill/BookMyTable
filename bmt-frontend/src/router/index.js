@@ -27,7 +27,7 @@ export default new Router({
       component: RestaurantInfo
     },
     {
-      path: '/CreateRestaurant',
+      path: '/CreateRestaurant/:restaurantOwnerID',
       name: 'CreateRestaurant',
       component: CreateRestaurant
     },

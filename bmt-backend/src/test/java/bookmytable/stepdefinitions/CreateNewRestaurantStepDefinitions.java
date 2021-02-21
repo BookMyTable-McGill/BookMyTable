@@ -10,6 +10,7 @@ import io.cucumber.java.en.When;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Time;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -41,10 +42,17 @@ public class CreateNewRestaurantStepDefinitions {
 	public void creating_a_restaurant_with_name_and_address(String string, String string2) {
 		String name = "name";
 		String address = "address";
-		int[][] hours = new int[2][2];
-		for (int i = 0; i < 2; i++) {
-			for (int j = 0; j < 2; j++) {
-				hours[i][j] = 1;
+		Time[][] hours = new Time[7][2];
+		Time time1 = Time.valueOf("6:45:20");
+		Time time2 = Time.valueOf("7:45:20");
+		for (int i = 0; i < hours.length; i++) {
+			for (int j = 0; j < hours[i].length; j++) {
+				if (j == 0) {
+					hours[i][j] = time1;
+				}
+				else {
+					hours[i][j] = time2;
+				}
 			}
 		}
 		int estDuration = 2;

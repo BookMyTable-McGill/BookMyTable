@@ -1,5 +1,6 @@
 package bookmytable.controller;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,13 +32,21 @@ public class RestaurantCreationController {
 	
 	@PostMapping(value = { "/restaurant/createRestaurant", "/restaurant/createRestaurant/" })
 	public RestaurantDTO createRestaurant(@RequestParam(name = "name") String name, @RequestParam(name = "address") String address, 
-									@RequestParam(name = "hours") int[][] hours, @RequestParam(name = "owner") String restaurantOwnerEmail,
+									@RequestParam(name = "hours") String[][] hours, @RequestParam(name = "owner") String restaurantOwnerEmail,
 									@RequestParam(name = "estDuration") int estDuration, @RequestParam(name = "menuLink") String menuLink,
 									@RequestParam(name = "price") int price, @RequestParam(name = "cuisine") String cuisine,
 									@RequestParam(name = "options") String options) {
 		
+		
+		Time[][] timeHours = new Time[7][2];
+		for (int i = 0; i < hours.length; i++) {
+			for (int j = 0; j < hours[i].length; j++) {
+					timeHours[i][j] = Time.valueOf(hours[i][j]);
+			}
+		}		
+		
 		RestaurantOwner restaurantOwner = restaurantOwnerLoginService.getRestaurantOwnerByEmail(restaurantOwnerEmail);
-		Restaurant restaurant = restaurantService.createRestaurant(name, address, hours, restaurantOwner, estDuration, menuLink, price, cuisine, options);
+		Restaurant restaurant = restaurantService.createRestaurant(name, address, timeHours, restaurantOwner, estDuration, menuLink, price, cuisine, options);
 		return Converters.convertToDto(restaurant);
 		
 	}

@@ -21,7 +21,7 @@ var AXIOS = axios.create({
 			}
 		},
 		created: function() {
-			AXIOS.get('/getRestaurantOwner/ID/'.concat(this.$route.params.restaurantOwnerID))
+			AXIOS.get('/getRestaurantOwner/ID/?ID='.concat(this.$route.params.restaurantOwnerID))
 				.then(response => {
 					this.restaurantOwner = response.data
 				})

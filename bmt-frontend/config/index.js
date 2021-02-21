@@ -23,9 +23,9 @@ module.exports = {
     bundleAnalyzerReport: process.env.npm_config_report
   },
   dev: {
-    host: '192.168.0.12',
+    host: 'localhost',
     port: 8087,
-    backendHost: '192.168.0.12',
+    backendHost: 'localhost', 
     backendPort: 8080,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',

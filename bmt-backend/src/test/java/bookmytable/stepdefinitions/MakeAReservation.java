@@ -73,8 +73,19 @@ public class MakeAReservation {
 		
 		
 		//Create a restaurant
-		int[][] hours = new int[4][2];
-		int estDuration = 180;
+		Time[][] hours = new Time[7][2];
+		Time time1 = Time.valueOf("6:45:20");
+		Time time2 = Time.valueOf("7:45:20");
+		for (int i = 0; i < hours.length; i++) {
+			for (int j = 0; j < hours[i].length; j++) {
+				if (j == 0) {
+					hours[i][j] = time1;
+				}
+				else {
+					hours[i][j] = time2;
+				}
+			}
+		}		int estDuration = 180;
 		String menuLink = "aLink";
 		int price = 2;
 		String cuisine = "asian";

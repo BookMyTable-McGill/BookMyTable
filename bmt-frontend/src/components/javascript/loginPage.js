@@ -63,6 +63,7 @@ export default {
           })
           .then(response => {
             this.restaurantOwner = response.data
+            window.location.href = "/#/CreateRestaurant/"+this.restaurantOwner.id
           })
           .catch(e => {
             this.errorRestaurantOwner = e;
