@@ -6,7 +6,7 @@
 
     <div class="tables-map">
       <div v-for="row in tablesMap" :key="row" class="tables-row">
-        <div v-for="cell in row" :key="col" class="table">
+        <div v-for="cell in row" :key="cell" class="table">
           <div v-if="cell === null" class="cell" />
 
           <div v-else-if="cell.reserved === true" class="cell table-reserved">
