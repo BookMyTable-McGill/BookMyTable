@@ -11,11 +11,9 @@ export default {
 	data () {
 		return {
 			creationError: '',
-			newProfile: ''
+			newProfile: '',
+      response: []
 		}
-	},
-	created: function() {
-
 	},
 	methods: {
 		createProfile: function() {
@@ -69,24 +67,24 @@ export default {
 			AXIOS.post("/customer/register", {}, {params: {name:name, email:email, password:password, phoneNumber:phoneNumber}})
 			.then(response => {
 				alert("Congratulations on creating your account!")
-				newProfile = response
+				this.newProfile = response.data
 				window.location.href = "/#/"
 			})
 			.catch(e => {
 				alert("An account with this email already exists.")
-				creationError = e
+				this.creationError = e
 			})
 		},
 		createRestaurantOwnerProfile: function(name, email, password) {
 			AXIOS.post("/restaurantOwner/register", {}, {params: {name:name, email:email, password:password}})
 			.then(response => {
 				alert("Congratulations on creating your account!")
-				newProfile = response
+				this.newProfile = response.data
 				window.location.href = "/#/"
 			})
 			.catch(e => {
 				alert("An account with this email already exists.")
-				creationError = e
+				this.creationError = e
 			})
 		},
 		sendErrorMessage: function(error) {

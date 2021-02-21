@@ -6,39 +6,45 @@ import RestaurantInfo from '@/components/RestaurantInfo'
 import CreateRestaurant from '@/components/CreateRestaurant'
 import Reserve from '@/components/MakeReservation'
 import ReservationMap from '@/components/ViewMapReservation'
+import ViewRestaurant from '@/components/ViewRestaurants'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [{
-    path: '/',
-    name: 'Login',
-    component: LoginPage
-  },
-  {
-    path: '/registration',
-    name : 'Registration',
-    component: CreateAccountPage
-  },
-  {
-    path: '/restaurantInfo/:customerID/:restaurantID',
-    name : 'RestaurantInfo',
-    component: RestaurantInfo
-  },
-  {
-    path: '/CreateRestaurant',
-    name: 'CreateRestaurant',
-    component: CreateRestaurant
-  },
-  {
-    path: '/reserve',
-    name: 'Reserve',
-    component: Reserve
+      path: '/',
+      name: 'Login',
+      component: LoginPage
+    },
+    {
+      path: '/registration',
+      name: 'Registration',
+      component: CreateAccountPage
+    },
+    {
+      path: '/restaurantInfo/:restaurantID/:userID',
+      name: 'RestaurantInfo',
+      component: RestaurantInfo
+    },
+    {
+      path: '/CreateRestaurant',
+      name: 'CreateRestaurant',
+      component: CreateRestaurant
+    },
+    {
+      path: '/reserve',
+      name: 'Reserve',
+      component: Reserve
     },
     {
       path: '/getReservedTables',
       name: 'ReservationMap',
       component: ReservationMap
-  }
-]
+    },
+    {
+      path: '/viewRestaurants/:userID',
+      name: 'viewRestaurants',
+      component: ViewRestaurant
+    }
+  ]
 })

@@ -1,34 +1,34 @@
 <template>
-  <div class="container">
-    <h1>Login</h1>
-    <hr />
-    <h1>Welcome Back!</h1>
-    <br /><br /><br />
-    <label id="emailLogin" for="emailLogin"><b>Email</b></label
-    ><br />
-    <input type="text" placeholder="Enter Email" name="emailLogin" id="emailLogin" />
+<div class="container">
+  <h1>Login</h1>
+  <hr />
+  <h1>Welcome Back!</h1>
+  <br /><br /><br />
+  <label id="emailLogin" for="emailLogin"><b>Email</b></label><br />
+  <input type="text" placeholder="Enter Email" name="emailLogin" id="emailLogin" v-model="emailLogin" />
 
-    <br /><label id="pswLogin" for="pswLogin"><b>Password</b></label
-    ><br />
-    <input type="password" placeholder="Enter Password" name="pswLogin" id="pswLogin" />
+  <br /><label id="pswLogin" for="pswLogin"><b>Password</b></label><br />
+  <input type="password" placeholder="Enter Password" name="pswLogin" id="pswLogin" v-model="pswLogin" />
 
-    <br /><label id="chooseAccount" for="chooseAccount"><b>Account Type</b></label
-    ><br />
+  <br /><label id="chooseAccount" for="chooseAccount"><b>Account Type</b></label><br />
 
-    <select name="chooseAccount" id="chooseAccount">
-      <option value="Customer">Customer</option>
-      <option value="Restaurant Owner">Restaurant Owner</option>
-    </select>
+  <select name="chooseAccount" id="chooseAccount" v-model="chooseAccount">
+    <option value="Customer">Customer</option>
+    <option value="Restaurant Owner">Restaurant Owner</option>
+  </select>
 
-    <br /><button type="submit" class="loginbtn">Login</button>
+  <br /><button type="submit" class="loginbtn" v-on:click="login(emailLogin,pswLogin,chooseAccount)">Login</button>
 
-    <div class="container createAccount">
-      <p>
-        Don't have an account? <router-link to="/">Create account</router-link>.
-      </p>
-    </div>
+  <div class="container createAccount">
+    <p>
+      Don't have an account? <router-link to="/registration">Create account</router-link>.
+    </p>
   </div>
+</div>
 </template>
+
+<script src="./javascript/loginPage.js"> </script>
+
 
 <style>
 * {
@@ -39,11 +39,13 @@
 .container {
   padding: 16px;
 }
+
 input[type="text"]:focus,
 input[type="password"]:focus {
   background-color: #ddd;
   outline: none;
 }
+
 /* Half-width input fields */
 input[name="emailLogin"],
 input[name="pswLogin"] {
