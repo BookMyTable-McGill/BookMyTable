@@ -44,6 +44,8 @@ export default {
           })
           .then(response => {
             this.customer = response.data
+            this.$store.state.user = this.customer
+            console.log(this.$store.state)
             window.location.href = "/#/viewRestaurants/"+this.customer.id
           })
           .catch(e => {
@@ -63,13 +65,14 @@ export default {
           })
           .then(response => {
             this.restaurantOwner = response.data
-            window.location.href = "/#/CreateRestaurant/"+this.restaurantOwner.id
+            this.$store.state.user = this.restaurantOwner
+            console.log(this.$store.state)
+            window.location.href = "/#/CreateRestaurant/" + this.restaurantOwner.id
           })
           .catch(e => {
             this.errorRestaurantOwner = e;
             console.log(e);
           });
-
       }
 
     },
