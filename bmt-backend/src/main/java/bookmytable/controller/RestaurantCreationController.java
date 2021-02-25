@@ -32,16 +32,22 @@ public class RestaurantCreationController {
 	
 	@PostMapping(value = { "/restaurant/createRestaurant", "/restaurant/createRestaurant/" })
 	public RestaurantDTO createRestaurant(@RequestParam(name = "name") String name, @RequestParam(name = "address") String address, 
-									@RequestParam(name = "hours") String[][] hours, @RequestParam(name = "owner") String restaurantOwnerEmail,
+									@RequestParam(name = "hours") String[] hours, @RequestParam(name = "owner") String restaurantOwnerEmail,
 									@RequestParam(name = "estDuration") int estDuration, @RequestParam(name = "menuLink") String menuLink,
 									@RequestParam(name = "price") int price, @RequestParam(name = "cuisine") String cuisine,
 									@RequestParam(name = "options") String options) {
 		
-		
 		Time[][] timeHours = new Time[7][2];
+		int j = 0;
+		int w = 0;
 		for (int i = 0; i < hours.length; i++) {
-			for (int j = 0; j < hours[i].length; j++) {
-					timeHours[i][j] = Time.valueOf(hours[i][j]);
+			timeHours[w][j] = Time.valueOf(hours[i]);
+			if (j == 0) {
+				j = 1;
+			}
+			else {
+				j = 0;
+				w++;
 			}
 		}		
 		

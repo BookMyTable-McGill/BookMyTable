@@ -10,40 +10,46 @@ var AXIOS = axios.create({
 	baseURL: backendUrl,
 	headers: { 'Access-Control-Allow-Origin': frontendUrl }
 })
-	export default {
-		name: 'createRestaurant',
-		data() {
-			return {
-				restaurantOwner: '',
-				errorRestaurantOwner: '',
-				errorRestaurant: '',
-				response: []
-			}
-		},
-		created: function() {
-			AXIOS.get('/getRestaurantOwner/ID/?ID='.concat(this.$route.params.restaurantOwnerID))
-				.then(response => {
-					this.restaurantOwner = response.data
-				})
-				.catch(e => {
-					this.errorRestaurantOwner = e
-				})
-		},
+export default {
+	name: 'createRestaurant',
+	data() {
+		return {
+			restaurantOwner: '',
+			errorRestaurantOwner: '',
+			errorRestaurant: '',
+			response: []
+		}
+	},
+	created: function() {
+		AXIOS.get('/getRestaurantOwner/ID/?ID='.concat(this.$route.params.restaurantOwnerID))
+			.then(response => {
+				this.restaurantOwner = response.data
+			})
+			.catch(e => {
+				this.errorRestaurantOwner = e
+			})
+	},
 
-		methods: {
-			createRestaurant: function(name, address, hours, estDuration, menuLink, price, cuisine, options) {
-				AXIOS.post('/restaurant/createRestaurant/?name=' + name + '&address=' + address + '&hours=' + hours 
-					+ '&owner=' + this.restaurantOwner.email + '&estDuration=' + estDuration 
-					+ '&menuLink=' + menuLink + '&price=' + price + '&cuisine=' + cuisine + '&options=' + options)
+	methods: {
+		createRestaurant: function(name, address, monOpTime, monCloTime, tuOpTime, tuCloTime,
+			wedOpTime, wedCloTime, thuOpTime, thuCloTime, friOpTime, friCloTime,
+			satOpTime, satCloTime, sunOpTime, sunCloTime,
+			estDuration, menuLink, price, cuisine, options) {
+			AXIOS.post('/restaurant/createRestaurant/?name=' + name + '&address=' + address + '&hours=' +
+				monOpTime + "," + monCloTime + "," + tuOpTime + "," + tuCloTime + "," +
+				wedOpTime + "," + wedCloTime + "," + thuOpTime + "," + thuCloTime + "," + friOpTime + "," + friCloTime + "," +
+				satOpTime + "," + satCloTime + "," + sunOpTime + "," + sunCloTime
+				+ '&owner=' + this.restaurantOwner.email + '&estDuration=' + parseInt(estDuration)
+				+ '&menuLink=' + menuLink + '&price=' + parseInt(price) + '&cuisine=' + cuisine + '&options=' + options)
 				.then(response => {
 					alert("Restaurant Created: " + response.name)
 				})
 				.catch(e => {
 					this.errorRestaurant = e
 				})
-			},
-			goToReservation: function() {
-				window.location.href = "/#/reservation/".concat(this.restaurant)
-			}
+		},
+		goToReservation: function() {
+			window.location.href = "/#/reservation/".concat(this.restaurant)
 		}
 	}
+}

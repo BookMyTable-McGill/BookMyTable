@@ -43,25 +43,15 @@
     <br /><label id="bookTime" for="bookTimeHours"><b>Estimated Reservation Length</b></label
     ><br />
      <select name="bookTimeH" id="bookTimeH">
-      <option value="0.5">0.5 hours</option>
       <option value="1">1 hours</option>
-      <option value="1.5">1.5 hours</option>
       <option value="2">2 hours</option>
-      <option value="2.5">2.5 hours</option>
       <option value="3">3 hours</option>
-      <option value="3.5">3.5 hours</option>
       <option value="4">4 hours</option>
-      <option value="4.5">4.5 hours</option>
       <option value="5">5 hours</option>
-      <option value="5.5">5.5 hours</option>
       <option value="6">6 hours</option>
-      <option value="6.5">6.5 hours</option>
       <option value="7">7 hours</option>
-      <option value="7.5">7.5 hours</option>
       <option value="8">8 hours</option>
-      <option value="8.5">8.5 hours</option>
       <option value="9">9 hours</option>
-      <option value="9.5">9.5 hours</option>
       <option value="10">10 hours</option>
     </select>
 
@@ -73,9 +63,9 @@
     <br /><label id="price" for="price"><b>Price</b></label
     ><br />
     <select name="price" id="price">
-      <option value="$">$</option>
-      <option value="$$">$$</option>
-      <option value="$$$">$$$</option>
+      <option value="1">$</option>
+      <option value="2">$$</option>
+      <option value="3">$$$</option>
     </select>
 
     <br /><label id="cuisine" for="cuisine"><b>Cuisine</b></label
@@ -93,7 +83,9 @@
     <input type="text" placeholder="Enter Layout Link" name="layout" id="layout"
     />
 
-    <button type="submit" v-on:click ="createRestaurant(restoName, address, hours, bookTimeH, menu, price, cuisine, foodOptions)"  class="createResto">Create Restauraunt</button>
+    <button type="submit" v-on:click ="createRestaurant(restoName, address, monOpTime, monCloTime, tuOpTime, tuCloTime,
+    wedOpTime, wedCloTime, thuOpTime, thuCloTime, friOpTime, friCloTime, satOpTime, satCloTime, sunOpTime, sunCloTime,
+     bookTimeH, menu, price, cuisine, foodOptions)"  class="createResto">Create Restauraunt</button>
   </div>
 </template>
 
