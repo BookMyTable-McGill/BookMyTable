@@ -36,9 +36,9 @@ export default {
 			satOpTime, satCloTime, sunOpTime, sunCloTime,
 			estDuration, menuLink, price, cuisine, options) {
 			AXIOS.post('/restaurant/createRestaurant/?name=' + name + '&address=' + address + '&hours=' +
-				monOpTime + "," + monCloTime + "," + tuOpTime + "," + tuCloTime + "," +
-				wedOpTime + "," + wedCloTime + "," + thuOpTime + "," + thuCloTime + "," + friOpTime + "," + friCloTime + "," +
-				satOpTime + "," + satCloTime + "," + sunOpTime + "," + sunCloTime
+				monOpTime + ":00," + monCloTime + ":00," + tuOpTime + ":00," + tuCloTime + ":00," +
+				wedOpTime + ":00," + wedCloTime + ":00," + thuOpTime + ":00," + thuCloTime + ":00," + friOpTime + ":00," + friCloTime + ":00," +
+				satOpTime + ":00," + satCloTime + ":00," + sunOpTime + ":00," + sunCloTime +":00"
 				+ '&owner=' + this.restaurantOwner.email + '&estDuration=' + parseInt(estDuration)
 				+ '&menuLink=' + menuLink + '&price=' + parseInt(price) + '&cuisine=' + cuisine + '&options=' + options)
 				.then(response => {

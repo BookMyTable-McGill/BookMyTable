@@ -42,6 +42,7 @@ public class RestaurantCreationController {
 		int w = 0;
 		for (int i = 0; i < hours.length; i++) {
 			timeHours[w][j] = Time.valueOf(hours[i]);
+			System.out.println(timeHours[w][j]);
 			if (j == 0) {
 				j = 1;
 			}
