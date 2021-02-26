@@ -114,7 +114,7 @@ public class ViewMapOfReservations {
 			table.setRestaurant(restaurant);
 			table.setTableNumber(table_ID);
 			Customer customer = serviceC.createCustomer(map.get("customer_name"), customerEmails[i], customerPassword, customerPhoneNumber);
-			serviceRes.makeReservation(time, dateFormat, 1, res_ID, table, customer, restaurant);
+			serviceRes.makeReservation(time, dateFormat, 1, table, customer, restaurant);
 			i++;
 		}
 	}

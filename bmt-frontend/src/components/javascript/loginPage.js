@@ -65,9 +65,9 @@ export default {
           })
           .then(response => {
             this.restaurantOwner = response.data
-            //this.$store.state.user = this.restaurantOwner
-            //console.log(this.$store.state)
-            window.location.href = "/#/CreateRestaurant/" + this.restaurantOwner.id
+            this.$store.state.user = this.restaurantOwner
+            console.log(this.$store.state)
+            window.location.href = "/#/ViewOwnerRestaurants/"
           })
           .catch(e => {
             this.errorRestaurantOwner = e;

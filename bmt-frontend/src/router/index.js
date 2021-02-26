@@ -7,6 +7,7 @@ import CreateRestaurant from '@/components/CreateRestaurant'
 import Reserve from '@/components/MakeReservation'
 import ReservationMap from '@/components/ViewMapReservation'
 import ViewRestaurant from '@/components/ViewRestaurants'
+import ViewOwnerRestaurants from '@/components/ViewOwnerRestaurants'
 
 Vue.use(Router)
 
@@ -45,6 +46,11 @@ export default new Router({
       path: '/viewRestaurants/:userID',
       name: 'viewRestaurants',
       component: ViewRestaurant
+    },
+    {
+      path: '/viewOwnerRestaurants',
+      name: 'viewOwnerRestaurants',
+      component: ViewOwnerRestaurants
     }
   ]
 })

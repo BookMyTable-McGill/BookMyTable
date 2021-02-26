@@ -40,7 +40,8 @@ var AXIOS = axios.create({
 		},
 		methods: {
 			goToReservation: function() {
-				window.location.href = "/#/reserve/".concat(this.$route.params.restaurantID)
+				this.$store.state.restaurant = this.restaurant
+				window.location.href = "/#/reserve/"
 			}
 		}
 	}

@@ -120,7 +120,7 @@ public class MakeAReservation {
 		long id = 123;
 		
 		
-		Reservation aReservation = serviceRsv.makeReservation(startTime, date, groupSize, id, theTable,
+		Reservation aReservation = serviceRsv.makeReservation(startTime, date, groupSize, theTable,
                 customer, theRestaurant);
 		
 	}
@@ -166,7 +166,7 @@ public class MakeAReservation {
 		error=null;
 		
 		try {
-			Reservation aReservation = serviceRsv.makeReservation(null, null, groupSize, id, theTable,
+			Reservation aReservation = serviceRsv.makeReservation(null, null, groupSize, theTable,
 	                customer, theRestaurant);
 		    } catch (IllegalArgumentException e) {
 		      error = e.getMessage();
@@ -196,7 +196,7 @@ public class MakeAReservation {
 		error = null;
 		
 		try {
-			Reservation aReservation = serviceRsv.makeReservation(startTime, date, 6, id, theTable,
+			Reservation aReservation = serviceRsv.makeReservation(startTime, date, 6, theTable,
 	                customer, theRestaurant);
 		    } catch (IllegalArgumentException e) {
 		      error = e.getMessage();
@@ -215,7 +215,7 @@ public class MakeAReservation {
 		error = null;
 		
 		try {
-			Reservation aReservation = serviceRsv.makeReservation(startTime, date, -1, id, theTable,
+			Reservation aReservation = serviceRsv.makeReservation(startTime, date, -1, theTable,
 	                customer, theRestaurant);
 		    } catch (IllegalArgumentException e) {
 		      error = e.getMessage();
@@ -236,7 +236,7 @@ public class MakeAReservation {
 		error = null;
 		
 		try {
-			Reservation aReservation = serviceRsv.makeReservation(startTime, date, groupSize, id, null,
+			Reservation aReservation = serviceRsv.makeReservation(startTime, date, groupSize, null,
 	                customer, theRestaurant);
 		    } catch (IllegalArgumentException e) {
 		      error = e.getMessage();
@@ -255,7 +255,7 @@ public class MakeAReservation {
 		long id = 123;
 		
 		try {
-		Reservation aReservation = serviceRsv.makeReservation(startTime, date, groupSize, id, null,
+		Reservation aReservation = serviceRsv.makeReservation(startTime, date, groupSize, null,
                 customer, theRestaurant);
 	}catch (IllegalArgumentException e) {
 	      error = e.getMessage();

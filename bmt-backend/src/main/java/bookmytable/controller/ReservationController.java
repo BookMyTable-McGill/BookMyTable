@@ -39,12 +39,11 @@ public class ReservationController {
     @PostMapping(value = {"/reservation", "/reservation/"})
     public ReservationDTO makeReservation(@RequestParam("startTime") String startTime, @RequestParam("date") String date,@RequestParam("groupSize") int groupSize, 
     										@RequestParam("tableID") long tID, @RequestParam("customerID") long cID, @RequestParam("restaurantID") long rID) {
-        long someid = 1001011;
         RestaurantTable restaurantTable = tableRepository.findTableById(tID);
         Restaurant restaurant = restaurantRepository.findRestaurantById(rID);
         Customer customer = customerRepository.findCustomerById(cID);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-        Reservation reservation = reservationService.makeReservation(Time.valueOf(startTime), java.sql.Date.valueOf(date), groupSize, someid, restaurantTable, customer,restaurant);
+        Reservation reservation = reservationService.makeReservation(Time.valueOf(startTime), java.sql.Date.valueOf(date), groupSize, restaurantTable, customer,restaurant);
 
         return Converters.convertToDto(reservation);
     }

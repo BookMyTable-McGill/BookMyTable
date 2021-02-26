@@ -169,10 +169,10 @@ public class Converters {
     Time endTime = r.getEndTime();
     Date date = r.getDate();
     CustomerDTO customer = convertWithoutReservation(r.getCustomer());
-    TableDTO table = convertWithoutReservation(r.getTable());
+//    TableDTO table = convertWithoutReservation(r.getTable());
     
     ReservationDTO reservationDTO = new ReservationDTO(startTime, endTime, date, 
-        groupSize, id, table, customer, null);
+        groupSize, id, null, customer, null);
     return reservationDTO;
   }
   
@@ -546,11 +546,11 @@ public class Converters {
     
     Set<Reservation> reservations = t.getReservations();
     Set<ReservationDTO> reservationDTOs = new HashSet<ReservationDTO>();
-    if (reservations != null) {
-      for (Reservation res : reservations) {
-        reservationDTOs.add(convertWithoutTable(res));
-      }
-    }    
+//    if (reservations != null) {
+//      for (Reservation res : reservations) {
+//        reservationDTOs.add(convertWithoutTable(res));
+//      }
+//    }    
     
     TableDTO tableDTO = new TableDTO(id, capacity, x, y, tableNumber, null, reservationDTOs);
     return tableDTO;

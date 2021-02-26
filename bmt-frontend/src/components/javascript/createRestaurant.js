@@ -21,13 +21,7 @@ export default {
 		}
 	},
 	created: function() {
-		AXIOS.get('/getRestaurantOwner/ID/?ID='.concat(this.$route.params.restaurantOwnerID))
-			.then(response => {
-				this.restaurantOwner = response.data
-			})
-			.catch(e => {
-				this.errorRestaurantOwner = e
-			})
+		this.restaurantOwner  = this.$store.state.user
 	},
 
 	methods: {

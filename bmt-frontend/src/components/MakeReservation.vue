@@ -18,10 +18,7 @@
   <form>
   <label class="field" for="table">Pick a table</label>
   <select id="table" name="table" v-model='table'>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
+     <option v-for="table in tables" v-bind:value="{ id: table.id }" :key="table.tableNumber"> {{table.tableNumber}}</option>
   </select>
 </form>
     <button type="submit" class="button" @click="createReservation(quantity,date,appt,table)">Make Reservation</button>
