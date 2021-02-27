@@ -65,6 +65,61 @@ public class CustomerRegistrationService {
   }
   
   @Transactional
+  public Customer modifyCustomer(Customer cust, String name, String email, String password, String phoneNum) {
+	  	
+	  	name = name.trim();
+	    email = email.trim();
+	    password = password.trim();
+	    phoneNum = phoneNum.trim();
+	    
+	    if (name == null || name.compareTo("")==0
+	        || email == null || email.compareTo("")==0
+	        || password == null || password.compareTo("")==0
+	        || phoneNum == null || phoneNum.compareTo("")==0) {
+	      throw new IllegalArgumentException("Missing Information");
+	    }
+	    
+	    if (!validateEmail(email)) {
+	      throw new IllegalArgumentException("Invalid Email");
+	    }
+	    
+	    if (password.length() < 6) {
+	      throw new IllegalArgumentException("Invalid Password");
+	    }
+
+	    if (!validatePhoneNumber(phoneNum)) {
+	      throw new IllegalArgumentException("Invalid Phone Number");
+	    }
+	    
+	    if(cust.getEmail().equalsIgnoreCase(email) == false) {
+	    	Customer emailCheck = customerRepository.findCustomerByEmail(email);
+	 	    if (emailCheck != null) {
+	 	      throw new IllegalArgumentException("An account with this email already exists");
+	 	    }
+	 	    
+	 	    cust.setEmail(email);
+	 	    
+	    }
+	    
+	    if(cust.getName().equalsIgnoreCase(name) == false) {
+	    	cust.setName(name);
+	    }
+	    
+	    if(cust.getPassword().equals(password) == false) {
+	    	cust.setPassword(password);
+	    }
+	    
+	    if (cust.getPhoneNumber().equals(phoneNum)==false) {
+	    	cust.setPhoneNumber(phoneNum);
+	    }
+	    
+	    customerRepository.save(cust);
+	    
+	    return cust;
+	    
+  }
+  
+  @Transactional
   public List<Customer> getCustomers() {
     return toList(customerRepository.findAll());
   }
