@@ -7,33 +7,41 @@ var backendUrl = 'http://' + config.dev.backendHost + ':' + config.dev.backendPo
 
 var AXIOS = axios.create({
 
-  baseURL: backendUrl,
-  headers: {
-    'Access-Control-Allow-Origin': frontendUrl
-  }
+	baseURL: backendUrl,
+	headers: {
+		'Access-Control-Allow-Origin': frontendUrl
+	}
 })
 
 export default {
-  data() {
-    return {
-      restaurants: [],
-      restaurantError: '',
-      response: []
-    }
-  },
+	data() {
+		return {
+			restaurants: [],
+			restaurantError: '',
+			response: []
+		}
+	},
 
-  created: function() {
-    AXIOS.get('/restaurants')
-      .then(response => {
-        this.restaurants = response.data
-      })
-      .catch(e => {
-        this.restaurantError = e
-      })
-  },
-  methods:{
-    getRestoPage: function (restoID) {
-			return '/#/restaurantInfo/'+restoID + "/"+ this.$route.params.userID
+	created: function() {
+		AXIOS.get('/restaurants')
+			.then(response => {
+				this.restaurants = response.data
+			})
+			.catch(e => {
+				this.restaurantError = e
+			})
+	},
+	methods: {
+		getRestoPage: function(restoID) {
+			AXIOS.get('/getRestaurant/ID/?ID='.concat(restoID))
+				.then(response => {
+					this.$store.state.restaurant = response.data
+				})
+				.catch(e => {
+					this.restaurantError = e
+				})
+			return '/#/restaurantInfo/'
+
 		},
-  }
+	}
 }

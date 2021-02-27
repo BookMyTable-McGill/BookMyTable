@@ -22,7 +22,7 @@ var AXIOS = axios.create({
 			}
 		},
 		created: function() {
-			AXIOS.get('/getRestaurant/ID/?ID='.concat(this.$route.params.restaurantID))
+			AXIOS.get('/getRestaurant/ID/?ID='.concat(this.$store.state.restaurant.id))
 				.then(response => {
 					this.restaurant = response.data
 					let hoursList = this.restaurant.openingHours

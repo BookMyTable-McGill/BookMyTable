@@ -21,7 +21,7 @@ export default {
 		}
 	},
 	created: function() {
-		this.restaurantOwner  = this.$store.state.user
+		this.restaurantOwner = this.$store.state.user
 	},
 
 	methods: {

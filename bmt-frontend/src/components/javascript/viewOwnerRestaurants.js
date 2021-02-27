@@ -1,17 +1,17 @@
-// import axios from 'axios'
+import axios from 'axios'
 //import Router from "../../router"
-// var config = require('../../../config')
-//
-// var frontendUrl = 'http://' + config.dev.host + ':' + config.dev.port
-// var backendUrl = 'http://' + config.dev.backendHost + ':' + config.dev.backendPort
-//
-// var AXIOS = axios.create({
-//
-//   baseURL: backendUrl,
-//   headers: {
-//     'Access-Control-Allow-Origin': frontendUrl
-//   }
-// })
+var config = require('../../../config')
+
+var frontendUrl = 'http://' + config.dev.host + ':' + config.dev.port
+var backendUrl = 'http://' + config.dev.backendHost + ':' + config.dev.backendPort
+
+var AXIOS = axios.create({
+
+	baseURL: backendUrl,
+	headers: {
+		'Access-Control-Allow-Origin': frontendUrl
+	}
+})
 
 export default {
   data() {
@@ -28,7 +28,14 @@ export default {
   },
   methods:{
     getRestoPage: function (restoID) {
-			return '/#/restaurantInfo/'+restoID + "/"+ this.$route.params.userID
+				AXIOS.get('/getRestaurant/ID/?ID='.concat(restoID))
+				.then(response => {
+					this.$store.state.restaurant = response.data
+				})
+				.catch(e => {
+					this.restaurantError = e
+				})
+			return '/#/restaurantInfo/'
 		},
   }
 }

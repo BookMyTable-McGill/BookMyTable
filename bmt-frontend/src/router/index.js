@@ -23,12 +23,12 @@ export default new Router({
       component: CreateAccountPage
     },
     {
-      path: '/restaurantInfo/:restaurantID/:userID',
+      path: '/restaurantInfo/',
       name: 'RestaurantInfo',
       component: RestaurantInfo
     },
     {
-      path: '/CreateRestaurant/:restaurantOwnerID',
+      path: '/CreateRestaurant/',
       name: 'CreateRestaurant',
       component: CreateRestaurant
     },
@@ -43,7 +43,7 @@ export default new Router({
       component: ReservationMap
     },
     {
-      path: '/viewRestaurants/:userID',
+      path: '/viewRestaurants/',
       name: 'viewRestaurants',
       component: ViewRestaurant
     },

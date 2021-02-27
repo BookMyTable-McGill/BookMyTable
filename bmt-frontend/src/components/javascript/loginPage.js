@@ -46,7 +46,7 @@ export default {
             this.customer = response.data
             this.$store.state.user = this.customer
             console.log(this.$store.state)
-            window.location.href = "/#/viewRestaurants/"+this.customer.id
+            window.location.href = "/#/viewRestaurants/"
           })
           .catch(e => {
             this.errorCustomer = e;
