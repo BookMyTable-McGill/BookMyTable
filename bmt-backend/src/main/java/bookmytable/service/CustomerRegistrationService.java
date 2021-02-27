@@ -209,14 +209,14 @@ public class CustomerRegistrationService {
     return customer;
   }
   
-  private boolean validateEmail(String email) {
+  public static boolean validateEmail(String email) {
     String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-z"
             + "A-Z]{2,7}$";
     Pattern pattern = Pattern.compile(emailRegex);
     return pattern.matcher(email).matches();
   }
 
-  private boolean validatePhoneNumber(String phoneNumber) {
+  public static boolean validatePhoneNumber(String phoneNumber) {
     String phoneNumberRegex = "(?:\\d{3}-){2}\\d{4}";
     Pattern pattern = Pattern.compile(phoneNumberRegex);
     return pattern.matcher(phoneNumber).matches();
