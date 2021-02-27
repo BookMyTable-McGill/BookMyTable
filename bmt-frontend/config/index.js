@@ -4,7 +4,7 @@ module.exports = {
   build: {
     port: 443,
     backendHost: 'bookmytable-backend-2021.herokuapp.com',
-    backendPort: 443,
+    backendPort: 5432,
     index: path.resolve(__dirname, '../dist/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
@@ -23,10 +23,10 @@ module.exports = {
     bundleAnalyzerReport: process.env.npm_config_report
   },
   dev: {
-    host: '192.168.0.12',
-    port: 8087,
+    host: '192.168.50.106',
+    port: 8080,
     backendHost: '192.168.0.12',
-    backendPort: 8080,
+    backendPort: 5432,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',

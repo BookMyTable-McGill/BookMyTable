@@ -10,9 +10,10 @@ public interface FoodRepository extends CrudRepository<Food, Long> {
   Food findFoodByMenuLink(String menuLink);
   Food findFoodByRestaurant(Restaurant restaurant);
   
-  List<Food> findFoodByCuisine(String cuisine);
-  List<Food> findFoodByOptions(String options);
+  List<Food> findFoodByCuisineIgnoreCase(String cuisine);
+  List<Food> findFoodByOptionsIgnoreCase(String options);
   List<Food> findFoodByPriceBetween(int minPrice, int maxPrice);
-  List<Food> findFoodByCuisineAndOptionsAndPriceBetween(String cuisine, String options, int minPrice, int maxPrice);
+  List<Food> findFoodByPrice(int price);
+  List<Food> findFoodByCuisineAndOptionsAndPriceBetweenAllIgnoreCase(String cuisine, String options, int minPrice, int maxPrice);
   
 }

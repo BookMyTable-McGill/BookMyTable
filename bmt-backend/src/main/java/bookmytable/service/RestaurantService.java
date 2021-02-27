@@ -150,12 +150,12 @@ public class RestaurantService {
 	
 	@Transactional
 	public List<Restaurant> getRestaurantsByName(String name) {
-		return restaurantRepository.findRestaurantsByName(name);
+		return restaurantRepository.findRestaurantsByNameIgnoreCase(name);
 	}
 	
 	@Transactional
 	public List<Restaurant> getRestaurantByNameContains(String nameFragment) {
-		return restaurantRepository.findRestaurantsByNameContains(nameFragment);
+		return restaurantRepository.findRestaurantsByNameContainsIgnoreCase(nameFragment);
 	}
 	
 	@Transactional
