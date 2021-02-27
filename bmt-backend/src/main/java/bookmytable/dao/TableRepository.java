@@ -11,5 +11,6 @@ public interface TableRepository extends CrudRepository<RestaurantTable, Long> {
   
   List<RestaurantTable> findTablesByRestaurant(Restaurant restaurant);
   RestaurantTable findTableByRestaurantAndXAndY(Restaurant restaurant, int x, int y);
+  RestaurantTable findTableByRestaurantAndTableNumber(Restaurant restaurant, int tableNumber);
   List<RestaurantTable> findTablesByRestaurantAndCapacity(Restaurant restaurant, int capacity);
 }

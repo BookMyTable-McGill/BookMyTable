@@ -1,100 +1,87 @@
 <script src="./javascript/createRestaurant.js"> </script>
 <template>
-  <div class="container">
-    <h1>Create Restaurant</h1>
-    <p>Please fill in this form to create a restaurant.</p>
-    <hr />
+<div class="container">
+  <h1>Create Restaurant</h1>
+  <p>Please fill in this form to create a restaurant.</p>
+  <hr />
 
-    <label id="restoName" for="restoName"><b>Restaurant Name</b></label
-    ><br />
-    <input type="text" placeholder="Enter Restaurant Name" name="restoName" id="restoName" />
+  <label id="restoName" for="restoName"><b>Restaurant Name</b></label><br />
+  <input type="text" placeholder="Enter Restaurant Name" name="restoName" id="restoName" v-model="restoName" />
 
-    <br /><label id="address" for="address"><b>Address</b></label
-    ><br />
-    <input type="text" placeholder="Enter Address" name="address" id="address" />
+  <br /><label id="address" for="address"><b>Address</b></label><br />
+  <input type="text" placeholder="Enter Address" name="address" id="address" v-model="address" />
 
-    <br /><label id="hours" for="hours"><b>Operational Hours</b></label
-    ><br />
-    <div class="opHours">
-      
-       <div class="days"><b> Days </b> <p name="monday"> Monday </p> <p name="tuesday"> Tuesday </p> <p name="wednesday"> Wednesday </p> <p name="thursday"> Thursday </p> <p name="friday"> Friday </p> <p name="saturday"> Saturday </p> <p name="sunday"> Sunday </p> </div>
-  <div class="oTime"> <b> Opening Time </b>
-    <input type="time"  name="monOpTime" id="monOpTime"/>
-    <input type="time"  name="tuOpTime" id="tuOpTime"/>
-    <input type="time"  name="wedOpTime" id="wedOpTime"/>
-    <input type="time"  name="thuOpTime" id="thuOpTime"/>
-    <input type="time"  name="friOpTime" id="friOpTime"/>
-    <input type="time"  name="satOpTime" id="satOpTime"/>
-    <input type="time"  name="sunOpTime" id="sunOpTime"/>
+  <br /><label id="hours" for="hours"><b>Operational Hours</b></label><br />
+  <div class="opHours">
 
+    <div class="days"><b> Days </b>
+      <p name="monday"> Monday </p>
+      <p name="tuesday"> Tuesday </p>
+      <p name="wednesday"> Wednesday </p>
+      <p name="thursday"> Thursday </p>
+      <p name="friday"> Friday </p>
+      <p name="saturday"> Saturday </p>
+      <p name="sunday"> Sunday </p>
+    </div>
+    <div class="oTime"> <b> Opening Time </b>
+      <input type="time" name="monOpTime" id="monOpTime" v-model="monOpTime" />
+      <input type="time" name="tuOpTime" id="tuOpTime" v-model="tuOpTime"/>
+      <input type="time" name="wedOpTime" id="wedOpTime" v-model="wedOpTime"/>
+      <input type="time" name="thuOpTime" id="thuOpTime" v-model="thuOpTime"/>
+      <input type="time" name="friOpTime" id="friOpTime" v-model="friOpTime"/>
+      <input type="time" name="satOpTime" id="satOpTime" v-model="satOpTime"/>
+      <input type="time" name="sunOpTime" id="sunOpTime" v-model="sunOpTime"/>
+
+    </div>
+    <div class="cTime"> <b> Closing Time </b>
+      <input type="time" name="monCloTime" id="monCloTime" v-model="monCloTime" />
+      <input type="time" name="tuCloTime" id="tuCloTime" v-model="tuCloTime" />
+      <input type="time" name="wedCloTime" id="wedCloTime" v-model="wedCloTime" />
+      <input type="time" name="thuCloTime" id="thuCloTime" v-model="thuCloTime" />
+      <input type="time" name="friCloTime" id="friCloTime" v-model="friCloTime" />
+      <input type="time" name="satCloTime" id="satCloTime" v-model="satCloTime" />
+      <input type="time" name="sunCloTime" id="sunCloTime" v-model="sunCloTime" />
+
+    </div>
   </div>
-  <div class="cTime"> <b> Closing Time </b>
-    <input type="time"  name="monCloTime" id="monCloTime"/>
-    <input type="time"  name="tuCloTime" id="tuCloTime"/>
-    <input type="time"  name="wedCloTime" id="wedCloTime"/>
-    <input type="time"  name="thuCloTime" id="thuCloTime"/>
-    <input type="time"  name="friCloTime" id="friCloTime"/>
-    <input type="time"  name="satCloTime" id="satCloTime"/>
-    <input type="time"  name="sunCloTime" id="sunCloTime"/>
-      
+
+  <br /><label id="bookTime" for="bookTimeHours"><b>Estimated Reservation Length</b></label><br />
+  <select name="bookTimeH" id="bookTimeH" v-model="bookTimeH">
+    <option value="1">1 hours</option>
+    <option value="2">2 hours</option>
+    <option value="3">3 hours</option>
+    <option value="4">4 hours</option>
+    <option value="5">5 hours</option>
+    <option value="6">6 hours</option>
+    <option value="7">7 hours</option>
+    <option value="8">8 hours</option>
+    <option value="9">9 hours</option>
+    <option value="10">10 hours</option>
+  </select>
+
+  <br /><label id="menu" for="menu"><b>Menu</b></label><br />
+  <input type="text" placeholder="Enter Menu Link" name="menu" id="menu" v-model="menu" />
+
+  <br /><label id="price" for="price"><b>Price</b></label><br />
+  <select name="price" id="price" v-model="price">
+    <option value="1">$</option>
+    <option value="2">$$</option>
+    <option value="3">$$$</option>
+  </select>
+
+  <br /><label id="cuisine" for="cuisine"><b>Cuisine</b></label><br />
+  <input type="text" placeholder="Enter Cuisine Type" name="cuisine" id="cuisine" v-model="cuisine"/>
+
+  <br /><label id="foodOptions" for="foodOptions"><b>Food Options</b></label><br />
+  <input type="text" placeholder="Enter Food Options" name="foodOptions" id="foodOptions" v-model="foodOptions"/>
+<!--
+  <br /><label id="layout" for="layout"><b>Restaurant Layout</b></label><br />
+  <input type="text" placeholder="Enter Layout Link" name="layout" id="layout" v-model="layout"/> -->
+
+  <button type="submit" v-on:click="createRestaurant(restoName, address, monOpTime, monCloTime, tuOpTime, tuCloTime,
+    wedOpTime, wedCloTime, thuOpTime, thuCloTime, friOpTime, friCloTime, satOpTime, satCloTime, sunOpTime, sunCloTime,
+     bookTimeH, menu, price, cuisine, foodOptions)" class="createResto">Create Restauraunt</button>
 </div>
-      </div>
-
-    <br /><label id="bookTime" for="bookTimeHours"><b>Estimated Reservation Length</b></label
-    ><br />
-     <select name="bookTimeH" id="bookTimeH">
-      <option value="0.5">0.5 hours</option>
-      <option value="1">1 hours</option>
-      <option value="1.5">1.5 hours</option>
-      <option value="2">2 hours</option>
-      <option value="2.5">2.5 hours</option>
-      <option value="3">3 hours</option>
-      <option value="3.5">3.5 hours</option>
-      <option value="4">4 hours</option>
-      <option value="4.5">4.5 hours</option>
-      <option value="5">5 hours</option>
-      <option value="5.5">5.5 hours</option>
-      <option value="6">6 hours</option>
-      <option value="6.5">6.5 hours</option>
-      <option value="7">7 hours</option>
-      <option value="7.5">7.5 hours</option>
-      <option value="8">8 hours</option>
-      <option value="8.5">8.5 hours</option>
-      <option value="9">9 hours</option>
-      <option value="9.5">9.5 hours</option>
-      <option value="10">10 hours</option>
-    </select>
-
-    <br /><label id="menu" for="menu"><b>Menu</b></label
-    ><br />
-    <input type="text" placeholder="Enter Menu Link" name="menu" id="menu"
-    />
-
-    <br /><label id="price" for="price"><b>Price</b></label
-    ><br />
-    <select name="price" id="price">
-      <option value="$">$</option>
-      <option value="$$">$$</option>
-      <option value="$$$">$$$</option>
-    </select>
-
-    <br /><label id="cuisine" for="cuisine"><b>Cuisine</b></label
-    ><br />
-    <input type="text" placeholder="Enter Cuisine Type" name="cuisine" id="cuisine"
-    />
-
-    <br /><label id="foodOptions" for="foodOptions"><b>Food Options</b></label
-    ><br />
-    <input type="text" placeholder="Enter Food Options" name="foodOptions" id="foodOptions"
-    />
-
-    <br /><label id="layout" for="layout"><b>Restaurant Layout</b></label
-    ><br />
-    <input type="text" placeholder="Enter Layout Link" name="layout" id="layout"
-    />
-
-    <button type="submit" v-on:click ="createRestaurant(restoName, address, hours, bookTimeH, menu, price, cuisine, foodOptions)"  class="createResto">Create Restauraunt</button>
-  </div>
 </template>
 
 <style>
@@ -105,36 +92,52 @@
 /* Add padding to containers */
 .container {
   padding: 16px;
-  
+
 }
 
 .opHours {
-  display:flex;
+  display: flex;
   flex-wrap: wrap;
   margin-left: 315px;
-   
+
 
 }
+
 .oTime {
   width: 15%;
 }
-.oTime input{
+
+.oTime input {
   margin: 20px;
 }
+
 .cTime {
   width: 15%;
 }
 
-.cTime input{
+.cTime input {
   margin: 20px;
 }
 
-.days p[name="monday"], [name="tuesday"], [name="wednesday"], [name="thursday"], [name="friday"], [name="saturday"], [name="sunday"] {
- margin-top: 27px;
- margin-bottom: 45px;
+.days p[name="monday"],
+[name="tuesday"],
+[name="wednesday"],
+[name="thursday"],
+[name="friday"],
+[name="saturday"],
+[name="sunday"] {
+  margin-top: 27px;
+  margin-bottom: 45px;
 }
+
 /* Half-width input fields */
-input[name="restoName"], [name="address"], [name="hours"], [name="menu"], [name="cuisine"], [name="foodOptions"], [name="layout"] {
+input[name="restoName"],
+[name="address"],
+[name="hours"],
+[name="menu"],
+[name="cuisine"],
+[name="foodOptions"],
+[name="layout"] {
   width: 50%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -157,7 +160,8 @@ hr {
 
 
 
-select[name="price"],[name="bookTimeH"] {
+select[name="price"],
+[name="bookTimeH"] {
   width: 25%;
   padding: 16px 20px;
   border: none;

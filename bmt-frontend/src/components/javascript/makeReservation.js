@@ -25,31 +25,47 @@ export default {
       size: '',
       quantity: '',
       table: '',
+      tables: [],
+      errorTables: '',
       response: []
     }
   },
   created: function() {
-    AXIOS.get('/getRestaurant/ID/'.concat(this.$route.params.restaurantID))
+    this.restaurant = this.$store.state.restaurant
+
+
+    AXIOS.get('/getTables?restaurantId='+this.restaurant.id)
       .then(response => {
-        this.restaurant = response.data
+        this.tables = response.data
       })
       .catch(e => {
-        this.errorRestaurant = e
+        this.errorTables = e
       })
+
   },
   methods: {
-    goToReservation: function() {
-      window.location.href = "/#/reservation/".concat(this.restaurant)
-    },
-    createReservation: function(size, date, appt, table ) {
+    // goToReservation: function() {
+    //   window.location.href = "/#/reserve/"
+    // },
+    createReservation: function(size, date, appt, table) {
       //Need to add table id
-      AXIOS.post('/reservation/?startTime=' + appt + '&date=' + date + '&groupsize=' + size + table + '&customerID=' + this.$route.params.customerID + '&restaurantID=' + this.$route.params.restaurantID)
-      .then(response =>{
-        this.reservation = response.data
-      })
-      .catch(e => {
-        this.errorRestaurant = e
-      })
+
+      AXIOS.get('/getTables/number?restaurantId='+this.restaurant.id+"&tableNumber=" + table)
+        .then(response => {
+          this.table = response.data
+        })
+        .catch(e => {
+          this.errorTables = e
+        })
+
+
+      AXIOS.post('/reservation/?startTime=' + appt + ":00" + '&date=' + date + '&groupSize=' + size + "&tableID=" + this.table.id + '&customerID=' + this.$store.state.user.id + '&restaurantID=' + this.restaurant.id)
+        .then(response => {
+          this.reservation = response.data
+        })
+        .catch(e => {
+          this.errorRestaurant = e
+        })
     },
   }
 }

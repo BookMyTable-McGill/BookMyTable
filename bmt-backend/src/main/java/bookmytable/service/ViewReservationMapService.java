@@ -44,4 +44,9 @@ public class ViewReservationMapService {
 		return tableRepository.findTablesByRestaurant(resto);
 	}
 	
+	@Transactional
+	public RestaurantTable getTableByRestaurantAndTableNumber(long restaurantId, int tableNumber) {
+		Restaurant restaurant = restaurantRepository.findRestaurantById(restaurantId);
+		return tableRepository.findTableByRestaurantAndTableNumber(restaurant, tableNumber);
+	}
 }

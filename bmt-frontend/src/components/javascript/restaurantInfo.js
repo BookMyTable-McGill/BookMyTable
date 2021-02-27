@@ -11,77 +11,6 @@ var AXIOS = axios.create({
 	headers: { 'Access-Control-Allow-Origin': frontendUrl }
 })
 
-/*
-	function CustomerDTO(name, email, password, id, phoneNumber, reservations, favoriteRestaurants) {
-		this.name = name;
-		this.email = email;
-		this.password = password;
-		this.id = id;
-		this.phoneNumber = phoneNumber;
-		this.reservations = reservations;
-		this.favoriteRestaurants = favoriteRestaurants;
-	}
-
-	function AccountTypeDTO(name, email, password, id) {
-		this.name = name;
-		this.email = email;
-		this.password = password;
-		this.id = id;
-	}
-
-	function FoodDTO(id, menuLink, price, cuisine, options, restaurant) {
-		this.id = id;
-		this.menuLink = menuLink;
-		this.price = price;
-		this.cuisine = cuisine;
-		this.options = options;
-		this.restaurant = restaurant;
-	}
-
-	function ReservationDTO(startTime, endTime, date, groupSize, id, table,
-		customer, restaurant) {
-		this.startTime = startTime;
-		this.endTime = endTime;
-		this.date = date;
-		this.groupSize = groupSize;
-		this.id = id;
-		this.table = table;
-		this.customer = customer;
-		this.restaurant = restaurant;
-	}
-
-	function RestaurantOwnerDTO(name, email, password, id, restaurants) {
-		this.name = name;
-		this.email = email;
-		this.password = password;
-		this.id = id;
-		this.restaurants = restaurants;
-	}
-
-	function TableDTO(id, capacity, x, y, tableNumber, restaurant, reservations) {
-		this.id = id;
-		this.capacity = capacity;
-		this.x = x;
-		this.y = y;
-		this.tableNumber = tableNumber;
-		this.restaurant = restaurant;
-		this.reservations = reservations;
-	}
-
-	function RestaurantDTO(id, name, address, openingHours, isBooked,
-		estimatedDuration, food, map, reservations, restaurantOwner) {
-		this.id = id;
-		this.name = name;
-		this.address = address;
-		this.openingHours = openingHours;
-		this.isBooked = isBooked;
-		this.estimatedDuration = estimatedDuration;
-		this.food = food;
-		this.map = map;
-		this.reservations = reservations;
-		this.restaurantOwner = restaurantOwner;
-	}
-*/
 	export default {
 		name: 'restaurantInfo',
 		data() {
@@ -93,7 +22,7 @@ var AXIOS = axios.create({
 			}
 		},
 		created: function() {
-			AXIOS.get('/getRestaurant/ID/'.concat(this.$route.params.restaurantID))
+			AXIOS.get('/getRestaurant/ID/?ID='.concat(this.$store.state.restaurant.id))
 				.then(response => {
 					this.restaurant = response.data
 					let hoursList = this.restaurant.openingHours
@@ -111,7 +40,8 @@ var AXIOS = axios.create({
 		},
 		methods: {
 			goToReservation: function() {
-				window.location.href = "/#/reserve/".concat(this.$route.params.restaurantID)
+				this.$store.state.restaurant = this.restaurant
+				window.location.href = "/#/reserve/"
 			}
 		}
 	}

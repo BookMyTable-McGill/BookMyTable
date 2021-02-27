@@ -1,5 +1,6 @@
 package bookmytable.service;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -32,7 +33,7 @@ public class RestaurantService {
 	private Food food;
 	
 	@Transactional
-	public Restaurant createRestaurant( String name, String address, int[][] hours, RestaurantOwner owner, int estDuration, String menuLink, int price, String cuisine, String options) {
+	public Restaurant createRestaurant( String name, String address, Time[][] hours, RestaurantOwner owner, int estDuration, String menuLink, int price, String cuisine, String options) {
 		
 		if (price <= 0)
 			throw new IllegalArgumentException("You cannot enter a negative or zero price");

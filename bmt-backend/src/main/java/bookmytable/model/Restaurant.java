@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import java.sql.Time;
 import java.util.Set;
 import javax.persistence.OneToMany;
 import javax.persistence.ManyToOne;
@@ -50,12 +51,12 @@ public String getAddress() {
  * S Open        M Open      T Open      W Open      T Open      F Open      S Open
  * S Close       M Close     T Close     W Close     T Close     F Close     S Close
  */
-private int[][] openingHours;
+private Time[][] openingHours;
 
-public void setOpeningHours(int[][] value) {
+public void setOpeningHours(Time[][] value) {
     this.openingHours = value;
 }
-public int[][] getOpeningHours() {
+public Time[][] getOpeningHours() {
     return this.openingHours;
 }
 private boolean isBooked;

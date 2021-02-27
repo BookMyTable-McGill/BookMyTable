@@ -3,8 +3,6 @@ package bookmytable.stepdefinitions;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import java.security.acl.Owner;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import bookmytable.controller.RestaurantOwnerRegistrationController;

@@ -7,62 +7,76 @@ var backendUrl = 'http://' + config.dev.backendHost + ':' + config.dev.backendPo
 
 var AXIOS = axios.create({
 
-	baseURL: backendUrl,
-	headers: { 'Access-Control-Allow-Origin': frontendUrl }
+  baseURL: backendUrl,
+  headers: {
+    'Access-Control-Allow-Origin': frontendUrl
+  }
 })
 
 export default {
-		name: 'createRestaurant',
-		data() {
-			return {
+  name: 'createRestaurant',
+  data() {
+    return {
 
-        customer: '',
-				restaurantOwner: '',
-				errorRestaurantOwner: '',
-				errorCustomer: '',
-				response: []
-			}
-		},
+      customer: '',
+      restaurantOwner: '',
+      errorRestaurantOwner: '',
+      errorCustomer: '',
+      emailLogin: '',
+      chooseAccount: '',
+      pswLogin: '',
+      response: []
+    }
+  },
 
 
   methods: {
-    login: function(email, password, accountType ) {
-      
-      if(accountType == 'Customer'){
+    login: function(email, password, accountType) {
+
+      if (accountType == 'Customer') {
 
         let params = {
-        password: password,
-        email: email
-      };
-        AXIOS.post('/customer/login', {}, {params: params})
-      .then(response =>{
-        this.customer = response.data
-      })
-      .catch(e => {
-        this.errorCustomer = e;
-        console.log(e);
-      })
+          password: password,
+          email: email
+        };
+        AXIOS.post('/customer/login', {}, {
+            params: params
+          })
+          .then(response => {
+            this.customer = response.data
+            this.$store.state.user = this.customer
+            console.log(this.$store.state)
+            window.location.href = "/#/viewRestaurants/"
+          })
+          .catch(e => {
+            this.errorCustomer = e;
+            console.log(e);
+          })
 
-      } else if(accontType == 'Restaurant Owner'){
+      } else if (accountType == 'Restaurant Owner') {
 
-         let params = {
-        email: email,
-        password: password
-      
-      };
-        AXIOS.post('/restaurantOwner/login', {}, {params: params})
-      .then(response =>{
-        this.restaurantOwner = response.data
-      })
-      .catch(e => {
-        this.errorRestaurantOwner = e;
-        console.log(e);
-      });
+        let params = {
+          email: email,
+          password: password
 
+        };
+        AXIOS.post('/restaurantOwner/login', {}, {
+            params: params
+          })
+          .then(response => {
+            this.restaurantOwner = response.data
+            this.$store.state.user = this.restaurantOwner
+            console.log(this.$store.state)
+            window.location.href = "/#/ViewOwnerRestaurants/"
+          })
+          .catch(e => {
+            this.errorRestaurantOwner = e;
+            console.log(e);
+          });
       }
 
-      },
-    
-   
+    },
+
+
   }
 }

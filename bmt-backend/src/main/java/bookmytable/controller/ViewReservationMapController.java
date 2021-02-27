@@ -39,4 +39,9 @@ public class ViewReservationMapController {
 		allTables.forEach(t -> allTablesDTO.add(Converters.convertToDto(t)));
 		return allTablesDTO;
 	}
+	
+	@GetMapping(value = {"/getTables/number",  "/getTables/number/"})
+	public TableDTO getTableByRestaurantAndTableNumber(@RequestParam("restaurantId") long restaurantId, @RequestParam("tableNumber") int tableNumber) {
+		return Converters.convertToDto(viewReservationMapService.getTableByRestaurantAndTableNumber(restaurantId, tableNumber));
+	}
 }

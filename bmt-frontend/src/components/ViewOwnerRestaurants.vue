@@ -12,7 +12,6 @@
       <tr>
         <th v-for="restaurant in restaurants" :key="restaurant.name">
           <br>
-          <br>
           <a style="font-weight: bold;  text-decoration: underline" v-bind:href="getRestoPage(restaurant.id)">{{restaurant.name}}</a>
           <br>
         </th>
@@ -22,7 +21,7 @@
 </div>
 </template>
 
-<script src="./javascript/viewRestaurants.js">
+<script src="./javascript/viewOwnerRestaurants.js">
 
 </script>
 

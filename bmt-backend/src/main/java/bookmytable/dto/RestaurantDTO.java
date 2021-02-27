@@ -1,5 +1,6 @@
 package bookmytable.dto;
 
+import java.sql.Time;
 import java.util.Set;
 
 public class RestaurantDTO {
@@ -7,7 +8,7 @@ public class RestaurantDTO {
   private long id;
   private String name;
   private String address;
-  private int[][] openingHours;
+  private Time[][] openingHours;
   private boolean isBooked;
   private int estimatedDuration;
   private FoodDTO food;
@@ -19,7 +20,7 @@ public class RestaurantDTO {
     
   }
   
-  public RestaurantDTO(long id, String name, String address, int[][] openingHours, boolean isBooked,
+  public RestaurantDTO(long id, String name, String address, Time[][] openingHours, boolean isBooked,
       int estimatedDuration, FoodDTO food, Set<TableDTO> map, Set<ReservationDTO> reservations,
       RestaurantOwnerDTO restaurantOwner) {
     super();
@@ -59,11 +60,11 @@ public class RestaurantDTO {
     this.address = address;
   }
   
-  public int[][] getOpeningHours() {
+  public Time[][] getOpeningHours() {
     return openingHours;
   }
   
-  public void setOpeningHours(int[][] openingHours) {
+  public void setOpeningHours(Time[][] openingHours) {
     this.openingHours = openingHours;
   }
   

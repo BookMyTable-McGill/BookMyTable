@@ -14,26 +14,21 @@ var AXIOS = axios.create({
 })
 
 export default {
-	data() {
-		return {
-			restaurants: [],
-			restaurantError: '',
-			response: []
-		}
-	},
-
-	created: function() {
-		AXIOS.get('/restaurants')
-			.then(response => {
-				this.restaurants = response.data
-			})
-			.catch(e => {
-				this.restaurantError = e
-			})
-	},
-	methods: {
-		getRestoPage: function(restoID) {
-			AXIOS.get('/getRestaurant/ID/?ID='.concat(restoID))
+  data() {
+    return {
+      restaurants: [],
+      restaurantError: '',
+      restaurantOwner:'',
+      response: []
+    }
+  },
+  created: function() {
+    this.restaurantOwner = this.$store.state.user
+    this.restaurants = this.restaurantOwner.restaurants
+  },
+  methods:{
+    getRestoPage: function (restoID) {
+				AXIOS.get('/getRestaurant/ID/?ID='.concat(restoID))
 				.then(response => {
 					this.$store.state.restaurant = response.data
 				})
@@ -41,7 +36,6 @@ export default {
 					this.restaurantError = e
 				})
 			return '/#/restaurantInfo/'
-
 		},
-	}
+  }
 }

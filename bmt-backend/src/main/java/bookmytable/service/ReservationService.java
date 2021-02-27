@@ -23,7 +23,7 @@ public class ReservationService {
     ReservationRepository reservationRepository;
 
     @Transactional
-    public Reservation makeReservation(Time startTime, Date date, int groupSize, long id, RestaurantTable restaurantTable,
+    public Reservation makeReservation(Time startTime, Date date, int groupSize, RestaurantTable restaurantTable,
                                        Customer customer, Restaurant restaurant) {
         String error = "";
         Time endTime = null;
@@ -64,7 +64,6 @@ public class ReservationService {
         reservation.setCustomer(customer);
         reservation.setDate(date);
         reservation.setGroupSize(groupSize);
-        //reservation.setId(id);
         reservation.setRestaurant(restaurant);
         reservation.setStartTime(startTime);
         reservation.setEndTime(endTime);

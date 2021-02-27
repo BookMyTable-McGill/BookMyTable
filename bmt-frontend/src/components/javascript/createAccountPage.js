@@ -15,12 +15,15 @@ export default {
 	data () {
 		return {
 			creationError: '',
-			newProfile: ''
+			newProfile: '',
+      response: []
 		}
 	},
+
 	created: function() {
 		console.log("backendUrl:".concat(backendUrl))
 	},
+
 	methods: {
 		createProfile: function() {
 			var name = document.getElementById("name").value
@@ -72,7 +75,7 @@ export default {
 			AXIOS.post("/customer/register", {}, {params: {name:name, email:email, password:password, phoneNumber:phoneNumber}})
 			.then(response => {
 				alert("Congratulations on creating your account!")
-				this.newProfile = response
+				this.newProfile = response.data
 				window.location.href = "/#/"
 			})
 			.catch(e => {
@@ -84,7 +87,7 @@ export default {
 			AXIOS.post("/restaurantOwner/register", {}, {params: {name:name, email:email, password:password}})
 			.then(response => {
 				alert("Congratulations on creating your account!")
-				this.newProfile = response
+				this.newProfile = response.data
 				window.location.href = "/#/"
 			})
 			.catch(e => {
