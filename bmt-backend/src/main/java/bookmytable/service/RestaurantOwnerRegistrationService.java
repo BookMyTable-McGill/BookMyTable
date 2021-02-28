@@ -39,7 +39,7 @@ public class RestaurantOwnerRegistrationService {
 	}
 	
 	@Transactional
-	  public RestaurantOwner modifyRestaurantOwner(RestaurantOwner owner, String name, String email, String password) {
+	public RestaurantOwner modifyRestaurantOwner(RestaurantOwner owner, String name, String email, String password) {
 		  	
 		  	name = name.trim();
 		    email = email.trim();
