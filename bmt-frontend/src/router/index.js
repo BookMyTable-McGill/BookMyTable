@@ -8,6 +8,8 @@ import Reserve from '@/components/MakeReservation'
 import ReservationMap from '@/components/ViewMapReservation'
 import ViewRestaurant from '@/components/ViewRestaurants'
 import ViewOwnerRestaurants from '@/components/ViewOwnerRestaurants'
+import modifyCustomerAccount from '@/components/modifyCustomerAccount'
+import modifyRestaurantOwnerAccount from '@/components/modifyRestaurantOwnerAccount'
 
 Vue.use(Router)
 
@@ -51,6 +53,16 @@ export default new Router({
       path: '/viewOwnerRestaurants',
       name: 'viewOwnerRestaurants',
       component: ViewOwnerRestaurants
+    },
+    {
+      path: '/modifyCustomerAccount/',
+      name: 'modifyCustomerAccount',
+      component: modifyCustomerAccount
+    },
+    {
+      path: '/modifyRestaurantOwnerAccount/',
+      mname: 'modifyRestaurantOwnerAccount',
+      component: modifyRestaurantOwnerAccount
     }
   ]
 })
