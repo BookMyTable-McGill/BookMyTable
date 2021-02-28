@@ -177,5 +177,141 @@ public class RestaurantService {
         return resultList;
     }
 	
+	public Restaurant modifyRestaurantMenu(Restaurant aRestaurant, String newMenuLink) {
+		
+		if(aRestaurant == null) {
+			
+			throw new IllegalArgumentException("Restaurant is null");
+		}
+		
+		if(newMenuLink == null) {
+			
+			throw new IllegalArgumentException("newMenuLink is null");
+		}
+		
+		Food aFood = aRestaurant.getFood();
+		aFood.setMenuLink(newMenuLink);
+		foodRepository.save(aFood); 
+		
+		return aRestaurant;
+		
+	}
+	
+	public Restaurant modifyRestaurantName(Restaurant aRestaurant, String newName) {
+		
+		if(aRestaurant == null) {
+			
+			throw new IllegalArgumentException("Restaurant is null");
+		}
+		
+		if(newName == null) {
+			
+			throw new IllegalArgumentException("newName is null");
+		}
+		
+		aRestaurant.setName(newName);
+		restaurantRepository.save(aRestaurant);
+		
+		return aRestaurant;
+	}
+	
+	public Restaurant modifyRestaurantType(Restaurant aRestaurant, String newType) {
+		
+		if(aRestaurant == null) {
+			
+			throw new IllegalArgumentException("Restaurant is null");
+		}
+		
+		if(newType == null) {
+			
+			throw new IllegalArgumentException("newType is null");
+		}
+		
+		Food aFood = aRestaurant.getFood();
+		aFood.setCuisine(newType);
+		foodRepository.save(aFood);
+		
+		return aRestaurant;
+	}
+	
+	public Restaurant modifyRestaurantPrice(Restaurant aRestaurant, int newPrice) {
+		
+		if(aRestaurant == null) {
+			
+			throw new IllegalArgumentException("Restaurant is null");
+		}
+		
+		if (newPrice <= 0)
+			throw new IllegalArgumentException("You cannot enter a negative or zero price");
+		
+		if (newPrice > 3)
+			throw new IllegalArgumentException("You cannot enter a price value higher than 3");
+		
+		Food aFood = aRestaurant.getFood();
+		aFood.setPrice(newPrice);
+		foodRepository.save(aFood);
+		
+		return aRestaurant;
+		
+	}
+	
+	public Restaurant modifyRestaurantFoodOption(Restaurant aRestaurant, String newFoodOption) {
+		
+		if(aRestaurant == null) {
+			
+			throw new IllegalArgumentException("Restaurant is null");
+		}
+		
+		if(newFoodOption == null) {
+	
+			throw new IllegalArgumentException("newFoodOption is null");
+		}
+		
+		Food aFood = aRestaurant.getFood();
+		aFood.setOptions(newFoodOption);
+		foodRepository.save(aFood);
+		
+		return aRestaurant;
+		
+	}
+	
+	public Restaurant modifyRestaurantLocation(Restaurant aRestaurant, String newLocation) {
+		
+		if(aRestaurant == null) {
+			
+			throw new IllegalArgumentException("Restaurant is null");
+		}
+		
+		if(newLocation == null) {
+	
+			throw new IllegalArgumentException("location is null");
+		}
+		
+		aRestaurant.setAddress(newLocation);
+		restaurantRepository.save(aRestaurant);
+		
+		return aRestaurant;
+		
+		
+	}
+	
+	public Restaurant modifyRestaurantHours(Restaurant aRestaurant, Time[][] newTime ) {
+		
+		if(aRestaurant == null) {
+			
+			throw new IllegalArgumentException("Restaurant is null");
+		}
+		
+		if(newTime == null) {
+	
+			throw new IllegalArgumentException("Hours is null");
+		}
+		
+		aRestaurant.setOpeningHours(newTime);
+		restaurantRepository.save(aRestaurant);
+		
+		return aRestaurant;
+	}
+	
 	
 }
