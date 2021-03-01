@@ -11,5 +11,5 @@ public interface AdminRepository extends CrudRepository<Admin, Long> {
 
 	Admin findAdminByEmail(String email);
 
-	List<Admin> findAdminByName(String name);
+	List<Admin> findAdminsByName(String name);
 }
