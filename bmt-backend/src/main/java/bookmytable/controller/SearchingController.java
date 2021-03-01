@@ -68,6 +68,7 @@ public class SearchingController {
     return restaurantDTOs;
   }
   
+  /*
   @GetMapping(value = {"/restaurants/filtered", "/restaurants/filtered/"})
   public List<RestaurantDTO> getFilteredRestaurants(@RequestParam(name = "name") String name,
       @RequestParam(name = "minPrice") int minPrice, @RequestParam(name = "maxPrice") int maxPrice,
@@ -78,5 +79,5 @@ public class SearchingController {
       restaurantDTOs.add(Converters.convertToDto(r));
     }
     return restaurantDTOs;
-  }
+  }*/
 }

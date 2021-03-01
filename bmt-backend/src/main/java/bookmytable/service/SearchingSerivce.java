@@ -92,6 +92,7 @@ public class SearchingSerivce {
     return restaurants;
   }
   
+  /*
   @Transactional
   public List<Restaurant> getRestaurantsByAllFilters(String name, int minPrice, int maxPrice, String cuisine, String options) {
     if (name == null) {
@@ -109,7 +110,9 @@ public class SearchingSerivce {
     if (options == null) {
       throw new IllegalArgumentException("Please enter desired food options");
     }
+    
     List<Restaurant> restaurants = restaurantRepository.findRestaurantsByNameContainsAndPriceBetweenAndCuisineAndOptionsAllIgnoreCase(name, minPrice, maxPrice, cuisine, options);
     return restaurants;
-  }
+    
+  }*/
 }

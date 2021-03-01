@@ -177,6 +177,7 @@ public class RestaurantService {
         return resultList;
     }
 	
+	@Transactional
 	public Restaurant modifyRestaurantMenu(Restaurant aRestaurant, String newMenuLink) {
 		
 		if(aRestaurant == null) {
@@ -197,6 +198,7 @@ public class RestaurantService {
 		
 	}
 	
+	@Transactional
 	public Restaurant modifyRestaurantName(Restaurant aRestaurant, String newName) {
 		
 		if(aRestaurant == null) {
@@ -215,6 +217,7 @@ public class RestaurantService {
 		return aRestaurant;
 	}
 	
+	@Transactional
 	public Restaurant modifyRestaurantType(Restaurant aRestaurant, String newType) {
 		
 		if(aRestaurant == null) {
@@ -234,6 +237,7 @@ public class RestaurantService {
 		return aRestaurant;
 	}
 	
+	@Transactional
 	public Restaurant modifyRestaurantPrice(Restaurant aRestaurant, int newPrice) {
 		
 		if(aRestaurant == null) {
@@ -255,6 +259,7 @@ public class RestaurantService {
 		
 	}
 	
+	@Transactional
 	public Restaurant modifyRestaurantFoodOption(Restaurant aRestaurant, String newFoodOption) {
 		
 		if(aRestaurant == null) {
@@ -275,6 +280,7 @@ public class RestaurantService {
 		
 	}
 	
+	@Transactional
 	public Restaurant modifyRestaurantLocation(Restaurant aRestaurant, String newLocation) {
 		
 		if(aRestaurant == null) {
@@ -295,6 +301,7 @@ public class RestaurantService {
 		
 	}
 	
+	@Transactional
 	public Restaurant modifyRestaurantHours(Restaurant aRestaurant, Time[][] newTime ) {
 		
 		if(aRestaurant == null) {

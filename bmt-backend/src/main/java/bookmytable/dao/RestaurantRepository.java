@@ -11,8 +11,12 @@ public interface RestaurantRepository extends CrudRepository<Restaurant, Long> {
   List<Restaurant> findRestaurantsByNameContainsIgnoreCase(String nameFragment);
   Restaurant findRestaurantByAddress(String address);
   List<Restaurant> findRestaurantsByAddressContains(String addressFragment);
+  
+}
 
   //This needs to be tested to ensure it really works
+  /*
   List<Restaurant> findRestaurantsByNameContainsAndPriceBetweenAndCuisineAndOptionsAllIgnoreCase(
       String name, int minPrice, int maxPrice, String cuisine, String options);
 }
+*/
