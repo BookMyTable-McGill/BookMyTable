@@ -12,6 +12,8 @@ import bookmytable.dto.*;
 public class Converters {
   
   @Autowired
+  private static AdminRepository adminRepository;
+  @Autowired
   private static CustomerRepository customerRepository;
   @Autowired
   private static FoodRepository foodRepository;
@@ -23,6 +25,24 @@ public class Converters {
   private static RestaurantRepository restaurantRepository;
   @Autowired
   private static TableRepository tableRepository;
+  
+  
+  /*
+   * ========================== ADMIN CONVERTERS ==========================
+   */
+  
+  public static AdminDTO convertToDto(Admin a) {
+    if (a == null) {
+      throw new IllegalArgumentException("There is no such Admin");
+    }
+    String name = a.getName();
+    String email = a.getEmail();
+    String password = a.getPassword();
+    long id = a.getId();
+  
+    AdminDTO adminDTO = new AdminDTO(name, email, password, id);
+    return adminDTO;
+  }
   
   /*
    * ========================== CUSTOMER CONVERTERS ==========================
