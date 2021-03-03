@@ -2,12 +2,18 @@ package bookmytable.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import bookmytable.dao.ReservationRepository;
 import bookmytable.dao.RestaurantOwnerRepository;
+import bookmytable.dao.RestaurantRepository;
 import bookmytable.model.Customer;
+import bookmytable.model.Reservation;
+import bookmytable.model.Restaurant;
 import bookmytable.model.RestaurantOwner;
 
 @Service
@@ -16,7 +22,9 @@ public class RestaurantOwnerRegistrationService {
 	@Autowired 
 	private RestaurantOwnerRepository restaurantOwnerRepository;
 
-	
+	@Autowired
+	private RestaurantRepository restaurantRepository;
+	  
 	@Transactional 
 	public RestaurantOwner registerRestaurantOwner(String name, String password, String email) {
 		String error = " ";
@@ -85,7 +93,32 @@ public class RestaurantOwnerRegistrationService {
 		    
 		    return owner;
 		    
-	  }
+	}
+	
+	@Transactional
+	public RestaurantOwner deleteRestaurantOwner(long id) {
+		if (id == 0) {
+			throw new IllegalArgumentException("Id is empty");
+		}
+
+		RestaurantOwner restoOwner = restaurantOwnerRepository.findRestaurantOwnerById(id);
+
+		if (restoOwner == null) {
+			throw new IllegalArgumentException("No restaurant owner with this id was found");
+		}
+
+		Set<Restaurant> restaurants = restoOwner.getRestaurants();
+		if (restaurants != null) {
+			for (Restaurant r : restaurants) {
+				restaurantRepository.delete(r);
+			}
+		}
+		
+		restoOwner.setRestaurants(null);
+
+		restaurantOwnerRepository.delete(restoOwner);
+		return restoOwner;
+	}
 	
 	@Transactional
 	public List<RestaurantOwner> getRestaurantOwners() {

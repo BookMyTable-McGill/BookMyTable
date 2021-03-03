@@ -24,7 +24,7 @@ public class CustomerLoginService {
 			error = "Customer does not exist.";
 			throw new IllegalArgumentException(error);
 			
-		} else if (customer.getId() == null) {
+		} else if (customerRepository.findCustomerById(customer.getId()) == null || customer.getId() == null) {
 			error = "Customer does not exist.";
 			throw new IllegalArgumentException(error);
 
