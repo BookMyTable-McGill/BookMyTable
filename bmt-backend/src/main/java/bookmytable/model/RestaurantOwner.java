@@ -9,7 +9,7 @@ import javax.persistence.OneToMany;
 public class RestaurantOwner extends AccountType{
    private Set<Restaurant> restaurants;
    
-   @OneToMany(mappedBy="restaurantOwner" , cascade={CascadeType.ALL})
+   @OneToMany(mappedBy="restaurantOwner") //, cascade={CascadeType.ALL})
    public Set<Restaurant> getRestaurants() {
       return this.restaurants;
    }

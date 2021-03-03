@@ -2,17 +2,9 @@ package bookmytable.stepdefinitions;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import bookmytable.dao.CustomerRepository;
-import bookmytable.dao.ReservationRepository;
 import bookmytable.dao.RestaurantOwnerRepository;
-import bookmytable.dao.RestaurantRepository;
-import bookmytable.dao.TableRepository;
-import bookmytable.model.Customer;
-import bookmytable.model.Reservation;
 import bookmytable.model.Restaurant;
 import bookmytable.model.RestaurantOwner;
-import bookmytable.model.RestaurantTable;
-import bookmytable.service.ReservationService;
 import bookmytable.service.RestaurantService;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -27,22 +19,11 @@ public class Modify_Restaurant_Food_Options {
 	@Autowired
 	private RestaurantOwnerRepository oRepo;
 	@Autowired
-	private CustomerRepository cRepo;
-	@Autowired
-	private ReservationRepository rRepo;
-	@Autowired
-	private TableRepository tRepo;
-	@Autowired
-	private RestaurantRepository restRepo;
-	@Autowired
 	private RestaurantService serviceR;
-	@Autowired
-	private ReservationService serviceRsv;
 
-	private Customer customer;
 	private Restaurant theRestaurant;
-	private RestaurantTable theTable;
 	private String error;
+	private String testName;
 	private String testAddress;
 
 	@Given("a restaurant owner <restaurant_owner_id> is logged into BookMyTable as a restaurant owner")
@@ -71,12 +52,14 @@ public class Modify_Restaurant_Food_Options {
 		int price = 2;
 		String cuisine = "asian";
 		String options = "vegan";
-		String testName = "name" + getSaltString();
-		testAddress = "address" + getSaltString();
+		this.testName = "name" + getSaltString();
+		this.testAddress = "address" + getSaltString();
 
 		// create restaurant through service method
 		this.theRestaurant = serviceR.createRestaurant(testName, testAddress, hours, owner, estDuration, menuLink,
 				price, cuisine, options);
+		
+		//System.out.println(serviceR.getRestaurantByAddress(testAddress).getAddress());
 
 	}
 
@@ -99,8 +82,9 @@ public class Modify_Restaurant_Food_Options {
 
 	@Then("the restaurant <restaurant_id> has the newly modified food option")
 	public void the_restaurant_restaurant_id_has_the_newly_modified_food_option() {
+		
 		Restaurant modifiedRestaurant = serviceR.getRestaurantByAddress(testAddress);
-		assertEquals(modifiedRestaurant.getFood().getOptions(), "glutent-free");
+		assertEquals(modifiedRestaurant.getFood().getOptions(), "gluten-free");
 
 	}
 

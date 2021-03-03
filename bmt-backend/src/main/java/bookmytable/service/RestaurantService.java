@@ -104,6 +104,7 @@ public class RestaurantService {
 		
 		ownerRepository.save(owner);
 		restaurantRepository.save(restaurant);
+		//getRestaurantByAddress(restaurant.getAddress()).setFood(createFood(menuLink, price,cuisine,options,restaurant));
 		restaurant.setFood(createFood(menuLink, price,cuisine,options,restaurant));
 		//food.setRestaurant(restaurant);
 		
@@ -214,6 +215,7 @@ public class RestaurantService {
 			
 			throw new IllegalArgumentException("newName is null");
 		}
+		
 		
 		aRestaurant.setName(newName);
 		restaurantRepository.save(aRestaurant);
