@@ -26,7 +26,8 @@ public class RestaurantOwnerLoginService {
 	
 	    else if(restaurantOwnerRepository.findRestaurantOwnerById(owner.getId()) == null){
 	    	error += "Restaurant Owner does not exist";
-	        return false;
+			throw new IllegalArgumentException(error);
+	        //return false;
 	    }
 	    
 	    else if(!restaurantOwnerRepository.findRestaurantOwnerById(owner.getId()).getPassword().equals(password)) {
