@@ -42,11 +42,12 @@ public class Search_For_Restaurant_By_Food_Options {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new io.cucumber.java.PendingException();
 	}
+	/*
 	@Then("all restaurants will be returned")
 	public void all_restaurants_will_be_returned() {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new io.cucumber.java.PendingException();
-	}
+	}*/
 	@Then("the Customer will be notified that no options filter was applied")
 	public void the_customer_will_be_notified_that_no_options_filter_was_applied() {
 	    // Write code here that turns the phrase above into concrete actions

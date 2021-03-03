@@ -4,7 +4,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class Modify_Restaurant_Type {
-
+/*
 	@Given("a restaurant owner <restaurant_owner_id> is logged into BookMyTable as a restaurant owner")
 	public void a_restaurant_owner_restaurant_owner_id_is_logged_into_book_my_table_as_a_restaurant_owner() {
 	    // Write code here that turns the phrase above into concrete actions
@@ -17,7 +17,7 @@ public class Modify_Restaurant_Type {
 	public void the_restaurant_owner_restaurant_owner_id_selects_one_of_their_restaurants_restaurant_id() {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new io.cucumber.java.PendingException();
-	}
+	}*/
 	@When("the restaurant owner <restaurant_owner_id> requests to modify the restaurant type")
 	public void the_restaurant_owner_restaurant_owner_id_requests_to_modify_the_restaurant_type() {
 	    // Write code here that turns the phrase above into concrete actions
@@ -32,19 +32,19 @@ public class Modify_Restaurant_Type {
 	public void the_restaurant_restaurant_id_has_the_newly_modified_type() {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new io.cucumber.java.PendingException();
-	}
+	}/*
 	@Then("a {string} message is displayed")
 	public void a_message_is_displayed(String string) {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new io.cucumber.java.PendingException();
-	}
+	}*/
 
-
+/*
 	@When("the restaurant owner <restaurant_owner_id> selects one of its restaurants <restaurant_id>")
 	public void the_restaurant_owner_restaurant_owner_id_selects_one_of_its_restaurants_restaurant_id() {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new io.cucumber.java.PendingException();
-	}
+	}*/
 
 	@When("the restaurant owner <restaurant_owner_id> does not enter the new restaurant type")
 	public void the_restaurant_owner_restaurant_owner_id_does_not_enter_the_new_restaurant_type() {
@@ -55,12 +55,12 @@ public class Modify_Restaurant_Type {
 	public void the_restaurant_restaurant_id_type_remains_the_same() {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new io.cucumber.java.PendingException();
-	}
+	}/*
 	@Then("an error message is displayed")
 	public void an_error_message_is_displayed() {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new io.cucumber.java.PendingException();
-	}
+	}*/
 
 	
 }

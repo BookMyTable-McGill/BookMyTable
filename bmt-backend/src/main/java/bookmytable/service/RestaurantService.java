@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import bookmytable.dao.FoodRepository;
+import bookmytable.dao.RestaurantOwnerRepository;
 import bookmytable.dao.RestaurantRepository;
 import bookmytable.dao.TableRepository;
 import bookmytable.model.Food;
@@ -29,6 +30,8 @@ public class RestaurantService {
 	FoodRepository foodRepository;
 	@Autowired
 	TableRepository tableRepository;
+	@Autowired
+	RestaurantOwnerRepository ownerRepository;
 	
 	private Food food;
 	
@@ -99,6 +102,7 @@ public class RestaurantService {
 		Set<Reservation> restaurantReservations = new HashSet<Reservation>();
 		restaurant.setReservations(restaurantReservations);
 		
+		ownerRepository.save(owner);
 		restaurantRepository.save(restaurant);
 		restaurant.setFood(createFood(menuLink, price,cuisine,options,restaurant));
 		//food.setRestaurant(restaurant);

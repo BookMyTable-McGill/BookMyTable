@@ -7,18 +7,7 @@ import io.cucumber.java.en.When;
 
 public class Modify_Account_Details {
 	
-	@Given("a customer <customer_id> is logged into BookMyTable as a customer")
-	public void a_customer_customer_id_is_logged_into_book_my_table_as_a_customer() {
-		// Write code here that turns the phrase above into concrete actions
-		
-	}
 
-	
-	@Given("the customer <customer_id> is an unsuspended user")
-	public void the_customer_customer_id_is_an_unsuspended_user() {
-		// Write code here that turns the phrase above into concrete actions
-		
-	}
 
 	@When("the customer <customer_id> queries to change his <username>")
 	public void the_customer_customer_id_queries_to_change_his_username() {

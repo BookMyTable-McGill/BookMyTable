@@ -5,12 +5,12 @@ import io.cucumber.java.en.When;
 
 public class View_All_Users {
 
-	
+	/*
 	@Given("Administrator {string} is logged in")
 	public void administrator_is_logged_in(String string) {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new io.cucumber.java.PendingException();
-	}
+	}*/
 
 
 	@When("Administrator {string} attempts to view all users")
