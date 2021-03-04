@@ -20,8 +20,10 @@ export default {
 
       customer: '',
       restaurantOwner: '',
+      admin: '',
       errorRestaurantOwner: '',
       errorCustomer: '',
+      errorAdmin: '',
       emailLogin: '',
       chooseAccount: '',
       pswLogin: '',
@@ -71,6 +73,26 @@ export default {
           })
           .catch(e => {
             this.errorRestaurantOwner = e;
+            console.log(e);
+          });
+      } else if (accountType == 'Admin') {
+
+        let params = {
+          email: email,
+          password: password
+
+        };
+        AXIOS.post('/admin/login', {}, {
+            params: params
+          })
+          .then(response => {
+            this.admin = response.data
+            this.$store.state.user = this.admin
+            console.log(this.$store.state)
+            window.location.href = "/#/viewRestaurants/"
+          })
+          .catch(e => {
+            this.errorAdmin = e;
             console.log(e);
           });
       }

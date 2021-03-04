@@ -15,6 +15,7 @@
   <select name="chooseAccount" id="chooseAccount" v-model="chooseAccount">
     <option value="Customer">Customer</option>
     <option value="Restaurant Owner">Restaurant Owner</option>
+    <option value="Admin">Admin</option>
   </select>
 
   <br /><button type="submit" class="loginbtn" v-on:click="login(emailLogin,pswLogin,chooseAccount)">Login</button>
