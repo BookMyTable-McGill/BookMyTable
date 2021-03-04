@@ -122,8 +122,43 @@ public class RestaurantCreationController {
 		}
 		return restaurantDTOs;
 	}
-	 
 	
+	@GetMapping(value = { "/restaurant/modifyRestaurantMenu", "/restaurant/modifyRestaurantMenu/" })
+	public RestaurantDTO modifyRestaurantMenu(@RequestParam(name = "menuLink") String menuLink, @RequestParam(name = "address") String address) {
+		Restaurant restaurant = restaurantService.getRestaurantByAddress(address);
+		restaurant = restaurantService.modifyRestaurantMenu(restaurant, address);
+		return Converters.convertToDto(restaurant);
+	}
+	
+	@GetMapping(value = { "/restaurant/modifyRestaurantType", "/restaurant/modifyRestaurantType/" })
+	public RestaurantDTO modifyRestaurantType(@RequestParam(name = "type") String type, @RequestParam(name = "price") String address) {
+		Restaurant restaurant = restaurantService.getRestaurantByAddress(address);
+		restaurant = restaurantService.modifyRestaurantType(restaurant, type);
+		return Converters.convertToDto(restaurant);
+	}
+	
+	@GetMapping(value = { "/restaurant/modifyRestaurantPrice", "/restaurant/modifyRestaurantPrice/" })
+	public RestaurantDTO modifyRestaurantPrice(@RequestParam(name = "price") String price, @RequestParam(name = "address") String address) {
+		Restaurant restaurant = restaurantService.getRestaurantByAddress(address);
+		restaurant = restaurantService.modifyRestaurantPrice(restaurant, Integer.parseInt(price));
+		return Converters.convertToDto(restaurant);
+	}
+	
+	@GetMapping(value = { "/restaurant/modifyRestaurantFoodOption", "/restaurant/modifyRestaurantFoodOption/" })
+	public RestaurantDTO modifyRestaurantFoodOption(@RequestParam(name = "foodOption") String foodOption, @RequestParam(name = "address") String address) {
+		Restaurant restaurant = restaurantService.getRestaurantByAddress(address);
+		restaurant = restaurantService.modifyRestaurantFoodOption(restaurant, foodOption);
+		return Converters.convertToDto(restaurant);
+	}
+	
+	@GetMapping(value = { "/restaurant/modifyRestaurantLocation", "/restaurant/modifyRestaurantLocation/" })
+	public RestaurantDTO modifyRestaurantLocation(@RequestParam(name = "location") String location, @RequestParam(name = "address") String address) {
+		Restaurant restaurant = restaurantService.getRestaurantByAddress(address);
+		restaurant = restaurantService.modifyRestaurantLocation(restaurant, location);
+		return Converters.convertToDto(restaurant);
+	}
+	
+
 	
 	
 	
