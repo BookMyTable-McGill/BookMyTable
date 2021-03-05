@@ -47,8 +47,9 @@ public class RestaurantOwnerRegistrationService {
 	}
 	
 	@Transactional
-	public RestaurantOwner modifyRestaurantOwner(RestaurantOwner owner, String name, String email, String password) {
-		  	
+	public RestaurantOwner modifyRestaurantOwner(Long ownerID, String name, String email, String password) {
+		RestaurantOwner owner = getRestaurantOwnerById(ownerID);  	
+		
 		  	name = name.trim();
 		    email = email.trim();
 		    password = password.trim();
@@ -119,6 +120,21 @@ public class RestaurantOwnerRegistrationService {
 		restaurantOwnerRepository.delete(restoOwner);
 		return restoOwner;
 	}
+	
+	@Transactional
+	  public RestaurantOwner getRestaurantOwnerById(long id) {
+	    if (id == 0) {
+	      throw new IllegalArgumentException("Id is empty");
+	    }
+	    
+	    RestaurantOwner owner = restaurantOwnerRepository.findRestaurantOwnerById(id);
+	    
+	    if (owner == null) {
+	      throw new IllegalArgumentException("No customer with this id was found");
+	    }
+	    
+	    return owner;
+	  }
 	
 	@Transactional
 	public List<RestaurantOwner> getRestaurantOwners() {

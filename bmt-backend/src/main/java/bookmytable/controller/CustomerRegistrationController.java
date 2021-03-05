@@ -34,7 +34,7 @@ public class CustomerRegistrationController {
   }
   
   @PostMapping(value= {"/customer/edit-info","customer/edit-info/"})
-  public CustomerDTO modifyCustomerInfo(@RequestParam(name="customer") Customer customer, @RequestParam(name="name") String name, 
+  public CustomerDTO modifyCustomerInfo(@RequestParam(name="customer") Long customer, @RequestParam(name="name") String name,
 		  @RequestParam(name="email") String email, @RequestParam(name="password") String password, @RequestParam(name="phoneNum") String phoneNum) {
 	  
 	  Customer cust= customerRegistrationService.modifyCustomer(customer, name, email, password, phoneNum);

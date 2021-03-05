@@ -65,8 +65,10 @@ public class CustomerRegistrationService {
   }
   
   @Transactional
-  public Customer modifyCustomer(Customer cust, String name, String email, String password, String phoneNum) {
-	  	
+  public Customer modifyCustomer(Long custID, String name, String email, String password, String phoneNum) {
+	  
+	  Customer cust = getCustomerById(custID);
+	  
 	  	name = name.trim();
 	    email = email.trim();
 	    password = password.trim();

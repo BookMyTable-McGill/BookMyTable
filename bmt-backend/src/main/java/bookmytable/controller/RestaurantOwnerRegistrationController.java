@@ -41,7 +41,7 @@ public class RestaurantOwnerRegistrationController {
 	}
 	
 	 @PostMapping(value= {"/restaurantOwner/edit-info","restaurantOwners/edit-info/"})
-	  public RestaurantOwnerDTO modifyOwnerInfo(@RequestParam(name="owner") RestaurantOwner owner, @RequestParam(name="name") String name, 
+	  public RestaurantOwnerDTO modifyOwnerInfo(@RequestParam(name="owner") long owner, @RequestParam(name="name") String name,
 			  @RequestParam(name="email") String email, @RequestParam(name="password") String password) {
 		  RestaurantOwner findOwner = restaurantOwnerRepository.findRestaurantOwnerByEmail(email);
 		  if (findOwner == null) {
