@@ -53,7 +53,7 @@ public class AdminLoginService {
 	}
 	
 	@Transactional
-	public List<Admin> getAdminByName(String name) {
+	public List<Admin> getAdminsByName(String name) {
 		return toList(adminRepository.findAdminsByName(name));
 	}
 	

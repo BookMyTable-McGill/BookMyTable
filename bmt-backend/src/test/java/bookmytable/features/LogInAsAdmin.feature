@@ -17,22 +17,22 @@ Feature: Log In As Admin
 
     Examples:
       | admin_name   | admin_email       | admin_pass |
-      | Andy Adams   | aadams@gmail.com  | adamspass  |
-      | Beth Baines  | bbains@yahoo.com  | bethpass   |
+      | Albert Adams | aadams@gmail.com  | albertpass |
+      | Beth Baines  | bbaines@yahoo.com | bethpass   |
       | Charlie Cole | ccole@hotmail.com | charpass   |
       | Daphne Delia | ddelia@mail.ca    | deliapass  |
 
   Scenario Outline: Already logged in on another device (Alternative flow)
 
     Given Administrator "<admin_name>" is already logged in
-    When Administrator "<admin_name>" attempts to login using email "<admin_email>" and password "<admin_pass>"
+    When Administrator "<admin_name>" tries to login using email "<admin_email>" and password "<admin_pass>"
     Then "<admin_name>" will remain logged in
     And Administrator "<admin_name>" will be redirected to the administrator profile
 
     Examples:
       | admin_name   | admin_email       | admin_pass |
-      | Andy Adams   | aadams@gmail.com  | adamspass  |
-      | Beth Baines  | bbains@yahoo.com  | bethpass   |
+      | Albert Adams | aadams@gmail.com  | albertpass |
+      | Beth Baines  | bbaines@yahoo.com | bethpass   |
       | Charlie Cole | ccole@hotmail.com | charpass   |
       | Daphne Delia | ddelia@mail.ca    | deliapass  |
 
@@ -40,16 +40,16 @@ Feature: Log In As Admin
 
     When Administrator "<admin_name>" attempts to login with credentials "<input_email>" and "<input_pass>"
     And "<input_email>" does not match "<admin_email>"
-    Then error message "No account associated with this email was found" is issued
+    Then error message "Admin email does not match input email." is issued
     And Administrator "<admin_name>" will remain logged out
     And Administrator "<admin_name>" will remain on the login page
 
     Examples:
       | admin_name   | admin_email       | admin_pass | input_email      | input_pass |
-      | Andy Adams   | aadams@gmail.com  | adamspass  | andy@gmail.com   | adamspass  |
-      | Beth Baines  | bbains@yahoo.com  | bethpass   | bbains@yahoo.com | password   |
-      | Charlie Cole | ccole@hotmail.com | charpass   | ccole            | charpass   |
-      | Daphne Delia | ddelia@mail.ca    | deliapass  | ddelia@yahoo.com | wrongpass  |
+      | Albert Adams | aadams@gmail.com  | albertpass | albert@gmail.com | albertpass |
+      | Beth Baines  | bbaines@yahoo.com | bethpass   | beth@yahoo.com   | bethpass   |
+      | Charlie Cole | ccole@hotmail.com | charpass   | charlie@mail.ca  | charpass   |
+      | Daphne Delia | ddelia@mail.ca    | deliapass  | daphne@yahoo.com | deliapass  |
 
 
   Scenario Outline: Invalid password (Error flow)
@@ -58,13 +58,13 @@ Feature: Log In As Admin
     When Administrator "<admin_name>" attempts to login with credentials "<input_email>" and "<input_pass>"
     And "<input_email>" matches "<admin_email>"
     But "<input_pass>" does not match "<admin_pass>"
-    Then error message "Password is incorrect" is issued
+    Then error message "Admin password does not match input password." is issued
     And Administrator "<admin_name>" will remain logged out
     And Administrator "<admin_name>" will remain on the login page
     Examples:
       | admin_name   | admin_email       | admin_pass | input_email       | input_pass  |
-      | Andy Adams   | aadams@gmail.com  | adamspass  | aadams@gmail.com  | badpass     |
-      | Beth Baines  | bbains@yahoo.com  | bethpass   | bbains@yahoo.com  | password    |
+      | Albert Adams | aadams@gmail.com  | albertpass | aadams@gmail.com  | badpass     |
+      | Beth Baines  | bbaines@yahoo.com | bethpass   | bbaines@yahoo.com | password    |
       | Charlie Cole | ccole@hotmail.com | charpass   | ccole@hotmail.com | invalidpass |
       | Daphne Delia | ddelia@mail.ca    | deliapass  | ddelia@mail.ca    | wrongpass   |
 
