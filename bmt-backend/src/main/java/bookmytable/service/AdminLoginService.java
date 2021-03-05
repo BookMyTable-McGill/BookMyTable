@@ -48,12 +48,12 @@ public class AdminLoginService {
 	}
 
 	@Transactional
-	public Admin getCustomerById(long id) {
+	public Admin getAdminById(long id) {
 		return adminRepository.findAdminById(id);
 	}
 	
 	@Transactional
-	public List<Admin> getCustomersByName(String name) {
+	public List<Admin> getAdminByName(String name) {
 		return toList(adminRepository.findAdminsByName(name));
 	}
 	
