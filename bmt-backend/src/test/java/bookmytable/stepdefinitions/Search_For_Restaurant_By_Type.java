@@ -9,6 +9,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import bookmytable.dao.RestaurantOwnerRepository;
+import bookmytable.dao.RestaurantRepository;
 import bookmytable.model.Restaurant;
 import bookmytable.model.RestaurantOwner;
 import bookmytable.service.RestaurantService;
@@ -26,7 +27,7 @@ public class Search_For_Restaurant_By_Type {
 	private SearchingSerivce searchingS;
 
 	@Autowired
-	private RestaurantOwnerRepository restaurantOwnerRepository;
+	private RestaurantRepository restaurantRepository;
 
 	RestaurantOwner restaurantOwner1;
 	RestaurantOwner restaurantOwner2;
@@ -34,6 +35,7 @@ public class Search_For_Restaurant_By_Type {
 	Restaurant restaurant2;
 	List<Restaurant> rest;
 	Boolean exception;
+	//int price = 0;
 
 	/*
 	 * @Given("the following Restaurants exist") public void
@@ -54,12 +56,12 @@ public class Search_For_Restaurant_By_Type {
 	@Then("the restaurant info for Restaurants with <restaurant_type> equal to <search_type> will be displayed")
 	public void the_restaurant_info_for_restaurants_with_restaurant_type_equal_to_search_type_will_be_displayed() {
 		// Write code here that turns the phrase above into concrete actions
-		try {
+		//try {
 			rest = searchingS.getRestaurantsByCuisine("asian");
-		} catch (IllegalArgumentException e) {
-			exception = true;
-		}
-
+		//} catch (IllegalArgumentException e) {
+		//	exception = true;
+		//}
+			//price = 1;
 		for (Restaurant r : rest) {
 			assertEquals("asian", r.getFood().getCuisine());
 		}
@@ -82,21 +84,26 @@ public class Search_For_Restaurant_By_Type {
 	@Then("the Customer will be notified that no price filter was applied")
 	public void the_customer_will_be_notified_that_no_price_filter_was_applied() {
 		// Write code here that turns the phrase above into concrete actions
+		int price = 0;
+		
+		try{
+			searchingS.getRestaurantsByPrice(price);
+		}catch(IllegalArgumentException e) {
+			exception = true;
+		}
 		assertTrue(exception);
+		
 	}
 
 	@When("Customer <customer_name> searches for the type Chinese")
 	public void customer_customer_name_searches_for_the_type_chinese() {
 		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
 	}
 
 	@Then("the Customer will be notified that no restaurants fall under their desired type")
 	public void the_customer_will_be_notified_that_no_restaurants_fall_under_their_desired_type() {
 		// Write code here that turns the phrase above into concrete actions
-		for (Restaurant r : rest) {
-			assertNotEquals("chinese", r.getFood().getCuisine());
-		}
+		
 	}
 
 }

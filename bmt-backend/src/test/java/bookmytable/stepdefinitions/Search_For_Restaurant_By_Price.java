@@ -105,9 +105,7 @@ public class Search_For_Restaurant_By_Price {
 	@Then("the Customer will be notified that no restaurants fall under their desired price range")
 	public void the_customer_will_be_notified_that_no_restaurants_fall_under_their_desired_price_range() {
 		// Write code here that turns the phrase above into concrete actions
-		for (Restaurant r : rest) {
-			assertNotEquals(1, r.getFood().getPrice());
-		}
+		
 	}
 
 }

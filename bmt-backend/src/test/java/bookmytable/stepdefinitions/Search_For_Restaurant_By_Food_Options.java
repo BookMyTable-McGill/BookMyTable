@@ -5,10 +5,12 @@ import static org.junit.Assert.assertTrue;
 
 import java.sql.Time;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import bookmytable.dao.RestaurantOwnerRepository;
+import bookmytable.dao.RestaurantRepository;
 import bookmytable.model.Restaurant;
 import bookmytable.model.RestaurantOwner;
 import bookmytable.service.RestaurantService;
@@ -25,6 +27,9 @@ public class Search_For_Restaurant_By_Food_Options {
 
 	@Autowired
 	private SearchingSerivce searchingS;
+	
+	@Autowired
+	private RestaurantRepository restaurantRepository;
 
 	@Autowired
 	private RestaurantOwnerRepository restaurantOwnerRepository;
@@ -60,8 +65,8 @@ public class Search_For_Restaurant_By_Food_Options {
 		int price = 2;
 		String cuisine = "asian";
 		String options = "vegan";
-		String testName1 = "gdoggygih5h111";
-		String testAddress1 = "97484g6655986111";
+		String testName1 = "gdoggygih5h111" + getSaltString();
+		String testAddress1 = "97484g6655986111" + getSaltString();
 
 		restaurant1 = restaurantService.createRestaurant(testName1, testAddress1, hours, owner1, estDuration, menuLink,
 				price, cuisine, options);
@@ -90,8 +95,8 @@ public class Search_For_Restaurant_By_Food_Options {
 		int price2 = 3;
 		String cuisine2 = "canadian";
 		String options2 = "gluten-free";
-		String testName2 = "o65iugy5rtufijh111";
-		String testAddress2 = "47335g5662370111";
+		String testName2 = "o65iugy5rtufijh111" + getSaltString();
+		String testAddress2 = "47335g5662370111" + getSaltString();
 
 		restaurant2 = restaurantService.createRestaurant(testName2, testAddress2, hours2, owner2, estDuration2, menuLink2,
 				price2, cuisine2, options2);
@@ -106,11 +111,11 @@ public class Search_For_Restaurant_By_Food_Options {
 	@Then("the restaurant info for Restaurants with <restaurant_price> equal to <search_options> will be displayed")
 	public void the_restaurant_info_for_restaurants_with_restaurant_price_equal_to_search_options_will_be_displayed() {
 		// Write code here that turns the phrase above into concrete actions
-		try {
+		//try {
 			rest = searchingS.getRestaurantsByOptions("vegan");
-		}catch(IllegalArgumentException e) {
-			exception = true;
-		}
+		//}catch(IllegalArgumentException e) {
+	//		exception = true;
+	//	}
 		
 		boolean found = false;
 		
@@ -152,9 +157,24 @@ public class Search_For_Restaurant_By_Food_Options {
 	@Then("The the Customer will be notified that no restaurants fall under their desired food options")
 	public void the_the_customer_will_be_notified_that_no_restaurants_fall_under_their_desired_food_options() {
 		// Write code here that turns the phrase above into concrete actions
-		for(Restaurant r : rest) {
+		//for(Restaurant r : rest) {
+		for(Restaurant r: restaurantRepository.findAll()) {
 			assertNotEquals("lactose-free", r.getFood().getOptions());
+
 		}
+		//}
+	}
+	protected String getSaltString() {
+		String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+		StringBuilder salt = new StringBuilder();
+		Random rnd = new Random();
+		while (salt.length() < 18) { // length of the random string.
+			int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+			salt.append(SALTCHARS.charAt(index));
+		}
+		String saltStr = salt.toString();
+		return saltStr;
+
 	}
 
 }
