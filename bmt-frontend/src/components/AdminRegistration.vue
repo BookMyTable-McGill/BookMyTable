@@ -26,7 +26,7 @@
     />
 
     <br />
-    <button type="submit" class="registerbtn"> Register</button>
+    <button type="submit" class="registerbtn" v-on:click="createAdmin()">Register</button>
     
 </template>
 
@@ -111,3 +111,5 @@ label[id="psw-repeatAdmin"] {
 }
 
 </style>
+
+<script src="./javascript/adminRegistration.js"></script>
