@@ -87,6 +87,7 @@ public class View_All_Restaurants {
 	@When("no restaurants exists")
 	public void no_restaurants_exists() {
 		
+		restRepo.deleteAll();
 		this.restaurants = viewRestoService.getAllRestaurants();
 	    
 		assertEquals(0, this.restaurants.size());
@@ -94,6 +95,13 @@ public class View_All_Restaurants {
 	@Then("the following empty list of restaurant ids <{string}> is returned:")
 	public void the_following_empty_list_of_restaurant_ids_is_returned(String string, io.cucumber.datatable.DataTable dataTable) throws ParseException {
 		
+		List<Map<String, String>> valueMaps = dataTable.asMaps();
+		for (Map<String, String> map : valueMaps) {
+			
+			String restaurantID = map.get("list_of_restaurants_id");
+			
+			assertEquals("null", restaurantID);
+		}
 	
 	}
 }
