@@ -5,11 +5,11 @@ import io.cucumber.java.en.When;
 
 public class View_All_Restaurants {
 
-	@Given("Administrator {string} is logged in")
-	public void administrator_is_logged_in(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
+//	@Given("Administrator {string} is logged in")
+//	public void administrator_is_logged_in(String string) {
+//	    // Write code here that turns the phrase above into concrete actions
+//	    throw new io.cucumber.java.PendingException();
+//	}
 
 
 
