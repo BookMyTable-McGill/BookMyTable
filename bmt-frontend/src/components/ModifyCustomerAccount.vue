@@ -45,9 +45,9 @@
       id="phone-number"
     />
     <!-- v-on click to save changes-->
-    <button type="save-changes" class="savecustomerbtn" >Save Changes</button>
+    <button type="save-changes" class="savecustomerbtn" v-on:click="modifyCustAccount()">Save Changes</button>
    <!-- v-on click to go back to main page??-->
-   <button type="cancel" class="cancelbtn"> Cancel </button>
+   <button type="cancel" class="cancelbtn" v-on:click="window.location.href = '/#/'"> Cancel </button>
   </div>
 </template>
 
@@ -159,6 +159,6 @@ label[id="phone-number"] {
 }
 </style>
 
-<script>
+<script src="./javascript/modifyCustomerAccount.js">
 
 </script>
