@@ -16,6 +16,7 @@
           <td>{{customer.email}}</td>
           <td>{{customer.phoneNumber}}</td>
           <td>{{customer.reservations.length}}</td>
+          <td><button type="button" class="deleteBtn" v-on:click="deleteCustomer(customer.id)">Delete</button></td>
         </tr>
     </table>
   </div>
