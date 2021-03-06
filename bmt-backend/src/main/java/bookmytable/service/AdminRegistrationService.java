@@ -66,7 +66,7 @@ public class AdminRegistrationService {
 		    
 		    if (name == null || name.compareTo("")==0) {
 		       
-		      throw new IllegalArgumentException("Missing Information");
+		      throw new IllegalArgumentException("Missing name");
 		    }
 		
 	
@@ -132,7 +132,7 @@ public class AdminRegistrationService {
 		    
 		    if ( newPassword == null || newPassword.compareTo("")==0) {
 		       
-		      throw new IllegalArgumentException("Missing Email");
+		      throw new IllegalArgumentException("Missing Password");
 		    }
 		    
 		    
