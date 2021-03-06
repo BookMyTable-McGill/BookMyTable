@@ -43,14 +43,14 @@ export default {
 			}
 
             if(newPassword == ""){
-                    this.modifyCustAccount(id, name, email,oldPassword,phoneNumber)
+                    this.modifyCustumerAccount(id, name, email,oldPassword,phoneNumber)
             }
             else{
-                this.modifyCustAccount(id, name, email,newPassword,phoneNumber)
+                this.modifyCustumerAccount(id, name, email,newPassword,phoneNumber)
             }
 
         },
-        modifyCustAccount: function(id,name,email,password,phoneNumber){
+        modifyCustumerAccount: function(id,name,email,password,phoneNumber){
             AXIOS.post("/customer/edit-info", {}, {params: {id:id, name:name, email:email, password:password, phoneNumber:phoneNumber}})
 			.then(response => {
 				alert("Congratulations on modifying your account information!")
