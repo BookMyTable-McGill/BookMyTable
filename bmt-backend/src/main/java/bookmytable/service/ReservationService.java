@@ -160,6 +160,7 @@ public class ReservationService {
         return toList(reservationRepository.findReservationsByRestaurantAndGroupSizeAndDate(restaurant,groupSize,date));
     }
 
+    @Transactional
     private boolean checkAvailability(Time startTime, Time endTime, Date date, RestaurantTable restaurantTable) {
     	
     	

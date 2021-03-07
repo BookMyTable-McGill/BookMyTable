@@ -30,7 +30,7 @@ public class View_All_Users {
     private String cName = "Billy Bob";
     private String cEmail = "billy@gmail.com";
     private String cPassword = "password";
-    private String cPhoneNumber = "1234567890";
+    private String cPhoneNumber = "123-456-7890";
     
     private String rName = "Alex Alexander";
     private String rEmail = "alex@gmail.com";
@@ -82,8 +82,8 @@ public class View_All_Users {
 	    assertTrue(customers != null);
 	    assertTrue(restaurantOwners != null);
 	    
-	    assertTrue(customers.contains(customer));
-	    assertTrue(restaurantOwners.contains(restaurantOwner));
+	    assertTrue(customerRegistrationService.getCustomersByName(cName) != null);
+	    assertTrue(restaurantOwnerRegistrationService.getRestaurantOwnerById(restaurantOwner.getId()) != null);
 	}
 
 }

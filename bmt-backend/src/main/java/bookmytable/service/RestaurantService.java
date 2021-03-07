@@ -132,7 +132,7 @@ public class RestaurantService {
 	}
 	
 	@Transactional
-	public void addTableToMap(int capacity, int tableNumber, int xCoordinate, int yCoordinate, Restaurant restaurant){
+	public RestaurantTable addTableToMap(int capacity, int tableNumber, int xCoordinate, int yCoordinate, Restaurant restaurant){
 	  
 	  RestaurantTable restaurantTable = new RestaurantTable();
 	  restaurantTable.setCapacity(capacity);
@@ -142,6 +142,7 @@ public class RestaurantService {
 	  restaurantTable.setRestaurant(restaurant);
 	  tableRepository.save(restaurantTable);
 	  restaurant.getMap().add(restaurantTable);
+	  return restaurantTable;
 	}
 	
 	@Transactional
