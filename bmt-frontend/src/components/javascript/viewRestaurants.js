@@ -11,7 +11,7 @@ var AXIOS = axios.create({
 	headers: {
 		'Access-Control-Allow-Origin': frontendUrl
 	}
-})
+}) 
 
 export default {
 	data() {
@@ -43,5 +43,28 @@ export default {
 			return '/#/restaurantInfo/'
 
 		},
+		getRestaurantsByCuisine: function(cuisine) {
+			AXIOS.get("/restaurants/cuisine", {}, {cuisine:cuisine})
+			.then(response => {
+				this.restaurants = response.data
+			})
+		}, 
+		getRestaurantsByOption: function(options) {
+			AXIOS.get("/restaurants/options", {}, {options:options})
+			.then(response => {
+				this.restaurants = response.data
+			})
+		}
+	},
+	computed: {
+		filterRestaurantsByFood: function() {
+			var searchType = document.getElementById("foodSearch").value
+			var searchText = document.getElementById("searchBar").value
+			if(searchType == "By Cuisine") {
+				this.getRestaurantsByCuisine(searchText)
+			} else {
+				this.getRestaurantsByOption(searchText)
+			}
+		}
 	}
 }

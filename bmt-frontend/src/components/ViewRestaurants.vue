@@ -2,12 +2,15 @@
 <div id="viewRestaurants">
   <div id="restaurants">
     <h2>Restaurants</h2>
-    <!-- <div id="restaurants-grid">
-                <div v-for="c in restaurants" :key="c.id">
-                    <RestaurantGrid :id="c.id" />\
-
-                </div>
-            </div> -->
+    <br /><label id="foodSearch-label" for="foodSearch-label"><b>Select Food Search Option</b></label
+    ><br />
+    <select name="foodSearch" id="foodSearch">
+      <option value="By Cuisine">By Cuisine</option>
+      <option value="By Food Option">By Food Option</option>
+    </select><br />
+    <form class="form-horizontal" onSubmit="return false;">
+      <input type="text" id="searchBar" placeholder="Search By Cuisine">
+    </form> 
     <table>
       <tr>
         <th v-for="restaurant in restaurants" :key="restaurant.name">
@@ -32,6 +35,23 @@
   justify-content: space-between;
   margin-left: 1em;
   margin-right: 1em;
+  margin-bottom: 1em;
+}
+
+#foodSearch-label {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#foodSearch {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#searchBar {
+  margin-top: 10px;
+  height: 25px;
+  width: 300px;
 }
 
 #restaurants-grid {
