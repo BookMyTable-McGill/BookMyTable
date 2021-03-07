@@ -24,9 +24,9 @@ module.exports = {
   },
   dev: {
 host: 'localhost',
-    port: 8080,
+    port: 8081,
     backendHost: 'localhost',
-    backendPort: 8000,
+    backendPort: 8080,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
