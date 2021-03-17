@@ -328,4 +328,32 @@ public class RestaurantService {
 	}
 	
 	
+	@Transactional
+	public Restaurant AddPhoto(Restaurant restaurant, String photoLink) {
+		
+		if(restaurant == null) {
+			throw new IllegalArgumentException("Restaurant doesn't exist");
+		}
+		
+		if(photoLink.isBlank() || photoLink.isEmpty()) {
+			throw new IllegalArgumentException("No link was provided");
+		}
+		
+		if(restaurant.getPhotos() == null) {
+			String[] photos = new String[1];
+			photos[0] = photoLink;
+			restaurant.setPhotos(photos);
+		}
+		else {
+			String[] photos = restaurant.getPhotos();
+			String[] newPhotos = new String[photos.length + 1];
+			System.arraycopy(photos, 0, newPhotos, 0, photos.length);
+			newPhotos[newPhotos.length-1] = photoLink;
+			restaurant.setPhotos(newPhotos);
+		}
+		restaurantRepository.save(restaurant);
+		
+		return restaurant;
+	}
+	
 }

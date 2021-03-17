@@ -15,6 +15,7 @@ public class RestaurantDTO {
   private Set<TableDTO> map;
   private Set<ReservationDTO> reservations;
   private RestaurantOwnerDTO restaurantOwner;
+  private String[] photos;
   
   public RestaurantDTO() {
     
@@ -114,6 +115,14 @@ public class RestaurantDTO {
   
   public void setRestaurantOwner(RestaurantOwnerDTO restaurantOwner) {
     this.restaurantOwner = restaurantOwner;
+  }
+
+  public String[] getPhotos() {
+	return photos;
+  }
+	
+  public void setPhotos(String[] photos) {
+	this.photos = photos;
   }
   
   

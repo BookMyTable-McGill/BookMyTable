@@ -158,9 +158,12 @@ public class RestaurantCreationController {
 		return Converters.convertToDto(restaurant);
 	}
 	
-
 	
-	
+	@PostMapping(value = {"/restaurant/addPhoto", "/restaurant/addPhoto/" })
+	public RestaurantDTO addPhotos(@RequestParam(name= "address") String address, @RequestParam(name="photoLink") String photoLink) {
+		Restaurant restaurant = restaurantService.getRestaurantByAddress(address);
+		return Converters.convertToDto(restaurantService.AddPhoto(restaurant, photoLink));
+	}
 	
 	
 

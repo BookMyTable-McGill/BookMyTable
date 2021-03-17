@@ -46,6 +46,15 @@ public String getAddress() {
     return this.address;
 }
 
+private String[] photos;
+
+public String[] getPhotos() {
+	return this.photos;
+}
+
+public void setPhotos(String[] photos) {
+	this.photos = photos;
+}
 /**
  * Opening hours to have the following format:
  * S Open        M Open      T Open      W Open      T Open      F Open      S Open

@@ -106,13 +106,7 @@ public class ViewMapOfReservations {
 			int x_coord = Integer.parseInt(map.get("table_coordinates").substring(0,1));
 			int y_coord = Integer.parseInt(map.get("table_coordinates").substring(2,3));
 			RestaurantTable table = serviceR.addTableToMap(5, table_ID, x_coord, y_coord, restaurant);
-//			RestaurantTable table = new RestaurantTable();
-//			table.setId((long)table_ID);
-//			table.setX(x_coord);
-//			table.setY(y_coord);
-//			table.setCapacity(5);
-//			table.setRestaurant(restaurant);
-//			table.setTableNumber(table_ID);
+
 			Customer customer = serviceC.createCustomer(map.get("customer_name"), customerEmails[i], customerPassword, customerPhoneNumber);
 			serviceRes.makeReservation(time, dateFormat, 1, table, customer, restaurant);
 			i++;

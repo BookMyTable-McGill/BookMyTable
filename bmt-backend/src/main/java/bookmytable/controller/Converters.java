@@ -285,6 +285,12 @@ public class Converters {
     
     RestaurantDTO restaurantDTO = new RestaurantDTO(id, name, address, openingHours, isBooked, estimatedDuration,
         food, tableDTOs, reservationDTOs, restaurantOwner);
+   
+    if(r.getPhotos() != null) {
+    	restaurantDTO.setPhotos(r.getPhotos());
+    }
+    
+    
     return restaurantDTO;
   }
   
@@ -320,6 +326,11 @@ public class Converters {
     
     RestaurantDTO restaurantDTO = new RestaurantDTO(id, name, address, openingHours, isBooked, estimatedDuration,
         null, tableDTOs, reservationDTOs, restaurantOwner);
+    
+    if(r.getPhotos() != null) {
+    	restaurantDTO.setPhotos(r.getPhotos());
+    }
+    
     return restaurantDTO;
   }  
   
@@ -348,6 +359,11 @@ public class Converters {
     
     RestaurantDTO restaurantDTO = new RestaurantDTO(id, name, address, openingHours, isBooked, estimatedDuration,
         food, tableDTOs, null, restaurantOwner);
+    
+    if(r.getPhotos() != null) {
+    	restaurantDTO.setPhotos(r.getPhotos());
+    }
+    
     return restaurantDTO;
   }
   
@@ -368,6 +384,12 @@ public class Converters {
     
     RestaurantDTO restaurantDTO = new RestaurantDTO(id, name, address, openingHours, isBooked, estimatedDuration,
         food, null, null, restaurantOwner);
+    
+    if(r.getPhotos() != null) {
+    	restaurantDTO.setPhotos(r.getPhotos());
+    }
+    
+    
     return restaurantDTO;
   }
   
@@ -403,6 +425,11 @@ public class Converters {
     
     RestaurantDTO restaurantDTO = new RestaurantDTO(id, name, address, openingHours, isBooked, estimatedDuration,
         food, tableDTOs, reservationDTOs, null);
+    
+    if(r.getPhotos() != null) {
+    	restaurantDTO.setPhotos(r.getPhotos());
+    }
+    
     return restaurantDTO;
   }
   
@@ -431,6 +458,11 @@ public class Converters {
     
     RestaurantDTO restaurantDTO = new RestaurantDTO(id, name, address, openingHours, isBooked, estimatedDuration,
         food, null, reservationDTOs, restaurantOwner);
+    
+    if(r.getPhotos() != null) {
+    	restaurantDTO.setPhotos(r.getPhotos());
+    }
+    
     return restaurantDTO;
   }
   
@@ -451,6 +483,11 @@ public class Converters {
     
     RestaurantDTO restaurantDTO = new RestaurantDTO(id, name, address, openingHours, isBooked, estimatedDuration,
         food, null, null, restaurantOwner);
+    
+    if(r.getPhotos() != null) {
+    	restaurantDTO.setPhotos(r.getPhotos());
+    }
+    
     return restaurantDTO;
   }
   
