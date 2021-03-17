@@ -15,6 +15,7 @@ import bookmytable.dao.FoodRepository;
 import bookmytable.dao.RestaurantOwnerRepository;
 import bookmytable.dao.RestaurantRepository;
 import bookmytable.dao.TableRepository;
+import bookmytable.model.Admin;
 import bookmytable.model.Food;
 import bookmytable.model.RestaurantTable;
 import bookmytable.model.Reservation;
@@ -351,6 +352,32 @@ public class RestaurantService {
 			newPhotos[newPhotos.length-1] = photoLink;
 			restaurant.setPhotos(newPhotos);
 		}
+		restaurantRepository.save(restaurant);
+		
+		return restaurant;
+	}
+
+	@Transactional
+	public Restaurant AddPhotos(Restaurant restaurant, String[] photos) {
+		if(restaurant == null) {
+			throw new IllegalArgumentException("Restaurant doesn't exist");
+		}
+		
+		if(photos == null) {
+			throw new IllegalArgumentException("No links were provided");
+		}
+		
+		if(restaurant.getPhotos() == null) {
+			restaurant.setPhotos(photos);
+		}
+		else {
+			String[] savedPhotos = restaurant.getPhotos();
+			String[] newPhotos = new String[savedPhotos.length + photos.length];
+			System.arraycopy(savedPhotos, 0, newPhotos, 0, savedPhotos.length);
+			System.arraycopy(photos, 0, newPhotos, savedPhotos.length, photos.length);
+			restaurant.setPhotos(newPhotos);
+		}
+		
 		restaurantRepository.save(restaurant);
 		
 		return restaurant;

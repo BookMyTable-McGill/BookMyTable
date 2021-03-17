@@ -160,11 +160,16 @@ public class RestaurantCreationController {
 	
 	
 	@PostMapping(value = {"/restaurant/addPhoto", "/restaurant/addPhoto/" })
-	public RestaurantDTO addPhotos(@RequestParam(name= "address") String address, @RequestParam(name="photoLink") String photoLink) {
+	public RestaurantDTO addPhoto(@RequestParam(name= "address") String address, @RequestParam(name="photoLink") String photoLink) {
 		Restaurant restaurant = restaurantService.getRestaurantByAddress(address);
 		return Converters.convertToDto(restaurantService.AddPhoto(restaurant, photoLink));
 	}
 	
+	@PostMapping(value = {"/restaurant/addPhotos", "/restaurant/addPhotos/" })
+	public RestaurantDTO addPhotos(@RequestParam(name= "address") String address, @RequestParam(name="photos") String[] photos) {
+		Restaurant restaurant = restaurantService.getRestaurantByAddress(address);
+		return Converters.convertToDto(restaurantService.AddPhotos(restaurant, photos));
+	}
 	
 
 }
