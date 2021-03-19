@@ -383,4 +383,43 @@ public class RestaurantService {
 		return restaurant;
 	}
 	
+	@Transactional
+	public void deleteRestaurant(Restaurant restaurant, String ownerEmail, String ownerPassword) {
+	  if(restaurant == null) {
+        throw new IllegalArgumentException("Restaurant doesn't exist");
+      }
+	  
+	  if (ownerEmail == null) {
+	    throw new IllegalArgumentException("Owner email was not provided");
+	  }
+	  
+	  if (ownerPassword == null) {
+        throw new IllegalArgumentException("Owner password was not provided");
+      }
+	  
+	  RestaurantOwner restaurantOwner = ownerRepository.findRestaurantOwnerByEmail(ownerEmail);
+	  if (restaurantOwner == null) {
+	    throw new IllegalArgumentException("No RestaurantOwner account is associated to this email address");
+	  }
+	  
+	  if (!restaurantOwner.getPassword().equals(ownerPassword)) {
+	    throw new IllegalArgumentException("Incorrect password");
+	  }
+	  
+	  if (!restaurantOwner.getRestaurants().contains(restaurant)) {
+	    throw new IllegalArgumentException("This account is not the owner of the restaurant");
+	  }
+	  
+	  Food food = restaurant.getFood();
+	  foodRepository.delete(food);
+	  
+	  Set<RestaurantTable> tables = restaurant.getMap();
+	  for(RestaurantTable table : tables) {
+	    tableRepository.delete(table);
+	  }
+	  
+	  restaurantRepository.delete(restaurant);
+	  
+	}
+	
 }
