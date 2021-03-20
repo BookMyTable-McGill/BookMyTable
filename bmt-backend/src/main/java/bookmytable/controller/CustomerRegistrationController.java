@@ -81,8 +81,14 @@ public class CustomerRegistrationController {
   }
   
   @DeleteMapping(value = {"/customer/delete", "/customer/delete/"})
-  public CustomerDTO deleteCustomer(@RequestParam(name = "ID") long id) {
+  public CustomerDTO deleteCustomer(@RequestParam(name = "ID") long id, @RequestParam(name="password") String password) {
     Customer customer = customerRegistrationService.deleteCustomer(id);
     return Converters.convertToDto(customer);
+  }
+  
+  @DeleteMapping(value = {"/customer/delete-own-account", "/customer/delete-own-account/"})
+  public void deleteOwnCustomerAccount(@RequestParam(name="email") String email, @RequestParam(name="password") String password) {
+    Customer customer = customerRepository.findCustomerByEmail(email);
+    customerRegistrationService.deleteOwnCustomerAccount(customer, email, password);
   }
 }

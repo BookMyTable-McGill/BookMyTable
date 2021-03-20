@@ -43,11 +43,24 @@
       placeholder="current"
       name="phone-number"
       id="phone-number"
-    />
+    /><br /><br />
+
+	
     <!-- v-on click to save changes-->
     <button type="save-changes" class="savecustomerbtn" v-on:click="modifyCustAccount()">Save Changes</button>
    <!-- v-on click to go back to main page??-->
    <button type="cancel" class="cancelbtn" v-on:click="window.location.href = '/#/'"> Cancel </button>
+
+   <br /><p>If you want to delete your account, please enter your email and password.</p>
+    <label id="email-delete-label" for="email-delete-label"><b>Name</b></label
+    ><br />
+    <input type="text" placeholder="Email" name="email-delete" id="email-delete" />
+
+    <br /><label id="password-delete-label" for="password-delete-label"><b>Email</b></label
+    ><br />
+    <input type="text" placeholder="Password" name="password-delete" id="password-delete" /> <br /><br>
+	<!-- v-on click to delete account-->
+    <button type="delete-account" class="savecustomerbtn" v-on:click="deleteOwnCustomerAccount()">Delete Account</button>
   </div>
 </template>
 

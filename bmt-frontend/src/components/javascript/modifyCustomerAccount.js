@@ -61,6 +61,24 @@ export default {
 				alert("An account with this email already exists.")
 				this.modificationError = e
 			})
-        }
+        },
+		deleteCustomerAccount: function(){
+			var email = document.getElementById("email-delete").value
+			var password = document.getElementById("password-delete").value
+
+			this.modifyCustumerAccount(email, password)
+		},
+		deleteOwnCustomerAccount: function(email, password){
+			AXIOS.deleteOwnCustomerAccount("/customer/delete-own-account", {}, {params: {email:email, password:password}})
+			.then(response => {
+				alert("Congratulations on deleting your account!")
+				this.account = response.data
+				window.location.href = "/#/"
+			})
+			.catch(e => {
+				alert("Cannot delete account.")
+				this.modificationError = e
+			})
+		}
     }
 }
