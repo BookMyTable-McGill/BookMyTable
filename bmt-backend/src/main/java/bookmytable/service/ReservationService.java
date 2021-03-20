@@ -73,6 +73,52 @@ public class ReservationService {
         return reservation;
 
     }
+    
+    @Transactional
+    public Reservation modifyReservation(Long reservationID,Time startTime, Date date, int groupSize, RestaurantTable restaurantTable,
+            Customer customer, Restaurant restaurant) {
+    	
+    	String error = "";
+    	Time endTime = null;
+    	Reservation res = getReservationById(reservationID);
+    	
+    	if(res.getStartTime().equals(startTime) == false || res.getDate().equals(date) == false || res.getTable().equals(restaurantTable) == false) {
+    		 
+    		if (!checkAvailability(startTime, endTime, date, restaurantTable)) {
+    	            error += "RestaurantTable is not available at that time";
+    	        }
+    		
+    		endTime = new Time(startTime.getHours()+restaurant.getEstimatedDuration(), startTime.getMinutes(),0);
+    		
+    		 
+    	}
+    	
+    	if(res.getGroupSize() != groupSize || res.getTable().equals(restaurantTable) == false) {
+    		
+    		if (groupSize < 0 || (restaurantTable != null && groupSize > restaurantTable.getCapacity())) {
+    	            error += "Please enter acceptable group size";
+    	        }
+    	}
+    	
+    	if (error.length() > 0) {
+            throw new IllegalArgumentException(error);
+        }
+    	
+    	res.setCustomer(customer);
+        res.setDate(date);
+        res.setGroupSize(groupSize);
+        res.setRestaurant(restaurant);
+        res.setStartTime(startTime);
+        res.setEndTime(endTime);
+        res.setTable(restaurantTable);
+        reservationRepository.save(res);
+
+        return res;
+
+    	 
+    	
+    	
+    }
 
 
     @Transactional
