@@ -13,8 +13,8 @@ Scenario: Successfully delete customer account (Normal Flow)
 
 When the customer inputs their password into the delete account field 
 And the customer selects to delete their account
-Then the customer's account will be deleted
-And the customer will not be able to log in to the restaurant booking system anymore
+Then the customer's own account will be deleted
+And the customer will not be able to log in to their restaurant booking system account anymore
 
 Scenario: Fail to delete customer account (Normal Flow) 
 

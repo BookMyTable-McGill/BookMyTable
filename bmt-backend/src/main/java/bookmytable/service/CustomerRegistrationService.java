@@ -126,7 +126,7 @@ public class CustomerRegistrationService {
 		if (customer == null) {
 			throw new IllegalArgumentException("Customer doesn't exist");
 		}
-		
+
 		if (email == null) {
 			throw new IllegalArgumentException("Owner email was not provided");
 		}
@@ -140,8 +140,10 @@ public class CustomerRegistrationService {
 		}
 
 		Set<Reservation> reservations = customer.getReservations();
-		for (Reservation reservation : reservations) {
-			reservationRepository.delete(reservation);
+		if (reservations != null) {
+			for (Reservation reservation : reservations) {
+				reservationRepository.delete(reservation);
+			}
 		}
 
 		customerRepository.delete(customer);
