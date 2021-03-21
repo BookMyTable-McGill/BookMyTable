@@ -231,5 +231,29 @@ public class ReservationService {
         }
         return resultList;
     }
+    
+    @Transactional
+    public Reservation deleteReservation(Reservation aReservation, Date currentDate) {
+    	
+    	if(aReservation == null) {
+    		
+    		throw new IllegalArgumentException("Reservation argument is NULL!");
+    		
+    		
+    	}
+    	
+    	Date ReservationDate = aReservation.getDate();
+    	
+    	if(currentDate.after(ReservationDate)) {
+    		
+    		throw new IllegalArgumentException("Reservation cannot be cancelled");
+    		
+    	}
+    	
+    	reservationRepository.delete(aReservation);
+    	
+    	return aReservation;
+    	
+    }
 
 }
