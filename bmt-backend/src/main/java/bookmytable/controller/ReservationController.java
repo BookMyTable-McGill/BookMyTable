@@ -3,6 +3,7 @@ package bookmytable.controller;
 import bookmytable.dao.CustomerRepository;
 import bookmytable.dao.RestaurantRepository;
 import bookmytable.dao.TableRepository;
+import bookmytable.dto.CustomerDTO;
 import bookmytable.dto.ReservationDTO;
 import bookmytable.model.Customer;
 import bookmytable.model.Reservation;
@@ -46,6 +47,19 @@ public class ReservationController {
         Reservation reservation = reservationService.makeReservation(Time.valueOf(startTime), java.sql.Date.valueOf(date), groupSize, restaurantTable, customer,restaurant);
 
         return Converters.convertToDto(reservation);
+    }
+    
+    @PostMapping(value= {"/reservation/modify","reservation/modify/"})
+    public ReservationDTO modifyReservation(@RequestParam(name="resrvationID") Long id, @RequestParam("startTime") String startTime, @RequestParam("date") String date,@RequestParam("groupSize") int groupSize, 
+			@RequestParam("tableID") long tID, @RequestParam("customerID") long cID, @RequestParam("restaurantID") long rID) {
+  	  
+    	 RestaurantTable restaurantTable = tableRepository.findTableById(tID);
+         Restaurant restaurant = restaurantRepository.findRestaurantById(rID);
+         Customer customer = customerRepository.findCustomerById(cID);
+         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+         
+         Reservation modified = reservationService.modifyReservation(id, Time.valueOf(startTime), java.sql.Date.valueOf(date), groupSize, restaurantTable, customer,restaurant);
+         return Converters.convertToDto(modified);
     }
 
 }
