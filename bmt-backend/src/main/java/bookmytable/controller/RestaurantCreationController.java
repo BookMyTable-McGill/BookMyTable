@@ -124,6 +124,16 @@ public class RestaurantCreationController {
 		return restaurantDTOs;
 	}
 	
+	@GetMapping(value = { "/restaurantsWithLeastReservations", "/restaurantsWithLeastReservations/"})
+	public List<RestaurantDTO> getRestaurantsWithLeastReservations() {
+		List<Restaurant> restaurants = restaurantService.getRestaurantsWithLeastReservations();
+		List<RestaurantDTO> restaurantDTOs = new ArrayList<RestaurantDTO>();
+		for (Restaurant r : restaurants) {
+			restaurantDTOs.add(Converters.convertToDto(r));
+		}
+		return restaurantDTOs;
+	}
+	
 	@PostMapping(value = { "/restaurant/modifyRestaurantMenu", "/restaurant/modifyRestaurantMenu/" })
 	public RestaurantDTO modifyRestaurantMenu(@RequestParam(name = "menuLink") String menuLink, @RequestParam(name = "address") String address) {
 		Restaurant restaurant = restaurantService.getRestaurantByAddress(address);
@@ -178,5 +188,6 @@ public class RestaurantCreationController {
 	  Restaurant restaurant = restaurantService.getRestaurantById(id);
 	  restaurantService.deleteRestaurant(restaurant, ownerEmail, ownerPassword);
 	}
+	
 
 }
