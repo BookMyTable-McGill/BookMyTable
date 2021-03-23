@@ -43,7 +43,7 @@ public class Modify_A_Reservation {
 	@Autowired
 	RestaurantOwnerRegistrationService restaurantOwnerService = new RestaurantOwnerRegistrationService();
 	
-	Customer cust = customerRegistrationService.createCustomer("Tester test", "a@reservation.com", "test123", "123-456-7890");
+	Customer cust;
 	
 	//Create a restaurant
 	Time[][] hours = new Time[7][2];
@@ -60,11 +60,11 @@ public class Modify_A_Reservation {
 	String testAddress = "address";
 	
 	
-	RestaurantOwner owner = restaurantOwnerService.registerRestaurantOwner("Restaurant OWner", "test12345", "restoowner@owner.ca");
+	RestaurantOwner owner;
 	
 	
 			//create restaurant through service method
-	Restaurant theRestaurant = restaurantService.createRestaurant( testName, testAddress, hours, owner, estDuration, menuLink, price, cuisine, options);
+	Restaurant theRestaurant ;
 				
 			//Create table
 	RestaurantTable table = new RestaurantTable();
@@ -81,7 +81,7 @@ public class Modify_A_Reservation {
 	Date date = new Date(10,05,2021);
 	int groupSize = 4;
 	
-	Reservation reservation = reservationService.makeReservation(startTime, date, groupSize, table, cust, theRestaurant);
+	Reservation reservation;
 	
 	
 	@Given("a customer <customer_id> is logged into BookMyTable as a customer1")
@@ -95,16 +95,15 @@ public class Modify_A_Reservation {
 		table.setTableNumber(1);
 		table.setX(2);
 		table.setY(4);
-		table.setRestaurant(theRestaurant);
+		
 		
 		table2.setCapacity(3);
 		table2.setTableNumber(2);
 		table2.setX(4);
 		table2.setY(6);
-		table2.setRestaurant(theRestaurant);
 		
-		tRepo.save(table);
-		tRepo.save(table2);
+		
+		
 		
 		for (int i = 0; i < hours.length; i++) {				
 			for (int j = 0; j < hours[i].length; j++) {				
@@ -117,8 +116,7 @@ public class Modify_A_Reservation {
 			}
 		}	
 		
-		theRestaurant.setOpeningHours(hours);
-		rRepository.save(theRestaurant);
+		
 	}
 
 	@When("the customer <customer_id> requests to modify the date of the reservation")
@@ -131,6 +129,15 @@ public class Modify_A_Reservation {
 	public void the_customer_customer_id_selects_a_new_date_for_the_reservation() {
 		// Write code here that turns the phrase above into concrete actions
 		//throw new io.cucumber.java.PendingException();
+		cust = customerRegistrationService.createCustomer("Tester test", "a@reservation.com", "test123", "123-456-7890");
+		owner = restaurantOwnerService.registerRestaurantOwner("Restaurant OWner", "test12345", "restoowner@owner.ca");
+		theRestaurant = restaurantService.createRestaurant( testName, testAddress, hours, owner, estDuration, menuLink, price, cuisine, options);
+		reservation = reservationService.makeReservation(startTime, date, groupSize, table, cust, theRestaurant);
+		table.setRestaurant(theRestaurant);
+		table2.setRestaurant(theRestaurant);
+		tRepo.save(table);
+		tRepo.save(table2);
+		
 		Date newDate = new Date(11,05,2021);
 		reservationService.modifyReservation(reservation.getId(), startTime, newDate, groupSize, table, cust, theRestaurant);
 		date =newDate;
