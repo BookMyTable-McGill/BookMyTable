@@ -5,8 +5,8 @@ I would like to modify a reservation that I made
 So that the restaurant can be aware of the changes 
 
 Background:
-Given a customer <customer_id> is logged into BookMyTable as a customer
-And a customer <customer_id> has already made a reservation <reservation_id>
+Given a customer <customer_id> is logged into BookMyTable as a customer1
+Given a customer has already made a reservation
 
 Scenario: The customer successfully modifies the date of the reservation (Normal Flow)
 When the customer <customer_id> requests to modify the date of the reservation
