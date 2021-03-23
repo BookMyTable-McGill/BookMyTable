@@ -7,6 +7,8 @@ import java.sql.Time;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import bookmytable.dao.RestaurantRepository;
+import bookmytable.dao.TableRepository;
 import bookmytable.model.Customer;
 import bookmytable.model.Reservation;
 import bookmytable.model.Restaurant;
@@ -28,8 +30,15 @@ public class Modify_A_Reservation {
 	@Autowired
 	CustomerRegistrationService customerRegistrationService = new CustomerRegistrationService();
 	
+	
 	@Autowired
 	RestaurantService restaurantService = new RestaurantService();
+	
+	@Autowired
+	private RestaurantRepository rRepository;
+	
+	@Autowired
+	private TableRepository tRepo;
 	
 	@Autowired
 	RestaurantOwnerRegistrationService restaurantOwnerService = new RestaurantOwnerRegistrationService();
@@ -40,18 +49,7 @@ public class Modify_A_Reservation {
 	Time[][] hours = new Time[7][2];
 	Time time1 = Time.valueOf("6:45:20");
 	Time time2 = Time.valueOf("7:45:20");
-	
-//			
-//	for (int i = 0; i < hours.length; i++) {				
-//		for (int j = 0; j < hours[i].length; j++) {				
-//			if (j == 0) {					
-//				hours[i][j] = time1;					
-//			}					
-//			else {					
-//				hours[i][j] = time2;			
-//			}				
-//		}
-//	}		
+			
 			
 	int estDuration = 180;
 	String menuLink = "aLink";
@@ -105,6 +103,9 @@ public class Modify_A_Reservation {
 		table2.setY(6);
 		table2.setRestaurant(theRestaurant);
 		
+		tRepo.save(table);
+		tRepo.save(table2);
+		
 		for (int i = 0; i < hours.length; i++) {				
 			for (int j = 0; j < hours[i].length; j++) {				
 				if (j == 0) {					
@@ -117,6 +118,7 @@ public class Modify_A_Reservation {
 		}	
 		
 		theRestaurant.setOpeningHours(hours);
+		rRepository.save(theRestaurant);
 	}
 
 	@When("the customer <customer_id> requests to modify the date of the reservation")
