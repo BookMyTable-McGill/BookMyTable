@@ -149,4 +149,29 @@ public class RestaurantOwnerRegistrationService {
 	      }
 	      return resultList;
 	  }
+	  
+	  @Transactional
+		public void deleteOwnRestaurantOwnerAccount(RestaurantOwner ro, String password) {
+			if (ro == null) {
+				throw new IllegalArgumentException("Restaurant Owner is null");
+			}
+
+			if (password == null) {
+				throw new IllegalArgumentException("Restaurant Owner password was not provided");
+			}
+
+			if (!ro.getPassword().equals(password)) {
+				throw new IllegalArgumentException("Incorrect password");
+			}
+
+			Set<Restaurant> restaurants = ro.getRestaurants();
+			if (restaurants != null) {
+				for (Restaurant restaurant : restaurants) {
+					restaurantRepository.delete(restaurant);
+				}
+			}
+
+			restaurantOwnerRepository.delete(ro);
+
+		}
 }

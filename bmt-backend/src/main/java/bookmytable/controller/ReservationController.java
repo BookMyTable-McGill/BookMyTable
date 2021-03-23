@@ -1,6 +1,7 @@
 package bookmytable.controller;
 
 import bookmytable.dao.CustomerRepository;
+import bookmytable.dao.ReservationRepository;
 import bookmytable.dao.RestaurantRepository;
 import bookmytable.dao.TableRepository;
 import bookmytable.dto.CustomerDTO;
@@ -12,6 +13,7 @@ import bookmytable.model.RestaurantTable;
 import bookmytable.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,6 +35,9 @@ public class ReservationController {
 
     @Autowired
     private RestaurantRepository restaurantRepository;
+    
+    @Autowired
+    private ReservationRepository reservationRepository;
 
     @Autowired
     private CustomerRepository customerRepository;
@@ -60,6 +65,14 @@ public class ReservationController {
          
          Reservation modified = reservationService.modifyReservation(id, Time.valueOf(startTime), java.sql.Date.valueOf(date), groupSize, restaurantTable, customer,restaurant);
          return Converters.convertToDto(modified);
+    }
+    
+    @DeleteMapping(value= {"/reservation/delete", "reservation/delete/"})
+    public void deleteReservation(@RequestParam("date") String currentDate, @RequestParam("reservationID") Long id) {
+    	
+    	Reservation r = reservationRepository.findReservationById(id);
+    	reservationService.deleteReservation(r, java.sql.Date.valueOf(currentDate));
+    	
     }
 
 }
