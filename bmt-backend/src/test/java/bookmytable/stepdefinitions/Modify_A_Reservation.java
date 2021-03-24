@@ -67,8 +67,8 @@ public class Modify_A_Reservation {
 	Restaurant theRestaurant ;
 				
 			//Create table
-	RestaurantTable table = new RestaurantTable();
-	RestaurantTable table2 = new RestaurantTable();
+	RestaurantTable table;
+	RestaurantTable table2;
 	
 	
 //	table.setCapacity(4);
@@ -91,20 +91,7 @@ public class Modify_A_Reservation {
 	
 	@Given("a customer has already made a reservation")
 	public void a_customer_has_already_made_a_reservation() {
-		table.setCapacity(4);
-		table.setTableNumber(1);
-		table.setX(2);
-		table.setY(4);
-		
-		
-		table2.setCapacity(3);
-		table2.setTableNumber(2);
-		table2.setX(4);
-		table2.setY(6);
-		
-		
-		
-		
+			
 		for (int i = 0; i < hours.length; i++) {				
 			for (int j = 0; j < hours[i].length; j++) {				
 				if (j == 0) {					
@@ -132,11 +119,24 @@ public class Modify_A_Reservation {
 		cust = customerRegistrationService.createCustomer("Tester test", "a@reservation.com", "test123", "123-456-7890");
 		owner = restaurantOwnerService.registerRestaurantOwner("Restaurant OWner", "test12345", "restoowner@owner.ca");
 		theRestaurant = restaurantService.createRestaurant( testName, testAddress, hours, owner, estDuration, menuLink, price, cuisine, options);
-		reservation = reservationService.makeReservation(startTime, date, groupSize, table, cust, theRestaurant);
+		table = new RestaurantTable();
+		table2 = new RestaurantTable();
+		table.setCapacity(4);
+		table.setTableNumber(1);
+		table.setX(2);
+		table.setY(4);
+		table2.setCapacity(3);
+		table2.setTableNumber(2);
+		table2.setX(4);
+		table2.setY(6);
+		 
+		 
 		table.setRestaurant(theRestaurant);
 		table2.setRestaurant(theRestaurant);
 		tRepo.save(table);
 		tRepo.save(table2);
+		
+		reservation = reservationService.makeReservation(startTime, date, groupSize, table, cust, theRestaurant);
 		
 		Date newDate = new Date(11,05,2021);
 		reservationService.modifyReservation(reservation.getId(), startTime, newDate, groupSize, table, cust, theRestaurant);
@@ -158,7 +158,16 @@ public class Modify_A_Reservation {
 		// Write code here that turns the phrase above into concrete actions
 		// throw new io.cucumber.java.PendingException();
 		
-		reservationService.modifyReservation(reservation.getId(), startTime, date, groupSize, table, cust, theRestaurant);
+		Reservation res = reservationService.makeReservation(startTime, date, groupSize, table, cust, theRestaurant);
+		
+		//System.out.println(res.getId());
+		//System.out.println(startTime);
+		//System.out.println(date);
+		//System.out.println(groupSize);
+		//System.out.println(table);
+		//System.out.println(cust.getName());
+		//System.out.println(theRestaurant.getName());
+		reservationService.modifyReservation(res.getId(), startTime, date, groupSize, table, cust, theRestaurant);
 	}
 
 	@Then("the reservation <reservation_id> has the previously set date")

@@ -43,15 +43,15 @@ public int getGroupSize() {
     return this.groupSize;
 }
 
-private long id;
+private Long id;
 
-public void setId(long value) {
+public void setId(Long value) {
     this.id = value;
 }
 
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-public long getId() {
+public Long getId() {
     return this.id;
 }
    private Customer customer;
