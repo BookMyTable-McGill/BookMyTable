@@ -441,5 +441,34 @@ public class RestaurantService {
 		return restaurants.subList(0, Math.min(10, restaurants.size()));
 
 	}
+	
+	
+	@Transactional
+	public List<Restaurant> getFeaturedRestaurants(){
+		
+		List<Restaurant> featuredRestaurants = getAllRestaurants();
+		
+		
+		//bubble sort
+		  int n = featuredRestaurants.size(); 
+	        for (int i = 0; i < n-1; i++)  {
+	            for (int j = 0; j < n-i-1; j++) { 
+	                if (featuredRestaurants.get(j).getReservations().size() < featuredRestaurants.get(j+1).getReservations().size()) 
+	                { 
+	                    // swap restaurants[j+1] and restaurants[j] 
+	                    Restaurant temp = featuredRestaurants.get(j); 
+	                    featuredRestaurants.set(j, featuredRestaurants.get(j+1));
+	                    featuredRestaurants.set(j+1, temp);
+	                } 
+	            }
+	        }
+		
+	        // Get the first 10 (or less)
+			return featuredRestaurants.subList(0, Math.min(10, featuredRestaurants.size()));
+
+		
+		
+		
+	}
 
 }
