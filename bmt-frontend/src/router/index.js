@@ -11,6 +11,7 @@ import ViewOwnerRestaurants from '@/components/ViewOwnerRestaurants'
 import ModifyCustomerAccount from '@/components/ModifyCustomerAccount'
 import ModifyRestaurantOwnerAccount from '@/components/ModifyRestaurantOwnerAccount'
 import ViewCustomers from '@/components/ViewCustomers'
+import OwnerRestaurantInfo from '@/components/OwnerRestaurantInfo'
 
 Vue.use(Router)
 
@@ -30,6 +31,11 @@ export default new Router({
       path: "/restaurantInfo/",
       name: "RestaurantInfo",
       component: RestaurantInfo,
+    },
+    {
+      path:"/ownerRestaurantInfo/",
+      name:"OwnerRestaurantInfo",
+      component: OwnerRestaurantInfo,
     },
     {
       path: "/CreateRestaurant/",

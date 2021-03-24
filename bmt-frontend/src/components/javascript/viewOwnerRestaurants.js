@@ -19,6 +19,7 @@ export default {
       restaurants: [],
       restaurantError: '',
       restaurantOwner:'',
+			showPhotos: false,
       response: []
     }
   },
@@ -35,7 +36,7 @@ export default {
 				.catch(e => {
 					this.restaurantError = e
 				})
-			return '/#/restaurantInfo/'
+			return '/#/ownerRestaurantInfo/'
 		},
   }
 }

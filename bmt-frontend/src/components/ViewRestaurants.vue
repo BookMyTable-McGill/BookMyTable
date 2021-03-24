@@ -1,7 +1,6 @@
 <template>
 <div id="viewRestaurants">
   <div id="restaurants">
-<<<<<<< HEAD
     <h1>Restaurants</h1>
     <div id="search">
       <h3>
@@ -61,7 +60,6 @@
     <table id="resto-table">
       <tr v-for="restaurant in restaurants" :key="restaurant.name">
         <div id="resto">
-=======
     <h2>Restaurants</h2>
     <br /><label id="foodSearch-label" for="foodSearch-label"><b>Select Food Search Option</b></label
     ><br />
@@ -71,11 +69,10 @@
     </select><br />
     <form class="form-horizontal" onSubmit="return false;">
       <input type="text" id="searchBar" placeholder="Search By Cuisine">
-    </form> 
+    </form>
     <table>
       <tr>
         <th v-for="restaurant in restaurants" :key="restaurant.name">
->>>>>>> ac185db97b138de107d1cf5dd7d09f6884574509
           <br>
           <h3>{{restaurant.name}}</h3>
           <a style="font-weight: bold;  text-decoration: underline" v-bind:href="getRestoPage(restaurant.id)">More info</a>
