@@ -134,6 +134,18 @@ public class RestaurantCreationController {
 		return restaurantDTOs;
 	}
 	
+	@GetMapping(value = { "/featuredRestaurants", "/featuredRestaurants/"})
+	public List<RestaurantDTO> getFeaturedRestaurants() {
+		List<Restaurant> featuredRestaurants = restaurantService.getFeaturedRestaurants();
+		List<RestaurantDTO> featuredRestaurantDTOs = new ArrayList<RestaurantDTO>();
+		for (Restaurant r : featuredRestaurants) {
+			featuredRestaurantDTOs.add(Converters.convertToDto(r));
+		}
+		return featuredRestaurantDTOs;
+	}
+	
+	
+	
 	@PostMapping(value = { "/restaurant/modifyRestaurantMenu", "/restaurant/modifyRestaurantMenu/" })
 	public RestaurantDTO modifyRestaurantMenu(@RequestParam(name = "menuLink") String menuLink, @RequestParam(name = "address") String address) {
 		Restaurant restaurant = restaurantService.getRestaurantByAddress(address);
