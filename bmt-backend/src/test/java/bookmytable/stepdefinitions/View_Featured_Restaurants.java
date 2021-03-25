@@ -74,9 +74,8 @@ public class View_Featured_Restaurants {
 
 	@Given("there is at least {int} Restaurant in system")
 	public void there_is_at_least_restaurant_in_the_system(Integer int1) {
-		for (Restaurant restaurant : restaurantService.getAllRestaurants()) {
-			restaurantRepository.delete(restaurant);
-		}
+		
+		restaurantRepository.deleteAll();
 		
 		Time[][] hours = new Time[7][2];
 		Time time1 = Time.valueOf("6:45:20");
@@ -319,9 +318,7 @@ public class View_Featured_Restaurants {
 	@When("there are less than {int} Restaurants in system")
 	public void there_are_less_than_restaurants_in_the_system(Integer int1) {
 	
-		for (Restaurant restaurant : restaurantService.getAllRestaurants()) {
-			restaurantRepository.delete(restaurant);
-		}
+		restaurantRepository.deleteAll();
 		
 		Time[][] hours = new Time[7][2];
 		Time time1 = Time.valueOf("6:45:20");
