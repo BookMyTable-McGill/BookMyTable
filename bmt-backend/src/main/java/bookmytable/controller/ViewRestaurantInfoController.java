@@ -3,6 +3,7 @@ package bookmytable.controller;
 import bookmytable.dao.CustomerRepository;
 import bookmytable.dao.RestaurantRepository;
 import bookmytable.dao.TableRepository;
+import bookmytable.dto.FoodDTO;
 import bookmytable.dto.RestaurantDTO;
 import bookmytable.model.Customer;
 import bookmytable.model.Reservation;
@@ -39,4 +40,9 @@ public class ViewRestaurantInfoController {
         return Converters.convertToDto(restaurant);
     }
     
+    @GetMapping(value = {"/viewRestaurantMenu", "/viewRestaurantMenu/"})
+    public FoodDTO viewRestaurantMenu(@RequestParam("ID") long ID) {
+    	Restaurant restaurant = viewRestaurantInfoService.getRestaurantById(ID);
+        return Converters.convertToDto(viewRestaurantInfoService.getRestaurantMenu(restaurant));
+    }
 }

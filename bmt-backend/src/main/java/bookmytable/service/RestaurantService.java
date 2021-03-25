@@ -118,6 +118,9 @@ public class RestaurantService {
 	@Transactional
 	public Food createFood(String menuLink, int price, String cuisine, String options, Restaurant aRestaurant) {
 
+		if(menuLink == " ") {
+    		throw new IllegalArgumentException("Menu argument is null");
+		}
 		Food food = new Food();
 		food.setCuisine(cuisine);
 		food.setMenuLink(menuLink);

@@ -4,6 +4,7 @@ package bookmytable.service;
 import bookmytable.dao.ReservationRepository;
 import bookmytable.dao.RestaurantRepository;
 import bookmytable.model.Customer;
+import bookmytable.model.Food;
 import bookmytable.model.Reservation;
 import bookmytable.model.Restaurant;
 import bookmytable.model.RestaurantTable;
@@ -33,6 +34,17 @@ public class ViewRestaurantInfoService {
     @Transactional
     public Restaurant getRestaurantByAddress(String address) {
         return restaurantRepository.findRestaurantByAddress(address);
+    }
+    
+    @Transactional
+    public Food getRestaurantMenu(Restaurant restaurant){
+    	if(restaurant == null)
+    	{
+    		throw new IllegalArgumentException("Restaurant argument is null");
+    	}
+    	
+		return restaurant.getFood();
+
     }
 
     private <T> List<T> toList(Iterable<T> iterable) {
