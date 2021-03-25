@@ -147,7 +147,7 @@ public class Modify_A_Reservation {
 	public void the_reservation_reservation_id_has_the_newly_modified_date() {
 		// Write code here that turns the phrase above into concrete actions
 		//throw new io.cucumber.java.PendingException();
-		
+		System.out.println("RESERVATION NUMBER IS "+ reservation.getId());
 		Reservation res = reservationService.getReservationById(reservation.getId());
 		assertEquals(res.getDate(), new Date(11,05,2021));
 		
@@ -157,8 +157,29 @@ public class Modify_A_Reservation {
 	public void the_customer_customer_id_does_not_select_any_date_for_the_reservation() {
 		// Write code here that turns the phrase above into concrete actions
 		// throw new io.cucumber.java.PendingException();
+		//System.out.println("RESERVATION NUMBER IS "+ reservation.getId());
 		
-		Reservation res = reservationService.makeReservation(startTime, date, groupSize, table, cust, theRestaurant);
+		cust = customerRegistrationService.createCustomer("Tester test", "b@reservation.com", "test123", "123-456-7890");
+		owner = restaurantOwnerService.registerRestaurantOwner("Restaurant OWner", "test12345", "1restoowner@owner.ca");
+		theRestaurant = restaurantService.createRestaurant( "mane", "12", hours, owner, estDuration, menuLink, price, cuisine, options);
+		table = new RestaurantTable();
+		table2 = new RestaurantTable();
+		table.setCapacity(4);
+		table.setTableNumber(1);
+		table.setX(2);
+		table.setY(4);
+		table2.setCapacity(3);
+		table2.setTableNumber(2);
+		table2.setX(4);
+		table2.setY(6);
+		 
+		 
+		table.setRestaurant(theRestaurant);
+		table2.setRestaurant(theRestaurant);
+		tRepo.save(table);
+		tRepo.save(table2);
+		
+		reservation = reservationService.makeReservation(startTime, date, groupSize, table, cust, theRestaurant);
 		
 		//System.out.println(res.getId());
 		//System.out.println(startTime);
@@ -167,7 +188,7 @@ public class Modify_A_Reservation {
 		//System.out.println(table);
 		//System.out.println(cust.getName());
 		//System.out.println(theRestaurant.getName());
-		reservationService.modifyReservation(res.getId(), startTime, date, groupSize, table, cust, theRestaurant);
+		reservationService.modifyReservation(reservation.getId(), startTime, date, groupSize, table, cust, theRestaurant);
 	}
 
 	@Then("the reservation <reservation_id> has the previously set date")
@@ -196,6 +217,27 @@ public class Modify_A_Reservation {
 	public void the_customer_customer_id_selects_a_new_time_for_the_reservation() {
 		// Write code here that turns the phrase above into concrete actions
 		//throw new io.cucumber.java.PendingException();
+		cust = customerRegistrationService.createCustomer("Tester test", "bc@reservation.com", "test123", "123-456-7890");
+		owner = restaurantOwnerService.registerRestaurantOwner("Restaurant OWner", "test12345", "12restoowner@owner.ca");
+		theRestaurant = restaurantService.createRestaurant( "m1ane", "112", hours, owner, estDuration, menuLink, price, cuisine, options);
+		table = new RestaurantTable();
+		table2 = new RestaurantTable();
+		table.setCapacity(4);
+		table.setTableNumber(1);
+		table.setX(2);
+		table.setY(4);
+		table2.setCapacity(3);
+		table2.setTableNumber(2);
+		table2.setX(4);
+		table2.setY(6);
+		 
+		 
+		table.setRestaurant(theRestaurant);
+		table2.setRestaurant(theRestaurant);
+		tRepo.save(table);
+		tRepo.save(table2);
+		
+		reservation = reservationService.makeReservation(startTime, date, groupSize, table, cust, theRestaurant);
 		
 		Time newTime = new Time(8,00,0);
 		reservationService.modifyReservation(reservation.getId(), newTime, date, groupSize, table, cust, theRestaurant);
@@ -215,7 +257,27 @@ public class Modify_A_Reservation {
 	public void the_customer_customer_id_does_not_select_any_time_for_the_reservation() {
 		// Write code here that turns the phrase above into concrete actions
 		//throw new io.cucumber.java.PendingException();
+		cust = customerRegistrationService.createCustomer("Tester test", "bcg@reservation.com", "test123", "123-456-7890");
+		owner = restaurantOwnerService.registerRestaurantOwner("Restaurant OWner", "test12345", "12grestoowner@owner.ca");
+		theRestaurant = restaurantService.createRestaurant( "mg1ane", "11g2", hours, owner, estDuration, menuLink, price, cuisine, options);
+		table = new RestaurantTable();
+		table2 = new RestaurantTable();
+		table.setCapacity(4);
+		table.setTableNumber(1);
+		table.setX(2);
+		table.setY(4);
+		table2.setCapacity(3);
+		table2.setTableNumber(2);
+		table2.setX(4);
+		table2.setY(6);
+		 
+		 
+		table.setRestaurant(theRestaurant);
+		table2.setRestaurant(theRestaurant);
+		tRepo.save(table);
+		tRepo.save(table2);
 		
+		reservation = reservationService.makeReservation(startTime, date, groupSize, table, cust, theRestaurant);
 		reservationService.modifyReservation(reservation.getId(), startTime, date, groupSize, table, cust, theRestaurant);
 
 	}
@@ -238,7 +300,57 @@ public class Modify_A_Reservation {
 	public void the_customer_customer_id_selects_a_new_group_size_for_the_reservation() {
 		// Write code here that turns the phrase above into concrete actions
 		//throw new io.cucumber.java.PendingException();
+		cust = customerRegistrationService.createCustomer("Tester test", "bcqg@reservation.com", "test123", "123-456-7890");
+		owner = restaurantOwnerService.registerRestaurantOwner("Restaurant OWner", "test12345", "12gqrestoowner@owner.ca");
+		theRestaurant = restaurantService.createRestaurant( "qmg1ane", "11qg2", hours, owner, estDuration, menuLink, price, cuisine, options);
+		table = new RestaurantTable();
+		table2 = new RestaurantTable();
+		table.setCapacity(4);
+		table.setTableNumber(1);
+		table.setX(2);
+		table.setY(4);
+		table2.setCapacity(3);
+		table2.setTableNumber(2);
+		table2.setX(4);
+		table2.setY(6);
+		 
+		 
+		table.setRestaurant(theRestaurant);
+		table2.setRestaurant(theRestaurant);
+		tRepo.save(table);
+		tRepo.save(table2);
 		
+		reservation = reservationService.makeReservation(startTime, date, groupSize, table, cust, theRestaurant);
+		int newGroupSize = 3;
+		reservationService.modifyReservation(reservation.getId(), startTime, date, newGroupSize, table, cust, theRestaurant);
+		groupSize =newGroupSize;
+	}
+	
+	@When("the customer <customer_id> selects a new group size and new table for the reservation1")
+	public void the_customer_customer_id_selects_a_new_group_size_and_new_table_for_the_reservation1() {
+		// Write code here that turns the phrase above into concrete actions
+		//throw new io.cucumber.java.PendingException();
+		cust = customerRegistrationService.createCustomer("Tester test", "bcqg5@reservation.com", "test123", "123-456-7890");
+		owner = restaurantOwnerService.registerRestaurantOwner("Restaurant OWner", "test12345", "12gq5restoowner@owner.ca");
+		theRestaurant = restaurantService.createRestaurant( "qmg51ane", "11q5g2", hours, owner, estDuration, menuLink, price, cuisine, options);
+		table = new RestaurantTable();
+		table2 = new RestaurantTable();
+		table.setCapacity(4);
+		table.setTableNumber(1);
+		table.setX(2);
+		table.setY(4);
+		table2.setCapacity(3);
+		table2.setTableNumber(2);
+		table2.setX(4);
+		table2.setY(6);
+		 
+		 
+		table.setRestaurant(theRestaurant);
+		table2.setRestaurant(theRestaurant);
+		tRepo.save(table);
+		tRepo.save(table2);
+		
+		reservation = reservationService.makeReservation(startTime, date, groupSize, table, cust, theRestaurant);
 		int newGroupSize = 3;
 		reservationService.modifyReservation(reservation.getId(), startTime, date, newGroupSize, table, cust, theRestaurant);
 		groupSize =newGroupSize;
@@ -248,6 +360,60 @@ public class Modify_A_Reservation {
 	public void the_customer_customer_id_selects_a_new_table_for_the_reservation() {
 		// Write code here that turns the phrase above into concrete actions
 		//throw new io.cucumber.java.PendingException();
+		
+		cust = customerRegistrationService.createCustomer("Tester test", "bcq3g@reservation.com", "test123", "123-456-7890");
+		owner = restaurantOwnerService.registerRestaurantOwner("Restaurant OWner", "test12345", "12gq3restoowner@owner.ca");
+		theRestaurant = restaurantService.createRestaurant( "qmg13ane", "113qg2", hours, owner, estDuration, menuLink, price, cuisine, options);
+		table = new RestaurantTable();
+		table2 = new RestaurantTable();
+		table.setCapacity(4);
+		table.setTableNumber(1);
+		table.setX(2);
+		table.setY(4);
+		table2.setCapacity(3);
+		table2.setTableNumber(2);
+		table2.setX(4);
+		table2.setY(6);
+		 
+		 
+		table.setRestaurant(theRestaurant);
+		table2.setRestaurant(theRestaurant);
+		tRepo.save(table);
+		tRepo.save(table2);
+		
+		groupSize=3;
+		reservation = reservationService.makeReservation(startTime, date, groupSize, table, cust, theRestaurant);
+		
+		reservationService.modifyReservation(reservation.getId(), startTime, date, groupSize, table2, cust, theRestaurant);
+
+	}
+	@When("the customer <customer_id> selects a new table for the reservation1")
+	public void the_customer_customer_id_selects_a_new_table_for_the_reservation1() {
+		// Write code here that turns the phrase above into concrete actions
+		//throw new io.cucumber.java.PendingException();
+		
+		cust = customerRegistrationService.createCustomer("Tester test", "becq3g@reservation.com", "test123", "123-456-7890");
+		owner = restaurantOwnerService.registerRestaurantOwner("Restaurant OWner", "test12345", "12gq3erestoowner@owner.ca");
+		theRestaurant = restaurantService.createRestaurant( "qmge13ane", "113qge2", hours, owner, estDuration, menuLink, price, cuisine, options);
+		table = new RestaurantTable();
+		table2 = new RestaurantTable();
+		table.setCapacity(4);
+		table.setTableNumber(1);
+		table.setX(2);
+		table.setY(4);
+		table2.setCapacity(3);
+		table2.setTableNumber(2);
+		table2.setX(4);
+		table2.setY(6);
+		 
+		 
+		table.setRestaurant(theRestaurant);
+		table2.setRestaurant(theRestaurant);
+		tRepo.save(table);
+		tRepo.save(table2);
+		
+		groupSize=3;
+		reservation = reservationService.makeReservation(startTime, date, groupSize, table, cust, theRestaurant);
 		
 		reservationService.modifyReservation(reservation.getId(), startTime, date, groupSize, table2, cust, theRestaurant);
 
@@ -260,13 +426,73 @@ public class Modify_A_Reservation {
 
 		Reservation res = reservationService.getReservationById(reservation.getId());
 		assertEquals(res.getGroupSize(), 3);
-		assertEquals(res.getTable(), table2);
+		assertEquals(res.getTable().getCapacity(), table2.getCapacity());
+	}
+	@Then("the reservation <reservation_id> has the newly modified group size and table1")
+	public void the_reservation_reservation_id_has_the_newly_modified_group_size_and_table1() {
+		// Write code here that turns the phrase above into concrete actions
+		//throw new io.cucumber.java.PendingException();
+
+		Reservation res = reservationService.getReservationById(reservation.getId());
+		assertEquals(res.getGroupSize(), 3);
+		assertEquals(res.getTable().getCapacity(), table.getCapacity());
 	}
 
 	@When("the customer <customer_id> does not select a new group size for the reservation")
 	public void the_customer_customer_id_does_not_select_a_new_group_size_for_the_reservation() {
 		// Write code here that turns the phrase above into concrete actions
 		//throw new io.cucumber.java.PendingException();
+		cust = customerRegistrationService.createCustomer("Tester test", "bcq3ig@reservation.com", "test123", "123-456-7890");
+		owner = restaurantOwnerService.registerRestaurantOwner("Restaurant OWner", "test12345", "12igq3restoowner@owner.ca");
+		theRestaurant = restaurantService.createRestaurant( "iqmg13ane", "1i13qg2", hours, owner, estDuration, menuLink, price, cuisine, options);
+		table = new RestaurantTable();
+		table2 = new RestaurantTable();
+		table.setCapacity(4);
+		table.setTableNumber(1);
+		table.setX(2);
+		table.setY(4);
+		table2.setCapacity(3);
+		table2.setTableNumber(2);
+		table2.setX(4);
+		table2.setY(6);
+		 
+		 
+		table.setRestaurant(theRestaurant);
+		table2.setRestaurant(theRestaurant);
+		tRepo.save(table);
+		tRepo.save(table2);
+		groupSize =2; 
+		reservation = reservationService.makeReservation(startTime, date, groupSize, table2, cust, theRestaurant);
+		
+		reservationService.modifyReservation(reservation.getId(), startTime, date, groupSize, table2, cust, theRestaurant);
+
+	}
+	@When("the customer <customer_id> does not select a new group size for the reservation1")
+	public void the_customer_customer_id_does_not_select_a_new_group_size_for_the_reservation1() {
+		// Write code here that turns the phrase above into concrete actions
+		//throw new io.cucumber.java.PendingException();
+		cust = customerRegistrationService.createCustomer("Tester test", "bcqe3ig@reservation.com", "test123", "123-456-7890");
+		owner = restaurantOwnerService.registerRestaurantOwner("Restaurant OWner", "test12345", "12igqe3restoowner@owner.ca");
+		theRestaurant = restaurantService.createRestaurant( "iqmg1e3ane", "1ie13qg2", hours, owner, estDuration, menuLink, price, cuisine, options);
+		table = new RestaurantTable();
+		table2 = new RestaurantTable();
+		table.setCapacity(4);
+		table.setTableNumber(1);
+		table.setX(2);
+		table.setY(4);
+		table2.setCapacity(3);
+		table2.setTableNumber(2);
+		table2.setX(4);
+		table2.setY(6);
+		 
+		 
+		table.setRestaurant(theRestaurant);
+		table2.setRestaurant(theRestaurant);
+		tRepo.save(table);
+		tRepo.save(table2);
+		groupSize =2; 
+		reservation = reservationService.makeReservation(startTime, date, groupSize, table2, cust, theRestaurant);
+		
 		reservationService.modifyReservation(reservation.getId(), startTime, date, groupSize, table2, cust, theRestaurant);
 
 	}
@@ -290,7 +516,7 @@ public class Modify_A_Reservation {
 		// Write code here that turns the phrase above into concrete actions
 		//throw new io.cucumber.java.PendingException();
 		Reservation res = reservationService.getReservationById(reservation.getId());
-		assertEquals(res.getTable(), table2);
+		assertEquals(res.getTable().getCapacity(), table2.getCapacity());
 
 		
 	}
@@ -299,6 +525,28 @@ public class Modify_A_Reservation {
 	public void the_customer_customer_id_does_not_select_a_new_table_for_the_reservation() {
 		// Write code here that turns the phrase above into concrete actions
 		//throw new io.cucumber.java.PendingException();
+		cust = customerRegistrationService.createCustomer("Tester test", "bcqm3ig@reservation.com", "test123", "123-456-7890");
+		owner = restaurantOwnerService.registerRestaurantOwner("Restaurant OWner", "test12345", "12igmq3restoowner@owner.ca");
+		theRestaurant = restaurantService.createRestaurant( "imqmg13ane", "1i13mqg2", hours, owner, estDuration, menuLink, price, cuisine, options);
+		table = new RestaurantTable();
+		table2 = new RestaurantTable();
+		table.setCapacity(4);
+		table.setTableNumber(1);
+		table.setX(2);
+		table.setY(4);
+		table2.setCapacity(3);
+		table2.setTableNumber(2);
+		table2.setX(4);
+		table2.setY(6);
+		 
+		 
+		table.setRestaurant(theRestaurant);
+		table2.setRestaurant(theRestaurant);
+		tRepo.save(table);
+		tRepo.save(table2);
+		groupSize=2;
+		reservation = reservationService.makeReservation(startTime, date, groupSize, table2, cust, theRestaurant);
+		
 		reservationService.modifyReservation(reservation.getId(), startTime, date, groupSize, table2, cust, theRestaurant);
 
 	}
@@ -308,7 +556,7 @@ public class Modify_A_Reservation {
 		// Write code here that turns the phrase above into concrete actions
 		//throw new io.cucumber.java.PendingException();
 		Reservation res = reservationService.getReservationById(reservation.getId());
-		assertEquals(res.getTable(), table2);
+		assertEquals(res.getTable().getCapacity(), table2.getCapacity());
 
 	}
 

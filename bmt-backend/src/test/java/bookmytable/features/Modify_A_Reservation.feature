@@ -44,19 +44,18 @@ And "group size of reservation not modified" message appears
 
 Scenario: The customer successfully modifies the group size of the reservation (Normal Flow)
 When the customer <customer_id> requests to modify the group size of the reservation
-And the customer <customer_id> selects a new group size for the reservation
-And the customer <customer_id> selects a new table for the reservation
-Then the reservation <reservation_id> has the newly modified group size and table
+And the customer <customer_id> selects a new group size and new table for the reservation1
+Then the reservation <reservation_id> has the newly modified group size and table1
 
 Scenario: The customer does not successfully modify the group size of the reservation because no group size is selected (Error Flow)
 When the customer <customer_id> requests to modify the group size of the reservation
-But the customer <customer_id> does not select a new group size for the reservation
+But the customer <customer_id> does not select a new group size for the reservation1
 Then the reservation <reservation_id> has the previously set group size
 And "group size of reservation not modified" message appears
 
 Scenario: The customer successfully modifies the table of the reservation (Normal Flow)
 When the customer <customer_id> requests to modify the table of the reservation
-And the customer <customer_id> selects a new table for the reservation
+And the customer <customer_id> selects a new table for the reservation1
 Then the reservation <reservation_id> has the newly modified table
 
 Scenario: The customer does not successfully modify the table of the reservation because no table is selected (Error Flow)
