@@ -14,9 +14,9 @@ Feature: View Featured Restaurants
 
     When Customer "<customer_name>" queries to view Restaurants with most Reservations
     And there are at least 10 Restaurants in System
-    Then a list of the first 10 Restaurants with the most Reservations <"list_of_restaurants_with_least_res"> is returned in ascending order:
+    Then a list of the first 10 Restaurants with the most Reservations <"list_of_restaurants_with_most_res"> is returned in descending order:
 
-      | list_of_restaurants_with_least_res 					   						      | 
+      | list_of_restaurants_with_most_res 					   						      | 
       | New Rivoli, Matjip KBBQ, Elio Pizzeria, Nostos, Jukebox Burgers, 40 West, Baton Rouge, Monza, Mac Bar et Fromage, Maiko Sushi | 
      
 
@@ -24,7 +24,7 @@ Feature: View Featured Restaurants
 
     When Customer "<customer_name>" queries to view Restaurants with most Reservations
     And there are less than 10 Restaurants in system
-    Then a list of all of the Restaurants <"list_of_restaurants_with_least_res_reduced"> in system is returned in ascending order based on Reservations:
+    Then a list of all of the Restaurants <"list_of_restaurants_with_most_res_reduced"> in system is returned in descending order based on Reservations:
 
       | list_of_restaurants_with_least_res_reduced				 | 						      
       | New Rivoli, Matjip KBBQ, Elio Pizzeria, Nostos, Jukebox Burgers, 40 West |
