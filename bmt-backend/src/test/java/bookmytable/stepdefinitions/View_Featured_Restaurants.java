@@ -64,7 +64,7 @@ public class View_Featured_Restaurants {
 		if (customer != null) {
 			customerRegistrationService.deleteCustomer(customer.getId());
 		}
-		customer = customerRegistrationService.createCustomer(string, string2+"@mailxyz.com", string3, "222-222-222");
+		customer = customerRegistrationService.createCustomer(string, "absc457@mailxyz.com", string3, "222-222-222");
 	}
 
 	@Given("a Customer {string} is logged in")
