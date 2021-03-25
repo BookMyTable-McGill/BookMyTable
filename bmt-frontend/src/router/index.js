@@ -12,7 +12,7 @@ import ModifyCustomerAccount from '@/components/ModifyCustomerAccount'
 import ModifyRestaurantOwnerAccount from '@/components/ModifyRestaurantOwnerAccount'
 import ViewCustomers from '@/components/ViewCustomers'
 import OwnerRestaurantInfo from '@/components/OwnerRestaurantInfo'
-
+import ViewRestaurantsWithLeastReservations from '@/components/ViewRestaurantsWithLeastReservations'
 Vue.use(Router)
 
 export default new Router({
@@ -77,5 +77,10 @@ export default new Router({
       name: "ViewCustomers",
       component: ViewCustomers,
     },
+    {
+      path: "/viewRestaurantsWithLeastReservations/",
+      name: "viewRestaurantsWithLeastReservations",
+      component: ViewRestaurantsWithLeastReservations,
+    }
   ],
 });
