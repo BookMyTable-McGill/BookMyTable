@@ -61,10 +61,19 @@ public class View_Featured_Restaurants {
 	@Given("a Customer {string} has email {string}, password {string}")
 	public void customer_has_email_password(String string, String string2, String string3) {
 		
+		 String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+	        StringBuilder word = new StringBuilder();
+	        Random rnd = new Random();
+	        while (word.length() < 8) { // length of the random string.
+	            int index = (int) (rnd.nextFloat() * chars.length());
+	            word.append(chars.charAt(index));
+	        }
+	        String randomw = word.toString();
+		
 		if (customer != null) {
 			customerRegistrationService.deleteCustomer(customer.getId());
 		}
-		customer = customerRegistrationService.createCustomer(string, "absc457@mailxyz.com", string3, "222-222-222");
+		customer = customerRegistrationService.createCustomer(string, randomw + "@mailxyz.com", string3, "222-222-2222");
 	}
 
 	@Given("a Customer {string} is logged in")
