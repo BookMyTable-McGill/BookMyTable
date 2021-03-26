@@ -57,6 +57,5 @@
 }
 </style>
 
-<script>
-
+<script src="./javascript/makeReservation.js">
 </script>
