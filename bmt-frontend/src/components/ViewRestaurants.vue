@@ -51,30 +51,11 @@
       <button v-if="filterType != '' || filterType == 'All Restaurants'" v-on:click="searchRestaurants(inputString, price, minPrice, maxPrice, filterType)">Search</button>
     </div>
     <br>
-    <!-- <div id="restaurants-grid">
-                <div v-for="c in restaurants" :key="c.id">
-                    <RestaurantGrid :id="c.id" />\
-
-                </div>
-            </div> -->
     <table id="resto-table">
       <tr v-for="restaurant in restaurants" :key="restaurant.name">
         <div id="resto">
-    <h2>Restaurants</h2>
-    <br /><label id="foodSearch-label" for="foodSearch-label"><b>Select Food Search Option</b></label
-    ><br />
-    <select name="foodSearch" id="foodSearch">
-      <option value="By Cuisine">By Cuisine</option>
-      <option value="By Food Option">By Food Option</option>
-    </select><br />
-    <form class="form-horizontal" onSubmit="return false;">
-      <input type="text" id="searchBar" placeholder="Search By Cuisine">
-    </form>
-    <table>
-      <tr>
-        <th v-for="restaurant in restaurants" :key="restaurant.name">
           <br>
-          <h3>{{restaurant.name}}</h3>
+          <h2>{{restaurant.name}}</h2>
           <a style="font-weight: bold;  text-decoration: underline" v-bind:href="getRestoPage(restaurant.id)">More info</a>
           <br>
           <br>
@@ -82,6 +63,8 @@
         <br>
       </tr>
     </table>
+    <br>
+    <br>
     <h3 v-if="restaurants == ''">There are no such restaurants</h3>
   </div>
 </div>
