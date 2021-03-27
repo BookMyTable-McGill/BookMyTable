@@ -47,6 +47,11 @@ public class RestaurantOwnerRegistrationService {
 	}
 	
 	@Transactional
+	public RestaurantOwner getRestaurantOwnerByEmail(String email) {
+	  return restaurantOwnerRepository.findRestaurantOwnerByEmail(email);
+	}
+	
+	@Transactional
 	public RestaurantOwner modifyRestaurantOwner(Long ownerID, String name, String email, String password) {
 		RestaurantOwner owner = getRestaurantOwnerById(ownerID);  	
 		

@@ -44,16 +44,11 @@ public class Mark_Restaurant_As_Favorite {
 		String email = "customer1@gmail.com";
 		String password = "password";
 		String phoneNumber = "514-111-2222";
-		try {
-		  customer = customerRegistrationService.createCustomer(name, email, password, phoneNumber);
-		} catch (IllegalArgumentException e) {
-		  if (e.getMessage().equals("An account with this email already exists")) {
-		    customer = customerRegistrationService.getCustomerByEmail(email);
-		  } else {
-		    throw new IllegalArgumentException("Customer creation failed");
-		  }
+		customer = customerRegistrationService.getCustomerByEmail(email);
+		if (customer == null) {
+          customer = customerRegistrationService.createCustomer(name, email, password, phoneNumber);
 		}
-		assertTrue(customerLoginService.loginCustomer(customer, email, password));
+		assertTrue(customerLoginService.loginCustomer(customer, customer.getEmail(), customer.getPassword()));
 	}
 
 	@When("the Customer marks a Restaurant as Favorite")
@@ -61,7 +56,10 @@ public class Mark_Restaurant_As_Favorite {
 	  String ownerName = "Owner Name";
 	  String email = "restoOwner@gmail.com";
 	  String password = "password";
-	  restaurantOwner = restaurantOwnerRegistrationService.registerRestaurantOwner(ownerName, password, email);
+	  restaurantOwner = restaurantOwnerRegistrationService.getRestaurantOwnerByEmail(email);
+	  if (restaurantOwner == null) {
+	      restaurantOwner = restaurantOwnerRegistrationService.registerRestaurantOwner(ownerName, password, email); 
+	  }
 	  
 	  String name = "TestoResto";
 	  String address = "123 Test Lane";
