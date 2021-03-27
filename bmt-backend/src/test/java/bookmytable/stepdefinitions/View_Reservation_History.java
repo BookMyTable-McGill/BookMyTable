@@ -155,8 +155,15 @@ public class View_Reservation_History {
 	@Then("there will be no history for the customer to view")
 	public void there_will_be_no_history_for_the_customer_to_view() {
 		// Write code here that turns the phrase above into concrete actions
-		List<Reservation> reservations = reservationService.getReservationsByCustomer(newCustomer);
-		assertEquals(reservations.size(), 0);
+		List<Reservation> reservations;
+		int errorCount = 0;
+		try {
+			reservations = reservationService.getReservationsByCustomer(newCustomer);
+		} catch (IllegalArgumentException e) {
+			errorCount = 1;
+		}
+		
+		assertEquals(errorCount, 1);
 		
 		cRepo.delete(newCustomer);
 		

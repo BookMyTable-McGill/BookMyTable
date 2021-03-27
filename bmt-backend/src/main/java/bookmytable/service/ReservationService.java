@@ -119,7 +119,11 @@ public class ReservationService {
 
     @Transactional
     public List<Reservation> getReservationsByCustomer(Customer customer) {
-    	return reservationRepository.findReservationsByCustomer(customer);
+    	List<Reservation> reservations = reservationRepository.findReservationsByCustomer(customer);
+    	if(reservations.size() == 0) {
+    		throw new IllegalArgumentException("No reservation history available");
+    	}
+    	return reservations;
     }
     
     @Transactional
