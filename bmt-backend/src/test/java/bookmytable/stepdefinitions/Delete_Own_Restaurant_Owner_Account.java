@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import bookmytable.dao.RestaurantOwnerRepository;
 import bookmytable.dao.RestaurantRepository;
 import bookmytable.model.Restaurant;
 import bookmytable.model.RestaurantOwner;
@@ -40,6 +41,9 @@ public class Delete_Own_Restaurant_Owner_Account {
 	@Autowired
 	private RestaurantRepository repo;
 	
+	@Autowired
+	private RestaurantOwnerRepository ROrepo;
+	
 	
 
 	
@@ -47,8 +51,10 @@ public class Delete_Own_Restaurant_Owner_Account {
 	public void a_restaurant_owner_is_logged_in() {
 		
 		restaurantOwner = RORService.registerRestaurantOwner("newOwner", "password", "xyz00@email.com");
+		restaurantOwner.setId(Long.valueOf(9999));
+		ROrepo.save(restaurantOwner);
 		email = restaurantOwner.getEmail();
-		String name = "name";
+		String name = "newName";
 		String address = "address";
 		Time[][] hours = new Time[7][2];
 		Time time1 = Time.valueOf("6:45:20");
