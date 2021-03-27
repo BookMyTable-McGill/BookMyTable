@@ -115,12 +115,13 @@ public class ReservationService {
 
         return res;
 
-    	 
-    	
-    	
     }
 
-
+    @Transactional
+    public List<Reservation> getReservationsByCustomer(Customer customer) {
+    	return reservationRepository.findReservationsByCustomer(customer);
+    }
+    
     @Transactional
     public Reservation getReservationById(long id) {
         return reservationRepository.findReservationById(id);

@@ -1,5 +1,6 @@
 package bookmytable.dao;
 
+import bookmytable.model.Customer;
 import bookmytable.model.Reservation;
 import bookmytable.model.Restaurant;
 import bookmytable.model.RestaurantTable;
@@ -31,4 +32,6 @@ public interface ReservationRepository extends CrudRepository<Reservation, Long>
   List<Reservation> findReservationsByTableAndGroupSizeAndDate(RestaurantTable restaurantTable, int groupSize, Date date);
   List<Reservation> findReservationsByRestaurantAndGroupSize(Restaurant restaurant, int groupSize);
   List<Reservation> findReservationsByRestaurantAndGroupSizeAndDate(Restaurant restaurant, int groupSize, Date date);
+  
+  List<Reservation> findReservationsByCustomer(Customer customer);
 }
