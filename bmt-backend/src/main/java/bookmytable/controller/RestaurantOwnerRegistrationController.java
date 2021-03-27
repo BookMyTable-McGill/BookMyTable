@@ -69,5 +69,14 @@ public class RestaurantOwnerRegistrationController {
 	    RestaurantOwner restaurantOwner = restaurantOwnerRegistrationService.deleteRestaurantOwner(id);
 	    return Converters.convertToDto(restaurantOwner);
 	 }
+	 
+
+	 @DeleteMapping(value = {"/restaurantOwner/deleteOwnAccount", "/restaurantOwner/deleteOwnAccount/"})
+	 public void deleteOwnRestaurantOwnerAccount(@RequestParam(name = "ID") long id, @RequestParam(name="password") String password) {
+	    RestaurantOwner restaurantOwner = restaurantOwnerRepository.findRestaurantOwnerById(id);
+	    restaurantOwnerRegistrationService.deleteOwnRestaurantOwnerAccount(restaurantOwner, password);
+	 }
+	 
+	 
 
 }
