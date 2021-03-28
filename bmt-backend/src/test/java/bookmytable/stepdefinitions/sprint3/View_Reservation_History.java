@@ -1,4 +1,4 @@
-package bookmytable.stepdefinitions;
+package bookmytable.stepdefinitions.sprint3;
 
 import static org.junit.Assert.assertEquals;
 
@@ -64,7 +64,7 @@ public class View_Reservation_History {
 		customer.setName("test");
 		customer.setEmail("test@gmail.com");
 		customer.setPassword("testPassword");
-		customer.setPhoneNumber("5143184677");
+		customer.setPhoneNumber("514-318-4677");
 		cRepo.save(customer);
 	}
 
@@ -72,7 +72,7 @@ public class View_Reservation_History {
 	public void the_customer_has_made_at_least_one_reservation_through_book_my_table() {
 		//create owner
 		RestaurantOwner owner = new RestaurantOwner();
-		
+//		owner.setEmail("thelongesttestemailinteh@mail.com");
 		oRepo.save(owner);
 		
 		//Create a restaurant
@@ -127,9 +127,8 @@ public class View_Reservation_History {
 		List<Reservation> reservations = reservationService.getReservationsByCustomer(customer);
 		
 		assertEquals(reservations.size(), 1);
-		cRepo.delete(customer);
-		tRepo.delete(theTable);
-		restRepo.delete(theRestaurant);
+		customerRegistrationService.deleteCustomer(customer.getId());
+//		restaurantService.deleteRestaurant(theRestaurant, theRestaurant.getRestaurantOwner().getEmail(), theRestaurant.getRestaurantOwner().getPassword());
 	}
 	
 	@Given("the customer has never used the system to make a reservation")
@@ -165,7 +164,7 @@ public class View_Reservation_History {
 		
 		assertEquals(errorCount, 1);
 		
-		cRepo.delete(newCustomer);
+		customerRegistrationService.deleteCustomer(customer.getId());
 		
 	}
 	

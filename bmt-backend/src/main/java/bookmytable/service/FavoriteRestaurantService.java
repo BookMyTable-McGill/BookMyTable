@@ -1,10 +1,13 @@
 package bookmytable.service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import bookmytable.dao.CustomerRepository;
 import bookmytable.dao.RestaurantRepository;
 import bookmytable.model.Customer;
@@ -18,6 +21,7 @@ public class FavoriteRestaurantService {
   @Autowired
   RestaurantRepository restaurantRepository;
   
+  @Transactional
   public Restaurant addRestaurantToFavorites(String customerEmail, long restoID) {
     if (customerEmail == null) {
       throw new IllegalArgumentException("customerEmail is null");
@@ -34,6 +38,9 @@ public class FavoriteRestaurantService {
     }
     
     Set<Restaurant> favorites = customer.getFavoriteRestaurants();
+    if(favorites == null) {
+    	favorites = new HashSet<Restaurant>();
+    }
     favorites.add(restaurant);
     customer.setFavoriteRestaurants(favorites);
     customerRepository.save(customer);
@@ -41,6 +48,7 @@ public class FavoriteRestaurantService {
     return restaurant;
   }
   
+  @Transactional
   public Restaurant removeRestaurantFromFavorites(String customerEmail, long restoID) {
     if (customerEmail == null) {
       throw new IllegalArgumentException("customerEmail is null");
@@ -64,6 +72,7 @@ public class FavoriteRestaurantService {
     return restaurant;
   }
   
+  @Transactional
   public List<Restaurant> viewFavoriteRestaurants(String customerEmail) {
     if (customerEmail == null) {
       throw new IllegalArgumentException("customerEmail is null");

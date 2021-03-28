@@ -1,4 +1,4 @@
-package bookmytable.stepdefinitions;
+package bookmytable.stepdefinitions.sprint3;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;

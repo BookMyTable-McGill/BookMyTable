@@ -1,5 +1,6 @@
-package bookmytable.stepdefinitions;
+package bookmytable.stepdefinitions.sprint2;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import java.sql.Time;
 import java.util.Random;
@@ -14,7 +15,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class Modify_Restaurant_Price {
+public class Modify_Restaurant_Menu {
 
 	@Autowired
 	private RestaurantOwnerRepository oRepo;
@@ -26,9 +27,9 @@ public class Modify_Restaurant_Price {
 	private String testName;
 	private String testAddress;
 	
-	@Given("a restaurant owner <restaurant_owner_id> is logged in BookMyTable as a restaurant owner")
+	@Given("restaurant owner <restaurant_owner_id> is logged into BookMyTable as a restaurant owner")
 	public void a_restaurant_owner_restaurant_owner_id_is_logged_into_book_my_table_as_a_restaurant_owner() {
-		
+
 		// Create Owner
 		RestaurantOwner owner = new RestaurantOwner();
 		oRepo.save(owner);
@@ -57,45 +58,66 @@ public class Modify_Restaurant_Price {
 		// create restaurant through service method
 		this.theRestaurant = serviceR.createRestaurant(testName, testAddress, hours, owner, estDuration, menuLink,
 				price, cuisine, options);
-	}
-
-	@Given("restaurant owner <restaurant_owner_id> has at minimum one registered restaurant")
-	public void restaurant_owner_restaurant_owner_id_has_at_least_one_registered_restaurant() {
-
 		
 	}
 
-	@When("the restaurant owner <restaurant_owner_id> modifies the price of their restaurant <restaurant_id> to a new price")
-	public void the_restaurant_owner_restaurant_owner_id_modifies_the_price_of_their_restaurant_restaurant_id_to_a_new_price() {
+	@When("restaurant owner <restaurant_owner_id> selects one of their restaurants <restaurant_id>")
+	public void the_restaurant_owner_restaurant_owner_id_selects_one_of_their_restaurants_restaurant_id() {
 
-		serviceR.modifyRestaurantPrice(theRestaurant, 1);
 	}
 
-	@Then("the restaurant <restaurant_id> has the newly modified price")
-	public void the_restaurant_restaurant_id_has_the_newly_modified_price() {
+	@When("the restaurant owner <restaurant_owner_id> requests to modify the menu")
+	public void the_restaurant_owner_restaurant_owner_id_requests_to_modify_the_menu() {
 
+	}
+
+	@When("the restaurant owner <restaurant_owner_id> enters the menu link")
+	public void the_restaurant_owner_restaurant_owner_id_enters_the_menu_link() {
+
+		serviceR.modifyRestaurantMenu(theRestaurant, "theNewLink");
+	}
+
+	@Then("the restaurant <restaurant_id> has the newly modified menu")
+	public void the_restaurant_restaurant_id_has_the_newly_modified_menu() {
+		
 		Restaurant modifiedRestaurant = serviceR.getRestaurantByAddress(testAddress);
-		assertEquals(modifiedRestaurant.getFood().getPrice(), 1);
+		assertEquals(modifiedRestaurant.getFood().getMenuLink(), "theNewLink");
 	}
 
-	@Then("a {string} message is popped out")
+	@Then("a {string} message appears")
 	public void a_message_is_displayed(String string) {
+
+		assertEquals(true, true);
+	}
+
+	@When("restaurant owner <restaurant_owner_id> selects one of its restaurants <restaurant_id>")
+	public void the_restaurant_owner_restaurant_owner_id_selects_one_of_its_restaurants_restaurant_id() {
+
+	}
+
+	@When("the restaurant owner <restaurant_owner_id> does not enter the new menu link")
+	public void the_restaurant_owner_restaurant_owner_id_does_not_enter_the_new_menu_link() {
 		
-		assertEquals(true,true);
+		try {
+			serviceR.modifyRestaurantMenu(theRestaurant, null);
+		} catch (IllegalArgumentException e) {
+			error = e.getMessage();
+		}
 		
 	}
 
-	@When("the restaurant owner <restaurant_owner_id> modifies the price of their restaurant <restaurant_id> to be the same price")
-	public void the_restaurant_owner_restaurant_owner_id_modifies_the_price_of_their_restaurant_restaurant_id_to_be_the_same_price() {
-
-		serviceR.modifyRestaurantPrice(theRestaurant, 2);
-	}
-
-	@Then("the restaurant <restaurant_id> price remains the same")
-	public void the_restaurant_restaurant_id_price_remains_the_same() {
-
+	@Then("the restaurant <restaurant_id> menu remains the same")
+	public void the_restaurant_restaurant_id_menu_remains_the_same() {
+		
 		Restaurant modifiedRestaurant = serviceR.getRestaurantByAddress(testAddress);
-		assertEquals(modifiedRestaurant.getFood().getPrice(), 2);
+		assertEquals(modifiedRestaurant.getFood().getMenuLink(), "aLink");
+		
+	}
+
+	@Then("an error message appears")
+	public void an_error_message_is_displayed() {
+
+		assertNotEquals(error, null);
 	}
 	
 	protected String getSaltString() {

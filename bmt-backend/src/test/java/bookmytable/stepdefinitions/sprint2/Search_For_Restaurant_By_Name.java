@@ -1,4 +1,4 @@
-package bookmytable.stepdefinitions;
+package bookmytable.stepdefinitions.sprint2;
 
 import static org.junit.Assert.assertTrue;
 
@@ -47,6 +47,7 @@ public class Search_For_Restaurant_By_Name {
 
 	@Given("Restaurant McDonalds exists")
 	public void restaurant_mc_donalds_exists() {
+		restaurantRepository.deleteAll();
 		// Write code here that turns the phrase above into concrete actions
 		RestaurantOwner owner1 = new RestaurantOwner();
 		restaurantOwnerRepository.save(owner1);

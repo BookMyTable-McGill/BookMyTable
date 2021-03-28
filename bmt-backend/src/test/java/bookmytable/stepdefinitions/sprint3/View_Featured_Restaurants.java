@@ -1,4 +1,4 @@
-package bookmytable.stepdefinitions;
+package bookmytable.stepdefinitions.sprint3;
 
 
 import java.sql.Date;

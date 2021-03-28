@@ -81,7 +81,7 @@ public class CustomerRegistrationController {
   }
   
   @DeleteMapping(value = {"/customer/delete", "/customer/delete/"})
-  public CustomerDTO deleteCustomer(@RequestParam(name = "ID") long id, @RequestParam(name="password") String password) {
+  public CustomerDTO deleteCustomer(@RequestParam(name = "ID") long id) {
     Customer customer = customerRegistrationService.deleteCustomer(id);
     return Converters.convertToDto(customer);
   }

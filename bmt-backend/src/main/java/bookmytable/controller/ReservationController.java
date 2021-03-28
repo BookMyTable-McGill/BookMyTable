@@ -55,7 +55,7 @@ public class ReservationController {
     }
     
     @PostMapping(value= {"/reservation/modify","reservation/modify/"})
-    public ReservationDTO modifyReservation(@RequestParam(name="resrvationID") Long id, @RequestParam("startTime") String startTime, @RequestParam("date") String date,@RequestParam("groupSize") int groupSize, 
+    public ReservationDTO modifyReservation(@RequestParam(name="reservationID") Long id, @RequestParam("startTime") String startTime, @RequestParam("date") String date,@RequestParam("groupSize") int groupSize, 
 			@RequestParam("tableID") long tID, @RequestParam("customerID") long cID, @RequestParam("restaurantID") long rID) {
   	  
     	 RestaurantTable restaurantTable = tableRepository.findTableById(tID);

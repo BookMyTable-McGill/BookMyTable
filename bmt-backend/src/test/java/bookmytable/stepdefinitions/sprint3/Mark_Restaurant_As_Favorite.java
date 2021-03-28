@@ -1,7 +1,9 @@
-package bookmytable.stepdefinitions;
+package bookmytable.stepdefinitions.sprint3;
 
 import static org.junit.Assert.assertTrue;
 import java.sql.Time;
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import bookmytable.dao.CustomerRepository;
 import bookmytable.dao.RestaurantRepository;
@@ -44,9 +46,10 @@ public class Mark_Restaurant_As_Favorite {
 		String email = "customer1@gmail.com";
 		String password = "password";
 		String phoneNumber = "514-111-2222";
-		customer = customerRegistrationService.getCustomerByEmail(email);
-		if (customer == null) {
+		if (customerRepository.findCustomerByEmail(email) == null) {
           customer = customerRegistrationService.createCustomer(name, email, password, phoneNumber);
+		}else {
+			customer = customerRepository.findCustomerByEmail(email);
 		}
 		assertTrue(customerLoginService.loginCustomer(customer, customer.getEmail(), customer.getPassword()));
 	}
@@ -61,8 +64,8 @@ public class Mark_Restaurant_As_Favorite {
 	      restaurantOwner = restaurantOwnerRegistrationService.registerRestaurantOwner(ownerName, password, email); 
 	  }
 	  
-	  String name = "TestoResto";
-	  String address = "123 Test Lane";
+	  String name = "TestoResto"+getSaltString();
+	  String address = "123 Test Lane"+getSaltString();
 	  Time[][] hours = new Time[7][2];
       Time time1 = Time.valueOf("6:45:20");
       Time time2 = Time.valueOf("7:45:20");
@@ -77,7 +80,7 @@ public class Mark_Restaurant_As_Favorite {
           }
       }
       int estDuration = 1;
-      String menuLink = null;
+      String menuLink = "somerandommenulink";
       int price = 3;
       String cuisine = "Italian";
       String options = "None";
@@ -88,11 +91,25 @@ public class Mark_Restaurant_As_Favorite {
 
 	@Then("the restaurant shall be added to that customer's favorite list of Favorite Restaurants")
 	public void the_restaurant_shall_be_added_to_that_customer_s_favorite_list_of_favorite_restaurants() {
-	    assertTrue(customer.getFavoriteRestaurants().contains(restaurant));
+	    assertTrue(favoriteRestaurantService.viewFavoriteRestaurants(customer.getEmail()).size() > 0);
+	    favoriteRestaurantService.removeRestaurantFromFavorites(customer.getEmail(), restaurant.getId());
 	}
 
 	@Then("a message indicating that the restaurant has been added to that customer's list of Favorite Restaurants will appear")
 	public void a_message_indicating_that_the_restaurant_has_been_added_to_that_customer_s_list_of_favorite_restaurants_will_appear() {
+
+	}
+	
+	protected String getSaltString() {
+		String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+		StringBuilder salt = new StringBuilder();
+		Random rnd = new Random();
+		while (salt.length() < 18) { // length of the random string.
+			int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+			salt.append(SALTCHARS.charAt(index));
+		}
+		String saltStr = salt.toString();
+		return saltStr;
 
 	}
 }

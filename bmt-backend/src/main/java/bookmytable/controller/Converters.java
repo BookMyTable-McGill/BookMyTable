@@ -90,15 +90,15 @@ public class Converters {
     String phoneNumber = c.getPhoneNumber();
     long id = c.getId();
     
-    Set<Restaurant> favoriteRestaurants = c.getFavoriteRestaurants();
-    Set<RestaurantDTO> favoriteRestaurantDTOs = new HashSet<RestaurantDTO>();
-    if (favoriteRestaurants != null) {
-      for (Restaurant r : favoriteRestaurants) {
-        favoriteRestaurantDTOs.add(convertToDto(r));
-      }
-    }
+//    Set<Restaurant> favoriteRestaurants = c.getFavoriteRestaurants();
+//    Set<RestaurantDTO> favoriteRestaurantDTOs = new HashSet<RestaurantDTO>();
+//    if (favoriteRestaurants != null) {
+//      for (Restaurant r : favoriteRestaurants) {
+//        favoriteRestaurantDTOs.add(convertToDto(r));
+//      }
+//    }
     
-    CustomerDTO cust = new CustomerDTO(name, email, password, id, phoneNumber, null, favoriteRestaurantDTOs);
+    CustomerDTO cust = new CustomerDTO(name, email, password, id, phoneNumber, null, null);
     return cust;
   }
   

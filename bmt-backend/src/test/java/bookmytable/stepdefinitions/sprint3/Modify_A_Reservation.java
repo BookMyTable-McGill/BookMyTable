@@ -1,9 +1,10 @@
-package bookmytable.stepdefinitions;
+package bookmytable.stepdefinitions.sprint3;
 
 import static org.junit.Assert.assertEquals;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -118,7 +119,7 @@ public class Modify_A_Reservation {
 		//throw new io.cucumber.java.PendingException();
 		cust = customerRegistrationService.createCustomer("Tester test", "a@reservation.com", "test123", "123-456-7890");
 		owner = restaurantOwnerService.registerRestaurantOwner("Restaurant OWner", "test12345", "restoowner@owner.ca");
-		theRestaurant = restaurantService.createRestaurant( testName, testAddress, hours, owner, estDuration, menuLink, price, cuisine, options);
+		theRestaurant = restaurantService.createRestaurant( testName+getSaltString(), testAddress+getSaltString(), hours, owner, estDuration, menuLink, price, cuisine, options);
 		table = new RestaurantTable();
 		table2 = new RestaurantTable();
 		table.setCapacity(4);
@@ -161,7 +162,7 @@ public class Modify_A_Reservation {
 		
 		cust = customerRegistrationService.createCustomer("Tester test", "b@reservation.com", "test123", "123-456-7890");
 		owner = restaurantOwnerService.registerRestaurantOwner("Restaurant OWner", "test12345", "1restoowner@owner.ca");
-		theRestaurant = restaurantService.createRestaurant( "mane", "12", hours, owner, estDuration, menuLink, price, cuisine, options);
+		theRestaurant = restaurantService.createRestaurant( "mane"+getSaltString(), "12"+getSaltString(), hours, owner, estDuration, menuLink, price, cuisine, options);
 		table = new RestaurantTable();
 		table2 = new RestaurantTable();
 		table.setCapacity(4);
@@ -219,7 +220,7 @@ public class Modify_A_Reservation {
 		//throw new io.cucumber.java.PendingException();
 		cust = customerRegistrationService.createCustomer("Tester test", "bc@reservation.com", "test123", "123-456-7890");
 		owner = restaurantOwnerService.registerRestaurantOwner("Restaurant OWner", "test12345", "12restoowner@owner.ca");
-		theRestaurant = restaurantService.createRestaurant( "m1ane", "112", hours, owner, estDuration, menuLink, price, cuisine, options);
+		theRestaurant = restaurantService.createRestaurant( "m1ane"+getSaltString(), "112"+getSaltString(), hours, owner, estDuration, menuLink, price, cuisine, options);
 		table = new RestaurantTable();
 		table2 = new RestaurantTable();
 		table.setCapacity(4);
@@ -259,7 +260,7 @@ public class Modify_A_Reservation {
 		//throw new io.cucumber.java.PendingException();
 		cust = customerRegistrationService.createCustomer("Tester test", "bcg@reservation.com", "test123", "123-456-7890");
 		owner = restaurantOwnerService.registerRestaurantOwner("Restaurant OWner", "test12345", "12grestoowner@owner.ca");
-		theRestaurant = restaurantService.createRestaurant( "mg1ane", "11g2", hours, owner, estDuration, menuLink, price, cuisine, options);
+		theRestaurant = restaurantService.createRestaurant( "mg1ane"+getSaltString(), "11g2"+getSaltString(), hours, owner, estDuration, menuLink, price, cuisine, options);
 		table = new RestaurantTable();
 		table2 = new RestaurantTable();
 		table.setCapacity(4);
@@ -302,7 +303,7 @@ public class Modify_A_Reservation {
 		//throw new io.cucumber.java.PendingException();
 		cust = customerRegistrationService.createCustomer("Tester test", "bcqg@reservation.com", "test123", "123-456-7890");
 		owner = restaurantOwnerService.registerRestaurantOwner("Restaurant OWner", "test12345", "12gqrestoowner@owner.ca");
-		theRestaurant = restaurantService.createRestaurant( "qmg1ane", "11qg2", hours, owner, estDuration, menuLink, price, cuisine, options);
+		theRestaurant = restaurantService.createRestaurant( "qmg1ane"+getSaltString(), "11qg2"+getSaltString(), hours, owner, estDuration, menuLink, price, cuisine, options);
 		table = new RestaurantTable();
 		table2 = new RestaurantTable();
 		table.setCapacity(4);
@@ -332,7 +333,7 @@ public class Modify_A_Reservation {
 		//throw new io.cucumber.java.PendingException();
 		cust = customerRegistrationService.createCustomer("Tester test", "bcqg5@reservation.com", "test123", "123-456-7890");
 		owner = restaurantOwnerService.registerRestaurantOwner("Restaurant OWner", "test12345", "12gq5restoowner@owner.ca");
-		theRestaurant = restaurantService.createRestaurant( "qmg51ane", "11q5g2", hours, owner, estDuration, menuLink, price, cuisine, options);
+		theRestaurant = restaurantService.createRestaurant( "qmg51ane"+getSaltString(), "11q5g2"+getSaltString(), hours, owner, estDuration, menuLink, price, cuisine, options);
 		table = new RestaurantTable();
 		table2 = new RestaurantTable();
 		table.setCapacity(4);
@@ -363,7 +364,7 @@ public class Modify_A_Reservation {
 		
 		cust = customerRegistrationService.createCustomer("Tester test", "bcq3g@reservation.com", "test123", "123-456-7890");
 		owner = restaurantOwnerService.registerRestaurantOwner("Restaurant OWner", "test12345", "12gq3restoowner@owner.ca");
-		theRestaurant = restaurantService.createRestaurant( "qmg13ane", "113qg2", hours, owner, estDuration, menuLink, price, cuisine, options);
+		theRestaurant = restaurantService.createRestaurant( "qmg13ane"+getSaltString(), "113qg2"+getSaltString(), hours, owner, estDuration, menuLink, price, cuisine, options);
 		table = new RestaurantTable();
 		table2 = new RestaurantTable();
 		table.setCapacity(4);
@@ -394,7 +395,7 @@ public class Modify_A_Reservation {
 		
 		cust = customerRegistrationService.createCustomer("Tester test", "becq3g@reservation.com", "test123", "123-456-7890");
 		owner = restaurantOwnerService.registerRestaurantOwner("Restaurant OWner", "test12345", "12gq3erestoowner@owner.ca");
-		theRestaurant = restaurantService.createRestaurant( "qmge13ane", "113qge2", hours, owner, estDuration, menuLink, price, cuisine, options);
+		theRestaurant = restaurantService.createRestaurant( "qmge13ane"+getSaltString(), "113qge2"+getSaltString(), hours, owner, estDuration, menuLink, price, cuisine, options);
 		table = new RestaurantTable();
 		table2 = new RestaurantTable();
 		table.setCapacity(4);
@@ -444,7 +445,7 @@ public class Modify_A_Reservation {
 		//throw new io.cucumber.java.PendingException();
 		cust = customerRegistrationService.createCustomer("Tester test", "bcq3ig@reservation.com", "test123", "123-456-7890");
 		owner = restaurantOwnerService.registerRestaurantOwner("Restaurant OWner", "test12345", "12igq3restoowner@owner.ca");
-		theRestaurant = restaurantService.createRestaurant( "iqmg13ane", "1i13qg2", hours, owner, estDuration, menuLink, price, cuisine, options);
+		theRestaurant = restaurantService.createRestaurant( "iqmg13ane"+getSaltString(), "1i13qg2"+getSaltString(), hours, owner, estDuration, menuLink, price, cuisine, options);
 		table = new RestaurantTable();
 		table2 = new RestaurantTable();
 		table.setCapacity(4);
@@ -473,7 +474,7 @@ public class Modify_A_Reservation {
 		//throw new io.cucumber.java.PendingException();
 		cust = customerRegistrationService.createCustomer("Tester test", "bcqe3ig@reservation.com", "test123", "123-456-7890");
 		owner = restaurantOwnerService.registerRestaurantOwner("Restaurant OWner", "test12345", "12igqe3restoowner@owner.ca");
-		theRestaurant = restaurantService.createRestaurant( "iqmg1e3ane", "1ie13qg2", hours, owner, estDuration, menuLink, price, cuisine, options);
+		theRestaurant = restaurantService.createRestaurant( "iqmg1e3ane"+getSaltString(), "1ie13qg2"+getSaltString(), hours, owner, estDuration, menuLink, price, cuisine, options);
 		table = new RestaurantTable();
 		table2 = new RestaurantTable();
 		table.setCapacity(4);
@@ -527,7 +528,7 @@ public class Modify_A_Reservation {
 		//throw new io.cucumber.java.PendingException();
 		cust = customerRegistrationService.createCustomer("Tester test", "bcqm3ig@reservation.com", "test123", "123-456-7890");
 		owner = restaurantOwnerService.registerRestaurantOwner("Restaurant OWner", "test12345", "12igmq3restoowner@owner.ca");
-		theRestaurant = restaurantService.createRestaurant( "imqmg13ane", "1i13mqg2", hours, owner, estDuration, menuLink, price, cuisine, options);
+		theRestaurant = restaurantService.createRestaurant( "imqmg13ane"+getSaltString(), "1i13mqg2"+getSaltString(), hours, owner, estDuration, menuLink, price, cuisine, options);
 		table = new RestaurantTable();
 		table2 = new RestaurantTable();
 		table.setCapacity(4);
@@ -557,6 +558,19 @@ public class Modify_A_Reservation {
 		//throw new io.cucumber.java.PendingException();
 		Reservation res = reservationService.getReservationById(reservation.getId());
 		assertEquals(res.getTable().getCapacity(), table2.getCapacity());
+
+	}
+	
+	protected String getSaltString() {
+		String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+		StringBuilder salt = new StringBuilder();
+		Random rnd = new Random();
+		while (salt.length() < 18) { // length of the random string.
+			int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+			salt.append(SALTCHARS.charAt(index));
+		}
+		String saltStr = salt.toString();
+		return saltStr;
 
 	}
 

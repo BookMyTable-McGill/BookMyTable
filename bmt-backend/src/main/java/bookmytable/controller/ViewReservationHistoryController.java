@@ -1,5 +1,6 @@
 package bookmytable.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class ViewReservationHistoryController {
 		
 		List<Reservation> reservations = reservationService.getReservationsByCustomer(customer);
 		
-		List<ReservationDTO> reservationDTOs = null;
+		List<ReservationDTO> reservationDTOs = new ArrayList<ReservationDTO>();
 		
 		for(Reservation r : reservations) {
 			reservationDTOs.add(Converters.convertToDto(r));
