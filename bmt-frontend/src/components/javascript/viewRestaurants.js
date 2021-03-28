@@ -19,12 +19,17 @@ export default {
 			restaurants: [],
 			restaurantError: '',
 			response: [],
+			favoriteRestaurants: [],
+			favoriteRestaurantIDs: [],
+			customer: '',
 			filterType: '',
 		}
 	},
 
 	created: function() {
-		this.getAllRestaurants
+		this.customer = this.$store.state.user;
+		this.getFavorites()
+		this.getAllRestaurants()
 	},
 	methods: {
 		getRestoPage: function(restoID) {
@@ -58,6 +63,15 @@ export default {
 			AXIOS.get('/restaurants')
 			.then(response => {
 				this.restaurants = response.data
+				this.restaurants.forEach(resto => {
+					this.favoriteRestaurants.forEach(faveResto => {
+						if(faveResto.id == resto.id) {
+							resto.isFavorite = true
+							return
+						}
+					})
+					resto.isFavorite = false
+				})
 			})
 			.catch(e => {
 				this.restaurantError = e
@@ -96,6 +110,37 @@ export default {
 			AXIOS.get('/restaurants/options?options='.concat(options), {}, {params: {options:options}})
 			.then(response => {
 				this.restaurants = response.data
+			}).catch(e => {
+				this.restaurantError = e
+			})
+		},addToFavorites: function(restaurant) {
+			AXIOS.post('/customer/favorite/add?email='.concat(this.customer.email, '&restoID=', parseInt(restaurant.id)))
+			.then(response => {
+				alert(restaurant.name.concat(" was added to your favorites!"))
+				restaurant.isFavorite = true
+				this.favoriteRestaurants.push(response.data)
+				this.favoriteRestaurantIDs.push(response.data.id)
+			}).catch(e => {
+				this.restaurantError = e
+			})
+		},removeFromFavorites: function(restaurant) {
+			AXIOS.post('/customer/favorite/remove?email='.concat(this.customer.email, '&restoID=', parseInt(restaurant.id)))
+			.then(response => {
+				alert(restaurant.name.concat(" was removed from your favorites"))
+				restaurant.isFavorite = false
+				this.response.push(response)
+			}).catch(e => {
+				this.restaurantError = e
+			})
+		},getFavorites: function() {
+			this.favoriteRestaurants = []
+			this.favoriteRestaurantIDs = []
+			AXIOS.get('/customer/favorites?email='.concat(this.customer.email))
+			.then(response => {
+				this.favoriteRestaurants = response.data
+				this.favoriteRestaurants.forEach(element => {
+					this.favoriteRestaurantIDs.push(element.id)
+				});
 			}).catch(e => {
 				this.restaurantError = e
 			})

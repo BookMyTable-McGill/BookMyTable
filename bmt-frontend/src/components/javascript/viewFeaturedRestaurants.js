@@ -18,12 +18,17 @@ export default {
 		return {
 			restaurants: [],
 			restaurantError: '',
+			favoriteRestaurants: [],
+			favoriteRestaurantIDs: [],
+			customer: '',
 			response: [],
 			filterType: '',
 		}
 	},
 
 	created: function() {
+		this.customer = this.$store.state.user;
+		this.getFavorites()
 		AXIOS.get('/featuredRestaurants/')
 			.then((response) => {
 				this.restaurants = response.data;
@@ -43,6 +48,37 @@ export default {
 				})
 			return '/#/restaurantInfo/'
 
+		},addToFavorites: function(restaurant) {
+			AXIOS.post('/customer/favorite/add?email='.concat(this.customer.email, '&restoID=', parseInt(restaurant.id)))
+			.then(response => {
+				alert(restaurant.name.concat(" was added to your favorites!"))
+				restaurant.isFavorite = true
+				this.favoriteRestaurants.push(response.data)
+				this.favoriteRestaurantIDs.push(response.data.id)
+			}).catch(e => {
+				this.restaurantError = e
+			})
+		},removeFromFavorites: function(restaurant) {
+			AXIOS.post('/customer/favorite/remove?email='.concat(this.customer.email, '&restoID=', parseInt(restaurant.id)))
+			.then(response => {
+				alert(restaurant.name.concat(" was removed from your favorites"))
+				restaurant.isFavorite = false
+				this.response.push(response)
+			}).catch(e => {
+				this.restaurantError = e
+			})
+		},getFavorites: function() {
+			this.favoriteRestaurants = []
+			this.favoriteRestaurantIDs = []
+			AXIOS.get('/customer/favorites?email='.concat(this.customer.email))
+			.then(response => {
+				this.favoriteRestaurants = response.data
+				this.favoriteRestaurants.forEach(element => {
+					this.favoriteRestaurantIDs.push(element.id)
+				});
+			}).catch(e => {
+				this.restaurantError = e
+			})
 		}
 	}
 }

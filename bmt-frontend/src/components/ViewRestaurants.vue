@@ -56,6 +56,9 @@
         <div id="resto">
           <br>
           <h2>{{restaurant.name}}</h2>
+          <button type = "button" style="margin-right: 10px" v-on:click="addToFavorites(restaurant)">Add to Favorites</button>
+          <button type = "button" style="margin-left: 10px" v-on:click="removeFromFavorites(restaurant)">Remove from Favorites</button>
+          <br> <br>
           <a style="font-weight: bold;  text-decoration: underline" v-bind:href="getRestoPage(restaurant.id)">More info</a>
           <br>
           <br>

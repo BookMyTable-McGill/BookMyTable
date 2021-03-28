@@ -13,12 +13,8 @@ import ModifyRestaurantOwnerAccount from '@/components/ModifyRestaurantOwnerAcco
 import ViewCustomers from '@/components/ViewCustomers'
 import OwnerRestaurantInfo from '@/components/OwnerRestaurantInfo'
 import ViewRestaurantsWithLeastReservations from '@/components/ViewRestaurantsWithLeastReservations'
-<<<<<<< HEAD
 import ViewFeaturedRestaurants from '@/components/ViewFeaturedRestaurants'
-=======
 import ModifyReservation from '@/components/ModifyReservation'
-
->>>>>>> 49c5244c70beb44d2383bd4c8a7fcf747b11afb0
 Vue.use(Router)
 
 export default new Router({
