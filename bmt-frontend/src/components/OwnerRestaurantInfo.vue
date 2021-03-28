@@ -18,6 +18,8 @@
     <button type="button" name="button" v-on:click="addPhoto(photoLink)">Save</button>
     <br><br>
     <button type="button" name="button" v-on:click="showPhotos = !showPhotos">Cancel</button>
+    <br><br>
+    <button class="deletebtn" v-on:click="deleteAccount()">Delete Account</button>
   </div>
 </div>
 </template>
@@ -67,6 +69,19 @@ hr {
   cursor: pointer;
   width: 50%;
   opacity: 0.9;
+}
+
+.deletebtn {
+  background-color: #f44336;
+  border: none; 
+  color: whote;
+  padding: 15px 32px; 
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 
 .loginbtn:hover {

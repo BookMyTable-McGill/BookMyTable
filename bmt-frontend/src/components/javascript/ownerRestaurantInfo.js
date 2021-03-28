@@ -51,6 +51,20 @@ var AXIOS = axios.create({
 				.catch(e => {
 					this.errorInfo = e
 				})
+			},
+			deleteAccount: function () {
+				let confirmation = confirm('Are you sure you want to delete your account?');
+				if (confirmation) {
+					AXIOS.delete('/restaurantOwner/deleteOwnAccount/' + this.$store.state.user.id + '/' + this.$store.state.user.password)
+						.then(() => {
+							alert('Restaurant Owner ' + this.$store.state.user.name + ' account got deleted from database!');
+							window.location('/login')
+						})
+						.catch(e => {
+							this.errorInfo = e
+						})
+				}
+				else alert('Account deletion was cancelled');
 			}
 		}
 	}
