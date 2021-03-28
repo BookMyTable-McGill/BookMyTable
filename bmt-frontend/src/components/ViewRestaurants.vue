@@ -58,6 +58,7 @@
           <h2>{{restaurant.name}}</h2>
           <a style="font-weight: bold;  text-decoration: underline" v-bind:href="getRestoPage(restaurant.id)">More info</a>
           <br>
+          <button type="submit" class="button" @click="deleteReservation(restaurant.id, restaurant.restaurantOwner.email, restaurant.restaurantOwner.password)">Delete Restaurant</button>
           <br>
         </div>
         <br>
