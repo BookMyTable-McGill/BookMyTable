@@ -24,8 +24,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5504df1d-8baa-493a-b8c4-e5e2bc5aea88" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/controller/CustomerRegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/controller/CustomerRegistrationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/controller/RestaurantOwnerRegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-backend/src/main/java/bookmytable/controller/RestaurantOwnerRegistrationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bmt-frontend/src/components/ViewRestaurants.vue" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-frontend/src/components/ViewRestaurants.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bmt-frontend/src/components/javascript/viewRestaurants.js" beforeDir="false" afterPath="$PROJECT_DIR$/bmt-frontend/src/components/javascript/viewRestaurants.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,12 +40,20 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="BookMyTable" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="BookMyTable" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
             <select />
@@ -89,20 +97,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.BookMyTableApplication">
-    <configuration name="BookMyTableApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="bookmytable.BookMyTableApplication" />
-      <module name="BookMyTable.bmt-backend.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="bookmytable.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.BookMyTableApplication">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -112,6 +107,19 @@
       <option name="TEST_OBJECT" value="CLASS" />
       <properties />
       <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BookMyTableApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="bookmytable.BookMyTableApplication" />
+      <module name="BookMyTable.bmt-backend.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="bookmytable.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -132,9 +140,7 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
     <configuration name="CucumberTestsRunner" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -153,9 +159,7 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
     <configuration name="CucumberTestsRunner" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -182,7 +186,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.BookMyTableApplication" />
         <item itemvalue="JUnit.CucumberTestsRunner" />
         <item itemvalue="Gradle.CucumberTestsRunner" />
         <item itemvalue="Gradle.BookMyTableApplicationTests" />

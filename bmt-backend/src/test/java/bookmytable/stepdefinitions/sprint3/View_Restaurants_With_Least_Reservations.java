@@ -1,4 +1,4 @@
-package bookmytable.stepdefinitions;
+package bookmytable.stepdefinitions.sprint3;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -83,9 +83,7 @@ public class View_Restaurants_With_Least_Reservations {
 
 	@Given("there is at least {int} Restaurant in the system")
 	public void there_is_at_least_restaurant_in_the_system(Integer int1) {
-		for (Restaurant restaurant : restaurantService.getAllRestaurants()) {
-			restaurantRepository.delete(restaurant);
-		}
+		restaurantRepository.deleteAll();
 		
 		Time[][] hours = new Time[7][2];
 		Time time1 = Time.valueOf("6:45:20");

@@ -1,4 +1,4 @@
-package bookmytable.stepdefinitions;
+package bookmytable.stepdefinitions.sprint2;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

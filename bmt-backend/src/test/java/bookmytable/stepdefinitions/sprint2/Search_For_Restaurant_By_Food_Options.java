@@ -1,4 +1,4 @@
-package bookmytable.stepdefinitions;
+package bookmytable.stepdefinitions.sprint2;
 
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
@@ -43,7 +43,7 @@ public class Search_For_Restaurant_By_Food_Options {
 
 	@Given("the following Restaurants exist")
 	public void the_following_restaurants_exist(io.cucumber.datatable.DataTable dataTable) {
-		
+		restaurantRepository.deleteAll();
 		RestaurantOwner owner1 = new RestaurantOwner();
 		restaurantOwnerRepository.save(owner1);
 		
@@ -158,9 +158,8 @@ public class Search_For_Restaurant_By_Food_Options {
 	public void the_the_customer_will_be_notified_that_no_restaurants_fall_under_their_desired_food_options() {
 		// Write code here that turns the phrase above into concrete actions
 		//for(Restaurant r : rest) {
-		for(Restaurant r: restaurantRepository.findAll()) {
+		for(Restaurant r: restaurantService.getAllRestaurants()) {
 			assertNotEquals("lactose-free", r.getFood().getOptions());
-
 		}
 		//}
 	}

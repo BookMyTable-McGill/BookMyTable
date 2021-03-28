@@ -144,6 +144,13 @@ export default {
 			}).catch(e => {
 				this.restaurantError = e
 			})
-		}
+		},deleteRestaurant: function(restoID, email, password) {
+          		AXIOS.delete('/restaurant/delete/?id='.concat(restoID, '&ownerEmail=', email, '&ownerPassword=', password), {}, {params: {options:options}})
+          		.then(response => {
+          			this.restaurants = response.data
+       			}).catch(e => {
+          			this.restaurantError = e
+          		})
+           }
 	}
 }
