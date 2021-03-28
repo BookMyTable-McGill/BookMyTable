@@ -42,6 +42,9 @@ var AXIOS = axios.create({
 			goToReservation: function() {
 				this.$store.state.restaurant = this.restaurant
 				window.location.href = "/#/reserve/"
+			},
+			openMenu: function () {
+				window.open(this.restaurant.food.menuLink, "_blank");
 			}
 		}
 	}

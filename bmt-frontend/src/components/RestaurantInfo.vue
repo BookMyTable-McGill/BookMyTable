@@ -8,8 +8,8 @@
     Address : {{restaurant.address}}<br>
     Style : {{restaurant.food.cuisine}} <br>
     Hours: {{openingHours}} <br>
+    <br /><button type="submit" v-on:click="openMenu()" class="reservebtn">View Menu</button>
     <br /><button type="submit" v-on:click ="goToReservation()" class="reservebtn">Reserve</button>
-    <br />
   </div>
 </template>
 
