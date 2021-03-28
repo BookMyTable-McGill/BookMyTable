@@ -15,6 +15,7 @@ import OwnerRestaurantInfo from '@/components/OwnerRestaurantInfo'
 import ViewRestaurantsWithLeastReservations from '@/components/ViewRestaurantsWithLeastReservations'
 import ViewFeaturedRestaurants from '@/components/ViewFeaturedRestaurants'
 import ModifyReservation from '@/components/ModifyReservation'
+import ViewReservationHistory from '@/components/ViewReservationHistory'
 Vue.use(Router)
 
 export default new Router({
@@ -35,8 +36,8 @@ export default new Router({
       component: RestaurantInfo,
     },
     {
-      path:"/ownerRestaurantInfo/",
-      name:"OwnerRestaurantInfo",
+      path: "/ownerRestaurantInfo/",
+      name: "OwnerRestaurantInfo",
       component: OwnerRestaurantInfo,
     },
     {
@@ -93,6 +94,11 @@ export default new Router({
       path: "/modifyReservation/",
       name: "modifyReservation",
       component: ModifyReservation,
+    },
+    {
+      path: "/viewReservationHistory",
+      name: "viewReservationHistory",
+      component: ViewReservationHistory,
     }
   ],
 });
