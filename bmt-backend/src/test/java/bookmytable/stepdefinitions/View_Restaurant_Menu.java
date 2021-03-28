@@ -31,17 +31,17 @@ public class View_Restaurant_Menu {
 	private Restaurant theRestaurant2;
 	private String error = " ";
 
-
-		@Given("a customer <customer_id> is logged into BookMyTable as a customer")
-		public void a_customer_customer_id_is_logged_into_book_my_table_as_a_customer() {
-		    // Write code here that turns the phrase above into concrete actions
-		  
-		}
-
-		@Given("the customer <customer_id> is an unsuspended user")
-		public void the_customer_customer_id_is_an_unsuspended_user() {
-		   
-		}
+//
+//		@Given("a customer <customer_id> is logged into BookMyTable as a customer")
+//		public void a_customer_customer_id_is_logged_into_book_my_table_as_a_customer() {
+//		    // Write code here that turns the phrase above into concrete actions
+//		  
+//		}
+//
+//		@Given("the customer <customer_id> is an unsuspended user")
+//		public void the_customer_customer_id_is_an_unsuspended_user() {
+//		   
+//		}
 
 
 

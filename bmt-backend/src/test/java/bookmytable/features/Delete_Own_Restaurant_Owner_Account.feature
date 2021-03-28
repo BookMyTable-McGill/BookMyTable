@@ -14,13 +14,13 @@ Scenario: Successfully delete restaurant owner account (Normal Flow)
 When the restaurant owner inputs their password into the delete account field 
 And the restaurant owner selects to delete their account
 Then the restaurant owner's account will be deleted
-And the restaurant owner's restaurants will be deleted
-And the restaurant owner will not be able to log in to the restaurant booking system anymore
+And the restaurant owner's restaurants are deleted
+And the restaurant owner cannot log in to the restaurant booking system anymore
 
 Scenario: Fail to delete restaurant owner account (Normal Flow) 
 
 When the restaurant owner inputs an incorrect password into the delete account field 
 And the restaurant owner selects to delete their account
 Then the restaurant owner's account will not be deleted
-And the restaurant owner's restaurants will not  be deleted
+And the restaurant owner's restaurants will not be deleted
 And the restaurant owner will still be able to log in to the restaurant booking system

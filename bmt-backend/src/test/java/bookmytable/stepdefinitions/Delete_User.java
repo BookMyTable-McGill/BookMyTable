@@ -59,7 +59,7 @@ public class Delete_User {
 	long restaurantOwnerID;
 	String restaurantOwnerEmail;
 	String restaurantOwnerPassword;
-	Set<Restaurant> restaurants = new HashSet<Restaurant>(); 
+	public static Set<Restaurant> restaurants = new HashSet<Restaurant>(); 
 
 
 	@Given("an administrator is logged in")
